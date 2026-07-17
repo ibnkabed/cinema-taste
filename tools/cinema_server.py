@@ -21,6 +21,8 @@ from urllib.parse import unquote, urlencode, urlparse
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 
+from taste_engine import analyze_candidate
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -773,6 +775,15 @@ class CinemaHandler(SimpleHTTPRequestHandler):
         if path == "/api/status":
             self.send_json({"ok": True, "omdbConfigured": bool(read_omdb_key())})
             return
+        if path == "/api/taste/demo":
+            watchlist = read_csv(WATCHLIST_FILE)
+            if not watchlist:
+                self.send_json({"ok": False, "error": "لا توجد عينة في قائمة المشاهدة.", "code": "demo_unavailable"}, 404)
+                return
+            work = watchlist[0]
+            analysis = analyze_candidate(work, read_csv(LIKED_FILE), read_csv(DISLIKED_FILE))
+            self.send_json({"ok": True, "work": work, "analysis": analysis, "demo": True})
+            return
         if path == "/":
             self.send_response(302)
             self.send_header("Location", "/%D8%A7%D9%84%D8%B0%D8%A7%D8%A6%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A%D8%A9.html")
@@ -805,6 +816,11 @@ class CinemaHandler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/omdb/details":
                 self.send_json({"ok": True, "work": omdb_details(payload.get("imdbId"))})
+                return
+            if path == "/api/taste/analyze":
+                work = omdb_details(payload.get("imdbId"))
+                analysis = analyze_candidate(work, read_csv(LIKED_FILE), read_csv(DISLIKED_FILE))
+                self.send_json({"ok": True, "work": work, "analysis": analysis})
                 return
             if path == "/api/works/add":
                 data, changes, destination_label = add_work(payload)

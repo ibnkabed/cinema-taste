@@ -19,6 +19,8 @@
     let selectedWork = null;
     let pendingTransfer = null;
     let omdbStatusChecked = false;
+    let discoveryPromptAr = '';
+    let discoveryPromptEn = '';
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -49,7 +51,7 @@
         $$('.view').forEach(view => view.classList.toggle('active', view.dataset.page === name));
         $$('.nav-link').forEach(link => link.classList.toggle('active', link.dataset.view === name));
         if (pushHash) history.replaceState(null, '', `#${name}`);
-        if (name === 'add') checkOmdbStatus();
+        if (name === 'add' || name === 'search') checkOmdbStatus();
     }
 
     async function requestJson(path, options = {}) {
@@ -321,6 +323,144 @@
         }
     }
 
+    function renderDiscoveryResults(results) {
+        const root = $('#discovery-results');
+        root.replaceChildren();
+        if (!results.length) {
+            root.append(el('p', '', 'لم تظهر نتائج مطابقة. جرّب الاسم الأصلي أو غيّر سنة الإصدار.'));
+            return;
+        }
+        results.forEach(item => {
+            const button = el('button', 'discovery-result');
+            button.type = 'button';
+            if (item.poster) {
+                const image = document.createElement('img');
+                image.src = item.poster;
+                image.alt = '';
+                image.loading = 'lazy';
+                image.addEventListener('error', () => image.replaceWith(el('span', 'poster-fallback', '🎬')));
+                button.append(image);
+            } else {
+                button.append(el('span', 'poster-fallback', '🎬'));
+            }
+            const text = el('span');
+            text.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabels[item.type] || item.type || 'عمل'}`));
+            button.append(text, el('span', '', 'تحليل ←'));
+            button.addEventListener('click', () => analyzeDiscovery(item.imdbId, button));
+            root.append(button);
+        });
+    }
+
+    async function searchDiscovery(event) {
+        event.preventDefault();
+        const button = $('#discovery-search-button');
+        const title = $('#discovery-search-title').value.trim();
+        const year = $('#discovery-search-year').value.trim();
+        if (title.length < 2) {
+            showToast('اكتب حرفين على الأقل من اسم العمل.', 'error');
+            return;
+        }
+        setButtonBusy(button, true, 'جارٍ البحث…');
+        $('#discovery-results').replaceChildren(el('p', '', 'جارٍ البحث في OMDb…'));
+        try {
+            const payload = await requestJson('/api/omdb/search', {method:'POST', body:{title, year}});
+            renderDiscoveryResults(payload.results || []);
+        } catch (error) {
+            $('#discovery-results').replaceChildren(el('p', '', error.message));
+            showToast(error.message, 'error');
+        } finally {
+            setButtonBusy(button, false);
+        }
+    }
+
+    function renderAnalysisReferences(target, rows) {
+        const root = $(target);
+        root.replaceChildren();
+        if (!rows.length) {
+            root.append(el('div', 'analysis-reference empty', 'لا توجد مقارنة قريبة كفاية.'));
+            return;
+        }
+        rows.slice(0, 4).forEach(item => {
+            const row = el('div', 'analysis-reference');
+            row.append(
+                el('b', '', item.title),
+                el('span', '', `${item.similarity}%${item.rating ? ` · ${item.rating}/10` : ''}`)
+            );
+            root.append(row);
+        });
+    }
+
+    function renderDiscoveryAnalysis(work, analysis, demo = false) {
+        discoveryPromptAr = analysis.codexPromptAr || '';
+        discoveryPromptEn = analysis.codexPromptEn || '';
+        $('#discovery-empty').hidden = true;
+        $('#discovery-analysis').hidden = false;
+        $('#analysis-title').textContent = work.title || work.Title || '—';
+        const genres = String(work.genres || work.Genres || '').split(',').map(item => item.trim()).filter(Boolean);
+        const year = work.year || work.Year || '—';
+        const runtime = work.runtime || work['Runtime (mins)'] || '—';
+        $('#analysis-meta').textContent = `${year} · ${genres.slice(0, 3).map(genreLabel).join('، ') || 'تصنيف غير متاح'} · ${runtime} دقيقة${demo ? ' · عينة محلية' : ''}`;
+        $('#analysis-score').textContent = `${analysis.score}%`;
+        $('#analysis-verdict').textContent = analysis.verdictAr;
+        $('#analysis-confidence').textContent = `درجة الثقة ${analysis.confidence}%`;
+        $('#analysis-disclaimer').textContent = analysis.disclaimerAr;
+
+        const reasons = $('#analysis-reasons');
+        reasons.replaceChildren();
+        (analysis.reasonsAr || []).forEach(reason => reasons.append(el('span', '', reason)));
+        renderAnalysisReferences('#analysis-liked', analysis.similarLiked || []);
+        renderAnalysisReferences('#analysis-disliked', analysis.similarDisliked || []);
+        $('#analysis-summary-en').textContent = `${analysis.verdictEn}. Initial reading ${analysis.score}/100 with ${analysis.confidence}/100 confidence. ${(analysis.reasonsEn || []).join(' ')} ${analysis.disclaimerEn}`;
+    }
+
+    async function analyzeDiscovery(imdbId, sourceButton) {
+        setButtonBusy(sourceButton, true, 'جارٍ التحليل…');
+        try {
+            const payload = await requestJson('/api/taste/analyze', {method:'POST', body:{imdbId}});
+            renderDiscoveryAnalysis(payload.work, payload.analysis, false);
+        } catch (error) {
+            showToast(error.message, 'error');
+        } finally {
+            setButtonBusy(sourceButton, false);
+        }
+    }
+
+    async function loadDiscoveryDemo() {
+        const button = $('#discovery-demo-button');
+        setButtonBusy(button, true, 'جارٍ التحليل…');
+        try {
+            const payload = await requestJson('/api/taste/demo');
+            renderDiscoveryAnalysis(payload.work, payload.analysis, true);
+            showToast('تم تحميل عينة محلية دون استخدام OMDb.');
+        } catch (error) {
+            showToast(error.message, 'error');
+        } finally {
+            setButtonBusy(button, false);
+        }
+    }
+
+    async function copyDiscoveryPrompt(language) {
+        const value = language === 'en' ? discoveryPromptEn : discoveryPromptAr;
+        if (!value) {
+            showToast('حلّل عملًا أولًا لإنشاء الموجز.', 'error');
+            return;
+        }
+        try {
+            await navigator.clipboard.writeText(value);
+            showToast(language === 'en' ? 'English GPT-5.6 brief copied.' : 'تم نسخ موجز GPT‑5.6 بالعربية.');
+        } catch (_) {
+            const area = document.createElement('textarea');
+            area.value = value;
+            area.style.position = 'fixed';
+            area.style.opacity = '0';
+            document.body.append(area);
+            area.select();
+            document.execCommand('copy');
+            area.remove();
+            showToast(language === 'en' ? 'English GPT-5.6 brief copied.' : 'تم نسخ موجز GPT‑5.6 بالعربية.');
+        }
+    }
+
     function renderSummary() {
         const summary = data.summary;
         $('#stat-liked').textContent = localNumber(summary.liked);
@@ -447,6 +587,10 @@
         $('#watch-search').addEventListener('input', renderWatchlist);
         $('#watch-filter').addEventListener('change', renderWatchlist);
         $('#add-search-form').addEventListener('submit', searchOmdb);
+        $('#discovery-search-form').addEventListener('submit', searchDiscovery);
+        $('#discovery-demo-button').addEventListener('click', loadDiscoveryDemo);
+        $('#copy-prompt-ar').addEventListener('click', () => copyDiscoveryPrompt('ar'));
+        $('#copy-prompt-en').addEventListener('click', () => copyDiscoveryPrompt('en'));
         $('#add-details-form').addEventListener('submit', addSelectedWork);
         $('#omdb-key-save').addEventListener('click', saveOmdbKey);
         $('#transfer-cancel').addEventListener('click', () => closeTransferPrompt(true));

@@ -1,21 +1,36 @@
 @echo off
 setlocal
-set "PYTHON=C:\Users\abdul\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
-set "PYTHONW=C:\Users\abdul\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\pythonw.exe"
+cd /d "%~dp0"
 
-if not exist "%PYTHON%" (
-  where python >nul 2>nul
-  if errorlevel 1 (
-    echo Python runtime was not found.
-    pause
-    exit /b 1
-  )
-  set "PYTHON=python"
+where pyw >nul 2>nul
+if not errorlevel 1 (
+  start "" pyw -3 "tools\cinema_server.py" --no-open
+  goto open_app
 )
 
-if not exist "%PYTHONW%" set "PYTHONW=%PYTHON%"
+where pythonw >nul 2>nul
+if not errorlevel 1 (
+  start "" pythonw "tools\cinema_server.py" --no-open
+  goto open_app
+)
 
-start "" "%PYTHONW%" "%~dp0tools\cinema_server.py" --no-open
+where py >nul 2>nul
+if not errorlevel 1 (
+  start "" py -3 "tools\cinema_server.py" --no-open
+  goto open_app
+)
+
+where python >nul 2>nul
+if not errorlevel 1 (
+  start "" python "tools\cinema_server.py" --no-open
+  goto open_app
+)
+
+echo Python 3.10 or newer was not found. Install Python, then run this launcher again.
+pause
+exit /b 1
+
+:open_app
 timeout /t 2 /nobreak >nul
 start "" "http://127.0.0.1:8765/"
 

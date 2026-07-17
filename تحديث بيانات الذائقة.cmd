@@ -1,18 +1,24 @@
 @echo off
 setlocal
-set "PYTHON=C:\Users\abdul\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+cd /d "%~dp0"
 
-if not exist "%PYTHON%" (
-  where python >nul 2>nul
-  if errorlevel 1 (
-    echo Python runtime was not found.
-    pause
-    exit /b 1
-  )
-  set "PYTHON=python"
+where py >nul 2>nul
+if not errorlevel 1 (
+  py -3 "tools\cinema_server.py" --refresh-only
+  goto refresh_done
 )
 
-"%PYTHON%" "%~dp0tools\cinema_server.py" --refresh-only
+where python >nul 2>nul
+if not errorlevel 1 (
+  python "tools\cinema_server.py" --refresh-only
+  goto refresh_done
+)
+
+echo Python 3.10 or newer was not found.
+pause
+exit /b 1
+
+:refresh_done
 if errorlevel 1 (
   echo.
   echo Data refresh failed.
