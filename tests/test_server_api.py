@@ -7,7 +7,7 @@ import unittest
 from functools import partial
 from http.server import ThreadingHTTPServer
 from pathlib import Path
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,7 +50,28 @@ class ServerApiTests(unittest.TestCase):
         self.assertIn("confidence", analysis)
         self.assertIn("GPT-5.6", analysis["codexPromptEn"])
 
+    def test_supplied_omdb_work_can_be_sent_directly_to_likelihood(self) -> None:
+        work = {
+            "imdbId": "tt-test",
+            "title": "Test Thriller",
+            "year": "2026",
+            "genres": "Thriller, Mystery",
+            "directors": "Test Director",
+            "runtime": "112",
+            "imdbRating": "7.8",
+        }
+        request = Request(
+            self.base_url + "/api/taste/analyze",
+            data=json.dumps({"work": work}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urlopen(request, timeout=5) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["work"]["imdbId"], "tt-test")
+        self.assertIn("score", payload["analysis"])
+
 
 if __name__ == "__main__":
     unittest.main()
-

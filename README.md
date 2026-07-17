@@ -15,7 +15,8 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 - Move an existing title safely between lists without duplicates.
 - Explore genre, director, rating, and high-rated-reference patterns.
 - Read an explainable watchlist ranking.
-- Analyze a new title against similar liked and disliked works.
+- Open the dedicated **مدى القابلية** (Likelihood) page to see a percentage, confidence, reasons, and comparable liked/disliked works.
+- Send OMDb metadata directly from **إضافة عمل** (Add Work) to the Likelihood page without searching twice.
 - Copy an Arabic or English evidence brief for a nuanced GPT-5.6 discussion.
 - Run a no-key local demo so judges can test the core analysis immediately.
 
@@ -37,7 +38,7 @@ sh run.sh
 
 Then open [http://127.0.0.1:8765/](http://127.0.0.1:8765/).
 
-To test without an OMDb key, open **البحث عن أعمال جديدة** (Find New Works) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
+To test without an OMDb key, open **مدى القابلية** (Likelihood) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
 
 ## Optional OMDb setup
 
@@ -65,11 +66,12 @@ The Python test suite covers scoring behavior, uncertainty, GPT-5.6 brief genera
 
 The repository begins with a commit containing the pre-hackathon project baseline. Every contest change follows it in normal Git history. The new Build Week work includes:
 
-- an isolated contest copy that never modifies the daily-use project;
+- an isolated contest copy with its own Git history and submission-safe files;
 - removal of torrent/download shortcuts and the VPN prompt;
 - an explainable taste-analysis engine derived from the viewer's actual records;
 - similar-liked and similar-disliked evidence;
 - uncertainty and confidence reporting instead of a deterministic verdict;
+- a dedicated Likelihood page plus a direct Add Work → Likelihood metadata handoff;
 - Arabic and English GPT-5.6 discussion briefs;
 - a no-key judge demo, portable launchers, automated tests, and English documentation.
 
@@ -85,4 +87,3 @@ tools/cinema_server.py  Local HTTP server, OMDb bridge, CSV safety
 tools/taste_engine.py   Explainable taste-analysis engine
 *.csv                   Portable viewing records
 ```
-

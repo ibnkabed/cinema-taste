@@ -818,7 +818,8 @@ class CinemaHandler(SimpleHTTPRequestHandler):
                 self.send_json({"ok": True, "work": omdb_details(payload.get("imdbId"))})
                 return
             if path == "/api/taste/analyze":
-                work = omdb_details(payload.get("imdbId"))
+                supplied_work = payload.get("work")
+                work = supplied_work if isinstance(supplied_work, dict) else omdb_details(payload.get("imdbId"))
                 analysis = analyze_candidate(work, read_csv(LIKED_FILE), read_csv(DISLIKED_FILE))
                 self.send_json({"ok": True, "work": work, "analysis": analysis})
                 return

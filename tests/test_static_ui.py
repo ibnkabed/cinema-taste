@@ -48,7 +48,13 @@ class StaticUiTests(unittest.TestCase):
         html = MAIN.read_text(encoding="utf-8")
         self.assertGreaterEqual(html.count("البحث عن أعمال جديدة"), 4)
 
+    def test_likelihood_is_a_separate_view(self) -> None:
+        html = MAIN.read_text(encoding="utf-8")
+        self.assertIn('data-view="predict"', html)
+        self.assertIn('id="view-predict" data-page="predict"', html)
+        self.assertIn('id="view-search" data-page="search"', html)
+        self.assertIn('id="predict-from-add-btn"', html)
+
 
 if __name__ == "__main__":
     unittest.main()
-

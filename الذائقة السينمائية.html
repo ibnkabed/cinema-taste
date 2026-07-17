@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#050b18">
     <title>الذائقة السينمائية</title>
-    <link rel="stylesheet" href="assets/cinema.css?v=20260714-9">
+    <link rel="stylesheet" href="assets/cinema.css?v=20260718-2">
 </head>
 <body>
 <div class="cinema-app">
@@ -18,6 +18,7 @@
             <nav class="main-nav" aria-label="التنقل الرئيسي">
                 <button class="nav-link active" data-view="home">🏠 الرئيسية</button>
                 <button class="nav-link" data-view="add">➕ إضافة عمل</button>
+                <button class="nav-link" data-view="predict">🎯 مدى القابلية</button>
                 <button class="nav-link" data-view="watchlist">🍿 قائمة المشاهدة</button>
                 <button class="nav-link" data-view="taste">🎨 بصمة الذائقة</button>
                 <button class="nav-link" data-view="search">🔎 البحث عن أعمال جديدة</button>
@@ -128,7 +129,10 @@
                                 <label class="wide-field">المخرجون<input name="directors"></label>
                                 <label class="wide-field">رابط IMDb<input name="url"></label>
                             </div>
-                            <button class="primary-btn add-confirm-btn" id="add-confirm-btn" type="submit">✓ إضافة واعتماد</button>
+                            <div class="add-details-actions">
+                                <button class="predict-from-add-btn" id="predict-from-add-btn" type="button">🎯 قياس مدى القابلية</button>
+                                <button class="primary-btn add-confirm-btn" id="add-confirm-btn" type="submit">✓ إضافة واعتماد</button>
+                            </div>
                         </form>
                     </section>
                 </div>
@@ -163,10 +167,10 @@
                 </div>
             </section>
 
-            <section class="view" id="view-search" data-page="search" aria-label="البحث عن أعمال جديدة">
+            <section class="view" id="view-predict" data-page="predict" aria-label="مدى القابلية">
                 <div class="page-heading">
-                    <div><h1>🔎 البحث عن أعمال جديدة</h1><p>حلّل أي فيلم أو مسلسل بأدلة من ذائقتك قبل أن تقرر مشاهدته.</p></div>
-                    <span class="method-pill">تحليل قابل للتفسير</span>
+                    <div><h1>🎯 مدى القابلية</h1><p>نسبة توقعية أولية لاحتمال أن يعجبك العمل، مبنية على ذائقتك الفعلية.</p></div>
+                    <span class="method-pill">نسبة · ثقة · تفسير</span>
                 </div>
                 <div class="discovery-layout">
                     <section class="panel discovery-search-panel">
@@ -174,45 +178,19 @@
                         <form class="discovery-search-form" id="discovery-search-form">
                             <label>اسم الفيلم أو المسلسل<input id="discovery-search-title" type="search" autocomplete="off" placeholder="مثال: Prisoners" required></label>
                             <label>السنة — اختيارية<input id="discovery-search-year" type="number" min="1800" max="2100" inputmode="numeric" placeholder="2013"></label>
-                            <button class="primary-btn" id="discovery-search-button" type="submit">بحث وتحليل</button>
+                            <button class="primary-btn" id="discovery-search-button" type="submit">احسب النسبة</button>
                         </form>
-                        <div class="discovery-results" id="discovery-results"><p>اكتب اسم عمل، ثم اختر النتيجة الصحيحة لقراءة توافقه مع سجلك.</p></div>
-                        <div class="discovery-resources">
-                            <small>مصادر إضافية موثوقة</small>
-                            <div class="search-download-grid">
-                        <a class="search-site-card" href="https://www.imdb.com/" target="_blank" rel="noopener">
-                            <span class="search-site-icon">
-                                <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Fimdb.com" alt="IMDb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                                <span class="search-icon-fallback">I</span>
-                            </span>
-                            <span class="search-site-info"><b>IMDb</b></span>
-                        </a>
-                        <a class="search-site-card" href="https://www.rottentomatoes.com/" target="_blank" rel="noopener">
-                            <span class="search-site-icon">
-                                <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Frottentomatoes.com" alt="Rotten Tomatoes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                                <span class="search-icon-fallback">R</span>
-                            </span>
-                            <span class="search-site-info"><b>Rotten Tomatoes</b></span>
-                        </a>
-                        <a class="search-site-card" href="https://www.justwatch.com/us?providers_type=my_services" target="_blank" rel="noopener">
-                            <span class="search-site-icon">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAADe0lEQVR42u2YfUjUdxzHXz/vfpeeillxbKyCYvZPNbGMK6ENiWg9bNhgmsGiIlqhDKI/ivBqsMFY/xR4ZRyVVAxDhw/4tDPqKnIlusrItrXlWCtTM8/r58Pd7+7nd3/E+ZRNzbvrtvn+88uH7+fN5/15f74PMIX/OoQQkhBCCsu8b4JYOOT+HyLXYhaXTi0X2duSRahzj6lzY6FZyHodelnC2a3nvMPDEduNkPRHxESC42N8ZKdFceqbFJFsfk+EFblH7RqH8p0csLnYmx7DnZJUsWfn8qCR1I8nqNXZz+kf3Fxo8A5bnxGrY296DNvWpor86r6Ayz3mZp98lCRq76ovrR/NjmNlohEAnU4HwMNWN+bMK1LIZM1Om8buj6OYHvvqnJqmUXVDIeuok31ZKeLX6g1iX1aKCDq5mbGC9A8MFOZEj0rSXt9LxpdPOWBz8Ve7BoApXo9l+2we1KRNqicnNEoAfF7B8XKVNmc/LR0avz/2DYvfui6O/Z+ZAJBlAwBtz1QyLM001N2RguZWgPst/fz8UCMpQWb9ish/lNtPzPp9K9NkiYtn14sNa5eIgLoV4N6fGicrVep/8QCwY10UKxONZKQaOWdXKHC46VIG83Y+B1vZI76rceH1waL5BswLozn/9bvUZb4tjhQ8oaL6pjQpWXMtZuG4rTLSsSPd+twtc7qik6ZmNwlzDBQ5FLxDFF8030DZ4YRhe1TUutj0hV2alKyqb+xWiZbdxBm10A7h9xfDqqRIGv+I5GRVH3ebh1fQo2pUXVewlvXQpYgBQ+zaOIsTJR0vVRCgrqmHY0UtFJffkgLSc0sXSCxdYOSn+1FYS3ro6NIouaJwpqZvYIQMhSlez1efz2XXxl5yC1u59ZuXuqYeThQ/oaj0phRQQ/iROA+SEmQct1+Mk9GIDcU7JiN7MmeTYWlm1ZZKKaCy+uHzCkqva5yxv5DPbwh7fS95pd2jkmx7pmIra+fbYz9KQek5txZJZb17gNRIrFlmZM2yQZKDY+T1SY17lHyatkRcbfSE58Gfs1mmICeW1cnyK2OedqkcLnAFlNi4e+6t+AgObolm+4caeeUq/kp2KhrBuMe99sGv0xm43Oghr7R7wgd5UCrnh7Nbz7kaBWt+Q0geOGOSa3igY56pn+JrPqz5tVOv8n/nL1M45Y4IB4JTP0xTCBf8DWtomnBgAHJnAAAAAElFTkSuQmCC" alt="JustWatch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                                <span class="search-icon-fallback">J</span>
-                            </span>
-                            <span class="search-site-info"><b>JustWatch</b></span>
-                        </a>
-                            </div>
-                        </div>
+                        <div class="discovery-results" id="discovery-results"><p>اكتب اسم العمل، ثم اختر النتيجة الصحيحة لقراءة مدى قابليته لذائقتك.</p></div>
                     </section>
                     <section class="panel discovery-analysis-panel">
                         <div class="discovery-empty" id="discovery-empty">
-                            <span>🎞️</span><h2>الأدلة ستظهر هنا</h2>
-                            <p>لن يصدر المحرك حكمًا قطعيًا؛ سيعرض أوجه التشابه والمخاطر لتبدأ نقاشًا واعيًا مع GPT‑5.6.</p>
+                            <span>🎞️</span><h2>النسبة والتوقع سيظهران هنا</h2>
+                            <p>النتيجة إيحاء أولي وليست حكمًا قاطعًا؛ سترافقها درجة ثقة وأسباب ومقارنات من سجلك.</p>
                         </div>
                         <div class="discovery-analysis" id="discovery-analysis" hidden>
                             <div class="discovery-analysis-head">
-                                <div><span class="analysis-kicker">قراءة ذائقة تفسيرية</span><h2 id="analysis-title">—</h2><small id="analysis-meta">—</small></div>
-                                <div class="analysis-score"><b id="analysis-score">—</b><small>قراءة أولية</small></div>
+                                <div><span class="analysis-kicker">مدى القابلية المتوقع</span><h2 id="analysis-title">—</h2><small id="analysis-meta">—</small></div>
+                                <div class="analysis-score"><b id="analysis-score">—</b><small>نسبة توقعية</small></div>
                             </div>
                             <div class="analysis-verdict"><b id="analysis-verdict">—</b><span id="analysis-confidence">—</span></div>
                             <p class="analysis-disclaimer" id="analysis-disclaimer">—</p>
@@ -228,6 +206,20 @@
                             </div>
                         </div>
                     </section>
+                </div>
+            </section>
+
+            <section class="view" id="view-search" data-page="search" aria-label="البحث عن أعمال جديدة">
+                <div class="page-heading">
+                    <div><h1>🔎 البحث عن أعمال جديدة</h1><p>بوابات موثوقة لاكتشاف الأعمال وقراءة التقييمات ومعرفة أماكن المشاهدة.</p></div>
+                    <span class="method-pill">3 مصادر موثوقة</span>
+                </div>
+                <div class="search-download-layout">
+                    <div class="search-download-grid">
+                        <a class="search-site-card" href="https://www.imdb.com/" target="_blank" rel="noopener"><span class="search-site-icon"><img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Fimdb.com" alt="IMDb"><span class="search-icon-fallback">I</span></span><span class="search-site-info"><b>IMDb</b></span></a>
+                        <a class="search-site-card" href="https://www.rottentomatoes.com/" target="_blank" rel="noopener"><span class="search-site-icon"><img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Frottentomatoes.com" alt="Rotten Tomatoes"><span class="search-icon-fallback">R</span></span><span class="search-site-info"><b>Rotten Tomatoes</b></span></a>
+                        <a class="search-site-card" href="https://www.justwatch.com/" target="_blank" rel="noopener"><span class="search-site-icon"><img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Fjustwatch.com" alt="JustWatch"><span class="search-icon-fallback">J</span></span><span class="search-site-info"><b>JustWatch</b></span></a>
+                    </div>
                 </div>
             </section>
 
@@ -261,6 +253,6 @@
     </section>
 </div>
 <script src="data/project-data.js"></script>
-<script src="assets/cinema.js?v=20260714-7"></script>
+<script src="assets/cinema.js?v=20260718-2"></script>
 </body>
 </html>

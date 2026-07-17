@@ -51,7 +51,7 @@
         $$('.view').forEach(view => view.classList.toggle('active', view.dataset.page === name));
         $$('.nav-link').forEach(link => link.classList.toggle('active', link.dataset.view === name));
         if (pushHash) history.replaceState(null, '', `#${name}`);
-        if (name === 'add' || name === 'search') checkOmdbStatus();
+        if (name === 'add' || name === 'predict') checkOmdbStatus();
     }
 
     async function requestJson(path, options = {}) {
@@ -425,6 +425,25 @@
         }
     }
 
+    async function analyzeSelectedWork() {
+        if (!selectedWork) {
+            showToast('اختر عملًا من نتائج OMDb أولًا.', 'error');
+            return;
+        }
+        const button = $('#predict-from-add-btn');
+        setButtonBusy(button, true, 'جارٍ القياس…');
+        try {
+            const payload = await requestJson('/api/taste/analyze', {method:'POST', body:{work:editableWorkFromForm()}});
+            switchView('predict');
+            renderDiscoveryAnalysis(payload.work, payload.analysis, false);
+            showToast('تم إرسال بيانات OMDb إلى صفحة مدى القابلية.');
+        } catch (error) {
+            showToast(error.message, 'error');
+        } finally {
+            setButtonBusy(button, false);
+        }
+    }
+
     async function loadDiscoveryDemo() {
         const button = $('#discovery-demo-button');
         setButtonBusy(button, true, 'جارٍ التحليل…');
@@ -589,6 +608,7 @@
         $('#add-search-form').addEventListener('submit', searchOmdb);
         $('#discovery-search-form').addEventListener('submit', searchDiscovery);
         $('#discovery-demo-button').addEventListener('click', loadDiscoveryDemo);
+        $('#predict-from-add-btn').addEventListener('click', analyzeSelectedWork);
         $('#copy-prompt-ar').addEventListener('click', () => copyDiscoveryPrompt('ar'));
         $('#copy-prompt-en').addEventListener('click', () => copyDiscoveryPrompt('en'));
         $('#add-details-form').addEventListener('submit', addSelectedWork);

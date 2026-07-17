@@ -14,12 +14,12 @@ button{color:inherit}
 
 .cinema-app{position:relative;z-index:1;height:100%;padding:10px;border-radius:12px}
 .cinema-frame{height:100%;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
-.cinema-banner{flex:0 0 auto;min-height:52px;padding:11px 20px;display:grid;grid-template-columns:minmax(210px,1fr) auto minmax(265px,1fr);align-items:center;gap:14px;background:rgba(8,15,30,.72);border-bottom:0;position:relative;overflow:hidden}
+.cinema-banner{flex:0 0 auto;min-height:52px;padding:11px 20px;display:grid;grid-template-columns:minmax(190px,1fr) auto minmax(150px,1fr);align-items:center;gap:10px;background:rgba(8,15,30,.72);border-bottom:0;position:relative;overflow:hidden}
 .cinema-banner::after{display:none}
 .brand{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;white-space:nowrap}
 .brand-mark{width:64px;height:26px;border:1px solid rgba(232,180,90,.4);border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--gold-soft);color:var(--gold-2);font-size:14px;box-shadow:none}
-.main-nav{display:flex;align-items:center;justify-content:center;gap:4px;padding:3px;border-radius:10px;background:rgba(5,10,24,.6);border:1px solid var(--line)}
-.nav-link{border:0;background:transparent;padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s ease}
+.main-nav{display:flex;align-items:center;justify-content:center;gap:2px;padding:3px;border-radius:10px;background:rgba(5,10,24,.6);border:1px solid var(--line)}
+.nav-link{border:0;background:transparent;padding:6px 6px;border-radius:8px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s ease}
 .nav-link:hover{color:var(--text);background:rgba(255,255,255,.06)}
 .nav-link.active{color:#241703;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:none}
 .banner-tools{display:flex;align-items:center;justify-content:flex-start;gap:9px;direction:ltr}
@@ -125,6 +125,7 @@ legend{padding:0 5px;color:var(--muted);font-size:10.5px;font-weight:700}
 .add-fields-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 7px;align-content:start;overflow:auto;padding-left:2px}
 .add-fields-grid label{display:flex;flex-direction:column;gap:3px;min-width:0;color:var(--muted);font-size:10.5px;font-weight:700}.add-fields-grid .wide-field{grid-column:1/-1}
 .add-confirm-btn{flex:0 0 34px;min-height:34px;margin:0}
+.add-details-actions{flex:0 0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:7px}.add-details-actions button{min-height:34px;margin:0}.predict-from-add-btn{border:1px solid rgba(232,180,90,.42);border-radius:9px;background:var(--gold-soft);color:var(--gold-2);font:800 10.5px Cairo;cursor:pointer}.predict-from-add-btn:hover{border-color:var(--gold)}.predict-from-add-btn:disabled{opacity:.62;cursor:wait}
 
 .compact-heading{min-height:52px}
 .watch-toolbar{display:flex;gap:7px;width:min(510px,47%)}
