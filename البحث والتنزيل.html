@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البحث والتنزيل</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent1: #f59e0b;
+            --accent2: #ef4444;
+            --accent-soft: rgba(245, 158, 11, 0.18);
+            --bg: #120c0a;
+            --card: rgba(255, 255, 255, 0.045);
+            --card-hover: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.09);
+            --text: #f4f5f8;
+            --muted: #9aa0ad;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding: 0 0 20px;
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .orb.a { width: 480px; height: 480px; background: var(--accent1); top: -180px; left: -120px; }
+        .orb.b { width: 420px; height: 420px; background: var(--accent2); bottom: -160px; right: -120px; opacity: 0.35; }
+
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 26px 20px 20px;
+        }
+        .badge {
+            width: 58px; height: 58px;
+            margin: 0 auto 12px;
+            border-radius: 17px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            box-shadow: 0 14px 30px -10px var(--accent1);
+        }
+        header h1 {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, #c9cdd8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 18px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+            transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-soft), transparent 55%);
+            opacity: 0;
+            transition: opacity .25s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            background: var(--card-hover);
+            border-color: var(--accent1);
+            box-shadow: 0 22px 45px -20px var(--accent1);
+        }
+        .card:hover::before { opacity: 1; }
+
+        .icon-wrap {
+            position: relative;
+            flex-shrink: 0;
+            width: 50px; height: 50px;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .icon-wrap img { width: 36px; height: 36px; object-fit: contain; display: block; }
+        .icon-wrap .fallback {
+            display: none;
+            width: 100%; height: 100%;
+            align-items: center; justify-content: center;
+            font-size: 24px; font-weight: 900; color: #fff;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        }
+
+        .info { position: relative; z-index: 1; flex: 1; min-width: 0; }
+        .info h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .info p {
+            font-size: 13px;
+            color: var(--muted);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .arrow {
+            position: relative; z-index: 1;
+            flex-shrink: 0;
+            color: var(--muted);
+            font-size: 18px;
+            transition: transform .25s ease, color .25s ease;
+        }
+        .card:hover .arrow { color: var(--accent1); transform: translate(-4px, -4px); }
+
+        .reminder {
+            position: relative; z-index: 1;
+            max-width: 1080px;
+            margin: 70px auto 0;
+            padding: 0 22px;
+        }
+        .reminder-inner {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 12px 22px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(239, 68, 68, 0.13));
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            color: #fde68a;
+            font-weight: 700;
+            font-size: 15px;
+            text-align: center;
+            animation: vpnpulse 2.6s ease-in-out infinite;
+        }
+        .reminder-inner .ico { font-size: 20px; }
+        @keyframes vpnpulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+            50% { box-shadow: 0 0 26px 2px rgba(245, 158, 11, 0.28); }
+        }
+
+        footer {
+            position: relative; z-index: 1;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 16px;
+        }
+    </style>
+    <style id="compact-portfolio-layout">
+        /* المقاسات المدمجة المعتمدة، مستوحاة من واجهة ملف إنجاز المعلم. */
+        body { height: 100vh; min-height: 0; padding: 10px; overflow: hidden; }
+        .page-frame { position: relative; z-index: 0; height: 100%; min-height: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; }
+        header { flex: 0 0 auto; padding: 11px 20px; }
+        .badge { width: 46px; height: 46px; margin: 0 auto 7px; border-radius: 13px; font-size: 24px; }
+        header h1 { font-size: 17px; font-weight: 700; }
+        header p { margin-top: 4px; font-size: 13px; font-weight: 600; }
+        main { flex: 1 1 auto; width: 100%; min-height: 0; max-width: 1300px; padding: 0.4cm 16px 7px; }
+        .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+        .card, .card.featured { min-height: 0; padding: 11px 10px; gap: 11px; border-radius: 13px; grid-column: auto; }
+        .icon-wrap { width: 46px; height: 46px; border-radius: 50%; }
+        .icon-wrap img, .icon-wrap svg.brand-icon { width: 33px; height: 33px; padding: 0; }
+        .info h2 { margin-bottom: 2px; font-size: 13.5px; font-weight: 700; line-height: 1.45; }
+        .info p { font-size: 12px; line-height: 1.35; }
+        .reminder { flex: 0 0 auto; margin: 0; padding: 0 16px 7px; }
+        .reminder-inner { padding: 7px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; }
+        footer { flex: 0 0 auto; margin-top: 0; padding: 7px 20px; font-size: 13px; font-weight: 600; }
+        @media (max-width: 900px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 680px) { body { height: auto; min-height: 100vh; overflow: auto; } .page-frame { height: auto; min-height: calc(100vh - 20px); } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 460px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+    <style id="layout-fill-v2">
+        @media (min-width: 901px) {
+            header { padding: 14px 20px 10px; }
+            .badge { width: 56px; height: 56px; margin-bottom: 9px; font-size: 28px; }
+            header h1 { font-size: 20px; }
+            header p { font-size: 14px; }
+            main { display: flex; flex-direction: column; padding: 0.4cm 20px 10px; }
+            .grid { flex: 1; min-height: 0; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px; }
+            .card { grid-column: span 2; height: 100%; justify-content: center; padding: 18px 22px; gap: 18px; }
+            .card:nth-child(4) { grid-column: 2 / span 2; }
+            .card:nth-child(5) { grid-column: 4 / span 2; }
+            .icon-wrap { width: 72px; height: 72px; }
+            .icon-wrap img { width: 50px; height: 50px; }
+            .info h2 { font-size: 17px; }
+            .info p { font-size: 13.5px; }
+            .reminder { width: min(720px, calc(100% - 40px)); margin: 0 auto; padding: 0 0 9px; }
+            .reminder-inner { width: 100%; justify-content: center; padding: 10px 22px; white-space: normal; line-height: 1.5; }
+        }
+    </style>
+    <style id="content-cleanup-v3">
+        .info p, .arrow { display: none !important; }
+    </style>
+<style id="icon-plates-v2">
+.icon-wrap { --brand-bg:#fff; background:var(--brand-bg)!important; border-color:rgba(255,255,255,.52)!important; box-shadow:inset 0 0 0 1px rgba(15,23,42,.08),0 7px 16px rgba(2,6,23,.18); isolation:isolate; }
+.card[href*="imdb.com"] .icon-wrap { --brand-bg:#f5c518; }
+.card[href*="rottentomatoes"] .icon-wrap { --brand-bg:#fa320a; }
+.card[href*="justwatch"] .icon-wrap { --brand-bg:#000; }
+.card[href*="1337x"] .icon-wrap { --brand-bg:#1f2937; }
+.card[href*="thepiratebay"] .icon-wrap { --brand-bg:#0f172a; }
+.card[href*="imdb.com"] .icon-wrap img,
+.card[href*="rottentomatoes"] .icon-wrap img,
+.card[href*="justwatch"] .icon-wrap img { width:78%!important; height:78%!important; }
+.card[href*="1337x"] .icon-wrap svg,
+.card[href*="thepiratebay"] .icon-wrap svg { display:none!important; }
+body .card[href*="1337x"] .icon-wrap::after {
+    content:"1337x"; position:relative!important; inset:auto!important; z-index:2; opacity:1!important; transform:none!important;
+    background:none!important; color:#fbbf24; font:900 clamp(11px,.9vw,17px)/1 Arial,sans-serif; letter-spacing:-1px;
+}
+body .card[href*="thepiratebay"] .icon-wrap::after {
+    content:""; position:relative!important; inset:auto!important; z-index:2; width:84%; height:84%; opacity:1!important; transform:none!important;
+    background:url("assets/brand-icons/piratebay.svg") center/contain no-repeat!important;
+}
+</style>
+</head>
+<body>
+    <div class="page-frame">
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+
+    <header>
+        <div class="badge">🎬</div>
+        <h1>البحث والتنزيل</h1>
+        <p>مواقع البحث عن الأفلام والمسلسلات وتحميلها</p>
+    </header>
+
+    <main>
+        <div class="grid">
+            <a class="card" href="https://www.imdb.com/" target="_blank" rel="noopener">
+                <div class="icon-wrap">
+                    <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Fimdb.com" alt="IMDb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <span class="fallback">I</span>
+                </div>
+                <div class="info"><h2>IMDb</h2></div>
+            </a>
+
+            <a class="card" href="https://www.rottentomatoes.com/" target="_blank" rel="noopener">
+                <div class="icon-wrap">
+                    <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Frottentomatoes.com" alt="Rotten Tomatoes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <span class="fallback">R</span>
+                </div>
+                <div class="info"><h2>Rotten Tomatoes</h2></div>
+            </a>
+
+            <a class="card" href="https://www.justwatch.com/us?providers_type=my_services" target="_blank" rel="noopener">
+                <div class="icon-wrap">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAADe0lEQVR42u2YfUjUdxzHXz/vfpeeillxbKyCYvZPNbGMK6ENiWg9bNhgmsGiIlqhDKI/ivBqsMFY/xR4ZRyVVAxDhw/4tDPqKnIlusrItrXlWCtTM8/r58Pd7+7nd3/E+ZRNzbvrtvn+88uH7+fN5/15f74PMIX/OoQQkhBCCsu8b4JYOOT+HyLXYhaXTi0X2duSRahzj6lzY6FZyHodelnC2a3nvMPDEduNkPRHxESC42N8ZKdFceqbFJFsfk+EFblH7RqH8p0csLnYmx7DnZJUsWfn8qCR1I8nqNXZz+kf3Fxo8A5bnxGrY296DNvWpor86r6Ayz3mZp98lCRq76ovrR/NjmNlohEAnU4HwMNWN+bMK1LIZM1Om8buj6OYHvvqnJqmUXVDIeuok31ZKeLX6g1iX1aKCDq5mbGC9A8MFOZEj0rSXt9LxpdPOWBz8Ve7BoApXo9l+2we1KRNqicnNEoAfF7B8XKVNmc/LR0avz/2DYvfui6O/Z+ZAJBlAwBtz1QyLM001N2RguZWgPst/fz8UCMpQWb9ish/lNtPzPp9K9NkiYtn14sNa5eIgLoV4N6fGicrVep/8QCwY10UKxONZKQaOWdXKHC46VIG83Y+B1vZI76rceH1waL5BswLozn/9bvUZb4tjhQ8oaL6pjQpWXMtZuG4rTLSsSPd+twtc7qik6ZmNwlzDBQ5FLxDFF8030DZ4YRhe1TUutj0hV2alKyqb+xWiZbdxBm10A7h9xfDqqRIGv+I5GRVH3ebh1fQo2pUXVewlvXQpYgBQ+zaOIsTJR0vVRCgrqmHY0UtFJffkgLSc0sXSCxdYOSn+1FYS3ro6NIouaJwpqZvYIQMhSlez1efz2XXxl5yC1u59ZuXuqYeThQ/oaj0phRQQ/iROA+SEmQct1+Mk9GIDcU7JiN7MmeTYWlm1ZZKKaCy+uHzCkqva5yxv5DPbwh7fS95pd2jkmx7pmIra+fbYz9KQek5txZJZb17gNRIrFlmZM2yQZKDY+T1SY17lHyatkRcbfSE58Gfs1mmICeW1cnyK2OedqkcLnAFlNi4e+6t+AgObolm+4caeeUq/kp2KhrBuMe99sGv0xm43Oghr7R7wgd5UCrnh7Nbz7kaBWt+Q0geOGOSa3igY56pn+JrPqz5tVOv8n/nL1M45Y4IB4JTP0xTCBf8DWtomnBgAHJnAAAAAElFTkSuQmCC" alt="JustWatch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <span class="fallback">J</span>
+                </div>
+                <div class="info"><h2>JustWatch</h2></div>
+            </a>
+
+            <a class="card" href="https://1337x.to/" target="_blank" rel="noopener">
+                <div class="icon-wrap">
+                    <svg class="brand-icon" viewBox="0 0 64 64" role="img" aria-label="1337x"><text x="32" y="39" text-anchor="middle" fill="#fbbf24" font-size="21" font-weight="900" font-family="Arial, sans-serif">1337</text></svg>
+                </div>
+                <div class="info"><h2>1337x</h2></div>
+            </a>
+
+            <a class="card" href="https://thepiratebay.org/" target="_blank" rel="noopener">
+                <div class="icon-wrap">
+                    <svg class="brand-icon" viewBox="0 0 64 64" role="img" aria-label="The Pirate Bay"><path d="M12 40h40l-6 10H18Z" fill="#f59e0b"/><path d="M32 12v28M32 15 17 34h15Zm3 4 13 15H35Z" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 51c4 3 8 3 12 0 4 3 8 3 12 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+                </div>
+                <div class="info"><h2>The Pirate Bay</h2></div>
+            </a>
+        </div>
+    </main>
+
+    <div class="reminder">
+        <div class="reminder-inner">
+            <span class="ico">🛡️</span>
+            <span>لا تنسَ تفعيل الـVPN قبل الدخول لمواقع التحميل</span>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

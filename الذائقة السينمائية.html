@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#050b18">
+    <title>الذائقة السينمائية</title>
+    <link rel="stylesheet" href="assets/cinema.css?v=20260714-9">
+</head>
+<body>
+<div class="cinema-app">
+    <div class="cinema-frame">
+        <header class="cinema-banner">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">🎬</span>
+                <span>الذائقة السينمائية</span>
+            </div>
+            <nav class="main-nav" aria-label="التنقل الرئيسي">
+                <button class="nav-link active" data-view="home">🏠 الرئيسية</button>
+                <button class="nav-link" data-view="add">➕ إضافة عمل</button>
+                <button class="nav-link" data-view="watchlist">🍿 قائمة المشاهدة</button>
+                <button class="nav-link" data-view="taste">🎨 بصمة الذائقة</button>
+                <button class="nav-link" data-view="search">🔎 البحث والتنزيل</button>
+                <button class="nav-link" data-view="sessions">📝 الجلسات</button>
+            </nav>
+            <div class="banner-tools">
+                <span class="update-time" id="header-update">آخر تحديث —</span>
+            </div>
+        </header>
+
+        <main class="cinema-content" id="main-content">
+            <section class="view active" id="view-home" data-page="home">
+                <div class="intro-box">
+                    <div>
+                        <h1>ليلة سينمائية على ذوقك</h1>
+                        <p>نموذج محلي يتعلّم من تقييماتك ويحوّلها إلى ترشيحات وقرارات مشاهدة واضحة.</p>
+                    </div>
+                    <div class="data-health" id="data-health"><i></i><span>البيانات جاهزة</span></div>
+                </div>
+
+                <div class="stats-grid" aria-label="ملخص المشروع">
+                    <article class="stat-card"><b id="stat-liked">—</b><small>أعمال أعجبتني</small></article>
+                    <article class="stat-card"><b id="stat-disliked">—</b><small>لم تعجبني</small></article>
+                    <article class="stat-card"><b id="stat-watchlist">—</b><small>قائمة المشاهدة</small></article>
+                    <article class="stat-card"><b id="stat-average">—</b><small>متوسط تقييمي</small></article>
+                    <article class="stat-card"><b id="stat-high">—</b><small>تقييم 9 فأعلى</small></article>
+                    <article class="stat-card"><b id="stat-genre">—</b><small>النوع الأقوى</small></article>
+                    <article class="stat-card"><b id="stat-sessions">—</b><small>موجزات الجلسات</small></article>
+                </div>
+
+                <div class="section-title-row">
+                    <h2>ماذا تريد أن تفعل؟</h2>
+                    <span id="change-summary">البيانات متزامنة مع الملفات المحلية</span>
+                </div>
+                <div class="action-grid">
+                    <button class="action-card tone-purple" data-open-view="add">
+                        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>
+                        <span><b>إضافة عمل</b><small>ابحث عبر OMDb وأضف الفيلم أو المسلسل إلى قائمته.</small></span>
+                        <em>ابدأ الإضافة ←</em>
+                    </button>
+                    <button class="action-card tone-orange" data-open-view="watchlist">
+                        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v4h20v-4a3 3 0 0 1 0-6V5H2Z"/><path d="M13 5v2M13 17v2M13 11v2"/></svg></span>
+                        <span><b>ماذا أشاهد الليلة؟</b><small id="home-top-pick">أفضل مرشح من قائمة المشاهدة يظهر هنا.</small></span>
+                        <em>افتح القائمة ←</em>
+                    </button>
+                    <button class="action-card tone-cyan" data-open-view="taste">
+                        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10c0 1.7-1.34 3-3 3h-2.5a2.5 2.5 0 0 0-1.9 4.1 2 2 0 0 1-2.6 2.9Z"/><circle cx="7.5" cy="11.5" r="1" fill="currentColor"/><circle cx="10.5" cy="7.5" r="1" fill="currentColor"/><circle cx="15" cy="8.5" r="1" fill="currentColor"/></svg></span>
+                        <span><b>بصمة الذائقة</b><small>الأنواع والمخرجون ومعادلة الإعجاب والنفور.</small></span>
+                        <em>استكشف البصمة ←</em>
+                    </button>
+                    <button class="action-card tone-green" data-open-view="search" title="فتح صفحة البحث والتنزيل">
+                        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+                        <span><b>البحث والتنزيل</b><small>IMDb وRotten Tomatoes وJustWatch وروابط البحث.</small></span>
+                        <em>افتح البوابة ←</em>
+                    </button>
+                    <button class="action-card tone-pink" data-open-view="sessions">
+                        <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></span>
+                        <span><b>سجل الجلسات</b><small id="home-latest-session">استرجع ما تعلّمه النموذج من الجلسات السابقة.</small></span>
+                        <em>راجع السجل ←</em>
+                    </button>
+                </div>
+            </section>
+
+            <section class="view" id="view-add" data-page="add">
+                <div class="page-heading">
+                    <div><h1>➕ إضافة فيلم/مسلسل جديد</h1><p>ابحث عن العمل، راجع بياناته، ثم أضفه إلى القائمة المناسبة.</p></div>
+                    <span class="method-pill" id="omdb-status">OMDb — جارٍ التحقق</span>
+                </div>
+                <div class="add-work-layout">
+                    <aside class="panel add-search-panel">
+                        <div class="omdb-key-box" id="omdb-key-box" hidden>
+                            <b>إعداد اتصال OMDb</b>
+                            <p>ألصق المفتاح المجاني مرة واحدة؛ سيُحفظ محليًا على جهازك.</p>
+                            <div><input id="omdb-key-input" type="password" autocomplete="off" placeholder="مفتاح OMDb"><button id="omdb-key-save" type="button">حفظ وتفعيل</button></div>
+                            <a href="https://www.omdbapi.com/apikey.aspx" target="_blank" rel="noopener">الحصول على مفتاح مجاني ↗</a>
+                        </div>
+                        <form class="add-search-form" id="add-search-form">
+                            <label>اسم الفيلم أو المسلسل<input id="add-search-title" type="search" autocomplete="off" placeholder="اكتب الاسم بالإنجليزية أو العربية"></label>
+                            <label>سنة الإصدار — اختيارية<input id="add-search-year" type="number" min="1800" max="2100" inputmode="numeric" placeholder="مثال: 2026"></label>
+                            <fieldset class="destination-fieldset">
+                                <legend>أين تريد إضافته؟</legend>
+                                <div class="destination-options">
+                                    <label><input type="radio" name="add-destination" value="liked" checked><span>أعجبني</span></label>
+                                    <label><input type="radio" name="add-destination" value="disliked"><span>لم يعجبني</span></label>
+                                    <label><input type="radio" name="add-destination" value="watchlist"><span>أريد مشاهدته</span></label>
+                                </div>
+                            </fieldset>
+                            <label id="add-rating-field">تقييمي الشخصي<select id="add-rating"><option value="">اختر التقييم</option><option>10</option><option>9</option><option>8</option><option>7</option><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>
+                            <button class="primary-btn add-search-btn" type="submit">🔎 ابحث في OMDb</button>
+                        </form>
+                        <div class="add-results" id="add-search-results"><p>ابدأ بكتابة اسم العمل، ثم اختر النتيجة الصحيحة.</p></div>
+                    </aside>
+
+                    <section class="panel add-details-panel">
+                        <div class="add-empty-state" id="add-empty-state"><span>🎬</span><h2>بيانات العمل ستظهر هنا</h2><p>اختر نتيجة من محرك البحث لمراجعتها وتعديلها قبل الاعتماد.</p></div>
+                        <form class="add-details-form" id="add-details-form" hidden>
+                            <div class="add-details-head"><div><span id="add-destination-badge">أعمال أعجبتني</span><h2 id="add-preview-heading">—</h2></div><code id="add-imdb-id">—</code></div>
+                            <div class="add-fields-grid">
+                                <label>الاسم<input name="title" required></label>
+                                <label>الاسم الأصلي<input name="originalTitle"></label>
+                                <label>النوع<input name="titleType"></label>
+                                <label>سنة الإصدار<input name="year" inputmode="numeric"></label>
+                                <label>تقييم IMDb<input name="imdbRating" inputmode="decimal"></label>
+                                <label>عدد المصوّتين<input name="numVotes" inputmode="numeric"></label>
+                                <label>المدة بالدقائق<input name="runtime" inputmode="numeric"></label>
+                                <label>تاريخ الإصدار<input name="releaseDate"></label>
+                                <label class="wide-field">التصنيفات<input name="genres"></label>
+                                <label class="wide-field">المخرجون<input name="directors"></label>
+                                <label class="wide-field">رابط IMDb<input name="url"></label>
+                            </div>
+                            <button class="primary-btn add-confirm-btn" id="add-confirm-btn" type="submit">✓ إضافة واعتماد</button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+
+            <section class="view" id="view-watchlist" data-page="watchlist">
+                <div class="page-heading compact-heading">
+                    <div><h1>🍿 قائمة المشاهدة الذكية</h1><p>مرتبة وفق توافقها مع ذائقتك، لا وفق شهرتها العامة.</p></div>
+                    <div class="watch-toolbar">
+                        <input id="watch-search" type="search" placeholder="ابحث عن فيلم…">
+                        <select id="watch-filter"><option value="all">كل الترشيحات</option><option value="high">شاهد أولًا</option><option value="good">مرشح جيد</option><option value="medium">مخاطرة متوسطة</option><option value="low">أجّله</option></select>
+                    </div>
+                </div>
+                <div class="watchlist-shell panel">
+                    <div class="watchlist-head"><span>العمل</span><span>النوع والمدة</span><span>سبب الترشيح</span><span>التوافق</span></div>
+                    <div class="watchlist-rows" id="watchlist-rows"></div>
+                </div>
+            </section>
+
+            <section class="view" id="view-taste" data-page="taste">
+                <div class="page-heading">
+                    <div><h1>🎨 بصمة الذائقة</h1><p>الخريطة التي تفسّر لماذا يجذبك عمل وينفّرك آخر.</p></div>
+                    <span class="method-pill">نموذج قابل للمعايرة</span>
+                </div>
+                <div class="taste-layout">
+                    <article class="panel formula-card positive"><span>معادلة الإعجاب</span><h2 id="taste-formula">—</h2><p>الخطر والتصعيد أهم من القيمة النقدية المجردة.</p></article>
+                    <article class="panel formula-card risk"><span>معادلة النفور</span><h2 id="taste-risk-formula">—</h2><p>الشهرة لا تعوّض غياب التوتر والارتباط المباشر.</p></article>
+                    <article class="panel genre-panel"><div class="panel-title"><h2>الأنواع الأقوى</h2><small>داخل قائمة الإعجاب</small></div><div class="bars" id="liked-genre-bars"></div></article>
+                    <article class="panel genre-panel"><div class="panel-title"><h2>إشارات الحذر</h2><small>متكررة في قائمة عدم الإعجاب</small></div><div class="bars risk-bars" id="disliked-genre-bars"></div></article>
+                    <article class="panel reference-panel"><div class="panel-title"><h2>عنقود 9/10</h2><small>أهم الأعمال المرجعية</small></div><div class="chips" id="reference-chips"></div></article>
+                    <article class="panel director-panel"><div class="panel-title"><h2>إشارات المخرجين</h2><small>مستخرجة من سجلك</small></div><div class="chips subtle" id="director-chips"></div></article>
+                </div>
+            </section>
+
+            <section class="view" id="view-search" data-page="search" aria-label="البحث والتنزيل">
+                <div class="page-heading">
+                    <div><h1>🔎 البحث والتنزيل</h1><p>بوابات البحث والتقييم والمشاهدة والتنزيل في مكان واحد.</p></div>
+                    <span class="method-pill">5 بوابات</span>
+                </div>
+                <div class="search-download-layout">
+                    <div class="search-download-grid">
+                        <a class="search-site-card" href="https://www.imdb.com/" target="_blank" rel="noopener">
+                            <span class="search-site-icon">
+                                <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Fimdb.com" alt="IMDb" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <span class="search-icon-fallback">I</span>
+                            </span>
+                            <span class="search-site-info"><b>IMDb</b></span>
+                        </a>
+                        <a class="search-site-card" href="https://www.rottentomatoes.com/" target="_blank" rel="noopener">
+                            <span class="search-site-icon">
+                                <img src="https://www.google.com/s2/favicons?sz=128&amp;domain_url=https%3A%2F%2Frottentomatoes.com" alt="Rotten Tomatoes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <span class="search-icon-fallback">R</span>
+                            </span>
+                            <span class="search-site-info"><b>Rotten Tomatoes</b></span>
+                        </a>
+                        <a class="search-site-card" href="https://www.justwatch.com/us?providers_type=my_services" target="_blank" rel="noopener">
+                            <span class="search-site-icon">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAADe0lEQVR42u2YfUjUdxzHXz/vfpeeillxbKyCYvZPNbGMK6ENiWg9bNhgmsGiIlqhDKI/ivBqsMFY/xR4ZRyVVAxDhw/4tDPqKnIlusrItrXlWCtTM8/r58Pd7+7nd3/E+ZRNzbvrtvn+88uH7+fN5/15f74PMIX/OoQQkhBCCsu8b4JYOOT+HyLXYhaXTi0X2duSRahzj6lzY6FZyHodelnC2a3nvMPDEduNkPRHxESC42N8ZKdFceqbFJFsfk+EFblH7RqH8p0csLnYmx7DnZJUsWfn8qCR1I8nqNXZz+kf3Fxo8A5bnxGrY296DNvWpor86r6Ayz3mZp98lCRq76ovrR/NjmNlohEAnU4HwMNWN+bMK1LIZM1Om8buj6OYHvvqnJqmUXVDIeuok31ZKeLX6g1iX1aKCDq5mbGC9A8MFOZEj0rSXt9LxpdPOWBz8Ve7BoApXo9l+2we1KRNqicnNEoAfF7B8XKVNmc/LR0avz/2DYvfui6O/Z+ZAJBlAwBtz1QyLM001N2RguZWgPst/fz8UCMpQWb9ish/lNtPzPp9K9NkiYtn14sNa5eIgLoV4N6fGicrVep/8QCwY10UKxONZKQaOWdXKHC46VIG83Y+B1vZI76rceH1waL5BswLozn/9bvUZb4tjhQ8oaL6pjQpWXMtZuG4rTLSsSPd+twtc7qik6ZmNwlzDBQ5FLxDFF8030DZ4YRhe1TUutj0hV2alKyqb+xWiZbdxBm10A7h9xfDqqRIGv+I5GRVH3ebh1fQo2pUXVewlvXQpYgBQ+zaOIsTJR0vVRCgrqmHY0UtFJffkgLSc0sXSCxdYOSn+1FYS3ro6NIouaJwpqZvYIQMhSlez1efz2XXxl5yC1u59ZuXuqYeThQ/oaj0phRQQ/iROA+SEmQct1+Mk9GIDcU7JiN7MmeTYWlm1ZZKKaCy+uHzCkqva5yxv5DPbwh7fS95pd2jkmx7pmIra+fbYz9KQek5txZJZb17gNRIrFlmZM2yQZKDY+T1SY17lHyatkRcbfSE58Gfs1mmICeW1cnyK2OedqkcLnAFlNi4e+6t+AgObolm+4caeeUq/kp2KhrBuMe99sGv0xm43Oghr7R7wgd5UCrnh7Nbz7kaBWt+Q0geOGOSa3igY56pn+JrPqz5tVOv8n/nL1M45Y4IB4JTP0xTCBf8DWtomnBgAHJnAAAAAElFTkSuQmCC" alt="JustWatch" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                <span class="search-icon-fallback">J</span>
+                            </span>
+                            <span class="search-site-info"><b>JustWatch</b></span>
+                        </a>
+                        <a class="search-site-card" href="https://1337x.to/" target="_blank" rel="noopener">
+                            <span class="search-site-icon search-icon-1337" aria-label="1337x"></span>
+                            <span class="search-site-info"><b>1337x</b></span>
+                        </a>
+                        <a class="search-site-card" href="https://thepiratebay.org/" target="_blank" rel="noopener">
+                            <span class="search-site-icon search-icon-pirate" aria-label="The Pirate Bay"></span>
+                            <span class="search-site-info"><b>The Pirate Bay</b></span>
+                        </a>
+                    </div>
+                    <div class="search-vpn-reminder">
+                        <div class="search-vpn-inner"><span class="search-vpn-icon">🛡️</span><span>لا تنسَ تفعيل الـVPN قبل الدخول لمواقع التحميل</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="view-sessions" data-page="sessions">
+                <div class="page-heading">
+                    <div><h1>📝 سجل الجلسات والتعلّم</h1><p>كل موجز جديد يصبح قاعدة إضافية داخل نموذج التوقع.</p></div>
+                    <span class="method-pill" id="session-count-pill">— جلسة</span>
+                </div>
+                <div class="sessions-layout">
+                    <div class="session-list" id="session-list"></div>
+                    <article class="panel session-reader" id="session-reader">
+                        <div class="empty-state"><span>▣</span><h2>اختر جلسة لقراءة موجزها</h2><p>ستظهر هنا الخلاصة والقواعد الجديدة التي تعلّمها النموذج.</p></div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="transfer-modal" id="transfer-modal" hidden>
+    <section class="transfer-dialog" role="dialog" aria-modal="true" aria-labelledby="transfer-title" aria-describedby="transfer-message">
+        <span class="transfer-icon" aria-hidden="true">↔</span>
+        <h2 id="transfer-title">العمل موجود في قائمة أخرى</h2>
+        <p id="transfer-message">—</p>
+        <div class="transfer-actions">
+            <button class="transfer-cancel" id="transfer-cancel" type="button">إلغاء العملية</button>
+            <button class="transfer-confirm" id="transfer-confirm" type="button">نقل العمل</button>
+        </div>
+    </section>
+</div>
+<script src="data/project-data.js"></script>
+<script src="assets/cinema.js?v=20260714-7"></script>
+</body>
+</html>
