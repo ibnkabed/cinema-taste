@@ -1,0 +1,9 @@
+.agents/
+.codex/
+.git-copied-empty/
+**/__pycache__/
+*.py[cod]
+.env
+*.log
+نسخ احتياطية/
+
