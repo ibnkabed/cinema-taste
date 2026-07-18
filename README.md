@@ -2,7 +2,7 @@
 
 Cinema Taste is a local-first app that turns a real viewing history into an explainable taste profile. It helps viewers organize what they liked, disliked, and plan to watch, then discuss a new movie or series using evidence from their own history rather than popularity alone.
 
-The Arabic interface is the product's primary experience. This README and the judge guide provide the complete English testing path required for OpenAI Build Week.
+The complete interface now switches between Arabic and English from the header. Every section, dynamic status, watchlist explanation, Likelihood result, and session summary follows the selected language with automatic RTL/LTR direction.
 
 ## Why it matters
 
@@ -19,6 +19,7 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 - Send OMDb metadata directly from **إضافة عمل** (Add Work) to the Likelihood page without searching twice.
 - Copy an Arabic or English evidence brief for a nuanced GPT-5.6 discussion.
 - Run a no-key local demo so judges can test the core analysis immediately.
+- Switch the complete product between `العربية | English`; `?lang=en` opens the English experience directly.
 
 ## Quick start
 
@@ -36,7 +37,7 @@ macOS or Linux:
 sh run.sh
 ```
 
-Then open [http://127.0.0.1:8765/](http://127.0.0.1:8765/).
+Then open [http://127.0.0.1:8765/?lang=en](http://127.0.0.1:8765/?lang=en) for English, or use the language control in the header.
 
 To test without an OMDb key, open **مدى القابلية** (Likelihood) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
 
@@ -73,6 +74,7 @@ The repository begins with a commit containing the pre-hackathon project baselin
 - uncertainty and confidence reporting instead of a deterministic verdict;
 - a dedicated Likelihood page plus a direct Add Work → Likelihood metadata handoff;
 - Arabic and English GPT-5.6 discussion briefs;
+- a complete Arabic–English interface switch with dynamic content and RTL/LTR direction;
 - a no-key judge demo, portable launchers, automated tests, and English documentation.
 
 See [docs/BUILD_WEEK_CHANGELOG.md](docs/BUILD_WEEK_CHANGELOG.md) for the old-versus-new boundary and [docs/JUDGE_GUIDE.md](docs/JUDGE_GUIDE.md) for a short evaluation path.

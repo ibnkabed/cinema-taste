@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#050b18">
     <title>الذائقة السينمائية</title>
-    <link rel="stylesheet" href="assets/cinema.css?v=20260718-2">
+    <link rel="stylesheet" href="assets/cinema.css?v=20260718-3">
 </head>
 <body>
 <div class="cinema-app">
@@ -25,6 +25,11 @@
                 <button class="nav-link" data-view="sessions">📝 الجلسات</button>
             </nav>
             <div class="banner-tools">
+                <div class="language-switch" role="group" aria-label="اختيار اللغة" data-i18n-skip>
+                    <button type="button" data-language-option="ar" aria-pressed="true">العربية</button>
+                    <span aria-hidden="true">|</span>
+                    <button type="button" data-language-option="en" aria-pressed="false">English</button>
+                </div>
                 <span class="update-time" id="header-update">آخر تحديث —</span>
             </div>
         </header>
@@ -253,6 +258,7 @@
     </section>
 </div>
 <script src="data/project-data.js"></script>
-<script src="assets/cinema.js?v=20260718-2"></script>
+<script src="assets/i18n.js?v=20260718-1"></script>
+<script src="assets/cinema.js?v=20260718-3"></script>
 </body>
 </html>

@@ -41,6 +41,11 @@ class ServerApiTests(unittest.TestCase):
         self.assertTrue(payload["ok"])
         self.assertIn("omdbConfigured", payload)
 
+    def test_root_redirect_preserves_language_query(self) -> None:
+        with urlopen(self.base_url + "/?lang=en", timeout=5) as response:
+            self.assertEqual(response.status, 200)
+            self.assertTrue(response.geturl().endswith(".html?lang=en"))
+
     def test_demo_analysis_requires_no_external_api(self) -> None:
         payload = self.get_json("/api/taste/demo")
         self.assertTrue(payload["ok"])

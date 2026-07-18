@@ -19,6 +19,7 @@ All commits after the baseline are Build Week work. The contest extension adds:
 7. A local no-key judge demo, portable launchers, automated tests, and English documentation.
 8. A dedicated **مدى القابلية** (Likelihood) page with a visible percentage, confidence, and reasons.
 9. A direct handoff that sends already-fetched OMDb metadata from Add Work to Likelihood without a second lookup.
+10. A complete `العربية | English` interface switch across every page, dynamic status, watchlist explanation, Likelihood analysis, and judge-safe session summary, with automatic RTL/LTR direction.
 
 After the owner approved the concept, the same dedicated Likelihood workflow was also added deliberately to the private daily-use copy. The two folders remain independent, and no viewing-record CSV data was changed by this interface work.
 

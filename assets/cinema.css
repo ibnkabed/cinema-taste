@@ -24,6 +24,15 @@ button{color:inherit}
 .nav-link.active{color:#241703;background:linear-gradient(135deg,var(--gold),var(--gold-2));box-shadow:none}
 .banner-tools{display:flex;align-items:center;justify-content:flex-start;gap:9px;direction:ltr}
 .update-time{font-size:10.5px;color:var(--muted);white-space:nowrap;direction:rtl;text-align:left}
+.language-switch{display:inline-flex;align-items:center;gap:2px;padding:3px 4px;border:1px solid var(--line);border-radius:999px;background:rgba(5,10,24,.72);direction:ltr;white-space:nowrap}
+.language-switch button{border:0;border-radius:999px;padding:3px 7px;background:transparent;color:var(--muted);font:700 9.5px Cairo,"Segoe UI",sans-serif;cursor:pointer;line-height:1.25}
+.language-switch button:hover{color:var(--text)}
+.language-switch button.active{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#241703}
+.language-switch span{color:var(--muted);font-size:8px}
+[dir="ltr"] .update-time{direction:ltr;text-align:right}
+[dir="ltr"] .action-card,[dir="ltr"] .discovery-result,[dir="ltr"] .session-card{text-align:left}
+[dir="ltr"] .action-card:hover em{transform:translateX(4px)}
+[dir="ltr"] .discovery-analysis,[dir="ltr"] .discovery-results,[dir="ltr"] .session-list{padding-left:0;padding-right:2px}
 
 .cinema-content{flex:1;min-height:0;overflow:hidden;padding:15.12px 16px 7px;background:transparent}
 .view{display:none;height:100%;min-height:0;overflow:hidden}
