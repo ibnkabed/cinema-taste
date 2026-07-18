@@ -746,11 +746,14 @@ class CinemaHandler(SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:
         print(f"[{self.log_date_time_string()}] {format % args}")
 
+    def end_headers(self) -> None:
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def send_json(self, payload: dict[str, object], status: int = 200) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -858,7 +861,7 @@ def run_server(port: int, open_browser: bool = True, host: str = "127.0.0.1") ->
     handler = partial(CinemaHandler, directory=str(ROOT))
     server = ThreadingHTTPServer((host, port), handler)
     display_host = "127.0.0.1" if host == "0.0.0.0" else host
-    url = f"http://{display_host}:{port}/"
+    url = f"http://{display_host}:{port}/?lang=en"
     print("\nالذائقة السينمائية تعمل محليًا:")
     print(url)
     print("أغلق هذه النافذة لإيقاف المشروع.\n")
@@ -876,7 +879,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="تشغيل وتحديث مشروع الذائقة السينمائية")
     parser.add_argument("--refresh-only", action="store_true")
     parser.add_argument("--no-open", action="store_true")
-    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--port", type=int, default=18765)
     parser.add_argument("--host", default="127.0.0.1")
     args = parser.parse_args()
     if args.refresh_only:

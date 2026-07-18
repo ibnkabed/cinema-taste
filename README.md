@@ -37,7 +37,7 @@ macOS or Linux:
 sh run.sh
 ```
 
-Then open [http://127.0.0.1:8765/?lang=en](http://127.0.0.1:8765/?lang=en) for English, or use the language control in the header.
+Then open [http://127.0.0.1:18765/?lang=en](http://127.0.0.1:18765/?lang=en) for English, or use the language control in the header. The contest copy uses its own port so it can run alongside the original private app on port `8765` without a conflict.
 
 To test without an OMDb key, open **مدى القابلية** (Likelihood) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
 

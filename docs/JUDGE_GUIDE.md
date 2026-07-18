@@ -4,7 +4,7 @@
 
 1. Install Python 3.10 or newer.
 2. On Windows, run `تشغيل الذائقة السينمائية.cmd`. On macOS/Linux, run `sh run.sh`.
-3. Open `http://127.0.0.1:8765/?lang=en` if it does not open automatically, or select **English** in the header.
+3. Open `http://127.0.0.1:18765/?lang=en` if it does not open automatically, or select **English** in the header. The dedicated contest port avoids colliding with an existing local installation.
 4. Select **Likelihood**.
 5. Select **Instant no-key demo**.
 6. Review the initial reading, confidence, reasons, closest liked works, and caution references.
