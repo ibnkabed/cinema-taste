@@ -771,7 +771,8 @@ class CinemaHandler(SimpleHTTPRequestHandler):
         return payload
 
     def do_GET(self) -> None:
-        path = unquote(urlparse(self.path).path)
+        parsed = urlparse(self.path)
+        path = unquote(parsed.path)
         if path == "/api/status":
             self.send_json({"ok": True, "omdbConfigured": bool(read_omdb_key())})
             return
@@ -786,7 +787,8 @@ class CinemaHandler(SimpleHTTPRequestHandler):
             return
         if path == "/":
             self.send_response(302)
-            self.send_header("Location", "/%D8%A7%D9%84%D8%B0%D8%A7%D8%A6%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A%D8%A9.html")
+            query = f"?{parsed.query}" if parsed.query else ""
+            self.send_header("Location", f"/%D8%A7%D9%84%D8%B0%D8%A7%D8%A6%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A%D8%A9.html{query}")
             self.end_headers()
             return
         super().do_GET()

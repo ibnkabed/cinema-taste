@@ -8,12 +8,17 @@
         War:'حرب', Fantasy:'فانتازيا', Western:'غرب أمريكي', Music:'موسيقى',
         Musical:'موسيقي', Animation:'رسوم متحركة'
     };
+    const i18n = window.CINEMA_I18N;
+    const isEnglish = () => i18n?.language === 'en';
+    const t = (arabic, english) => i18n?.t(arabic, english) || arabic;
     const destinationLabels = {
-        liked:'أعمال أعجبتني',
-        disliked:'أعمال لم تعجبني',
-        watchlist:'قائمة المشاهدة'
+        liked:{ar:'أعمال أعجبتني',en:'Liked titles'},
+        disliked:{ar:'أعمال لم تعجبني',en:'Disliked titles'},
+        watchlist:{ar:'قائمة المشاهدة',en:'Watchlist'}
     };
-    const typeLabels = {movie:'فيلم',series:'مسلسل',episode:'حلقة'};
+    const typeLabels = {movie:{ar:'فيلم',en:'Movie'},series:{ar:'مسلسل',en:'Series'},episode:{ar:'حلقة',en:'Episode'}};
+    const destinationLabel = (key) => destinationLabels[key]?.[isEnglish() ? 'en' : 'ar'] || key;
+    const typeLabel = (key) => typeLabels[key]?.[isEnglish() ? 'en' : 'ar'] || key || t('عمل', 'Title');
     let data = window.CINEMA_DATA || null;
     let toastTimer;
     let selectedWork = null;
@@ -21,6 +26,7 @@
     let omdbStatusChecked = false;
     let discoveryPromptAr = '';
     let discoveryPromptEn = '';
+    let lastDiscoveryAnalysis = null;
 
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
@@ -30,18 +36,18 @@
         if (text !== undefined) node.textContent = text;
         return node;
     };
-    const localNumber = (value, digits = 0) => new Intl.NumberFormat('ar-SA-u-nu-latn', {maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number(value || 0));
+    const localNumber = (value, digits = 0) => new Intl.NumberFormat(isEnglish() ? 'en-US' : 'ar-SA-u-nu-latn', {maximumFractionDigits:digits,minimumFractionDigits:digits}).format(Number(value || 0));
     const formatDate = (value) => {
         if (!value) return '—';
         const date = new Date(value);
         if (Number.isNaN(date.getTime())) return value;
-        return new Intl.DateTimeFormat('ar-SA-u-nu-latn', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(date);
+        return new Intl.DateTimeFormat(isEnglish() ? 'en-US' : 'ar-SA-u-nu-latn', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(date);
     };
-    const genreLabel = (name) => genreArabic[name] || name;
+    const genreLabel = (name) => isEnglish() ? name : (genreArabic[name] || name);
 
     function showToast(message, type = '') {
         const toast = $('#toast');
-        toast.textContent = message;
+        toast.textContent = i18n?.translateMessage(message) || message;
         toast.className = `toast show ${type}`.trim();
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => toast.className = 'toast', 4200);
@@ -56,7 +62,7 @@
 
     async function requestJson(path, options = {}) {
         if (location.protocol === 'file:') {
-            throw new Error('شغّل الصفحة من «تشغيل الذائقة السينمائية» لتفعيل البحث والحفظ.');
+            throw new Error(t('شغّل الصفحة من «تشغيل الذائقة السينمائية» لتفعيل البحث والحفظ.', 'Run the project launcher to enable search and saving.'));
         }
         let response;
         const controller = new AbortController();
@@ -72,8 +78,8 @@
         } catch (err) {
             const timedOut = err && err.name === 'AbortError';
             const error = new Error(timedOut
-                ? `انتهت مهلة الطلب (20 ثانية) دون رد من الخادم المحلي [${path}]. أعد تشغيل «تشغيل الذائقة السينمائية» ثم حاول مجددًا.`
-                : `تعذر الوصول للخادم المحلي [${path}]: ${err && err.message ? err.message : err}. أعد تشغيل «تشغيل الذائقة السينمائية» ثم حاول مجددًا.`);
+                ? t(`انتهت مهلة الطلب (20 ثانية) دون رد من الخادم المحلي [${path}]. أعد تشغيل «تشغيل الذائقة السينمائية» ثم حاول مجددًا.`, `The local request timed out after 20 seconds [${path}]. Restart the Cinema Taste launcher and try again.`)
+                : t(`تعذر الوصول للخادم المحلي [${path}]: ${err && err.message ? err.message : err}. أعد تشغيل «تشغيل الذائقة السينمائية» ثم حاول مجددًا.`, `Could not reach the local server [${path}]: ${err && err.message ? err.message : err}. Restart the Cinema Taste launcher and try again.`));
             error.code = timedOut ? 'local_server_timeout' : 'local_server_unavailable';
             throw error;
         } finally {
@@ -82,7 +88,7 @@
         let payload = {};
         try { payload = await response.json(); } catch (_) { /* handled below */ }
         if (!response.ok || payload.ok === false) {
-            const error = new Error(payload.error || 'تعذر إكمال العملية.');
+            const error = new Error(i18n?.translateMessage(payload.error) || payload.error || t('تعذر إكمال العملية.', 'The operation could not be completed.'));
             error.code = payload.code || 'request_failed';
             error.details = payload;
             throw error;
@@ -114,8 +120,8 @@
         ratingField.hidden = !liked;
         rating.required = liked;
         if (!liked) rating.value = '';
-        $('#add-destination-badge').textContent = destinationLabels[destination];
-        $('#add-confirm-btn').textContent = `✓ إضافة إلى ${destinationLabels[destination]}`;
+        $('#add-destination-badge').textContent = destinationLabel(destination);
+        $('#add-confirm-btn').textContent = `${t('✓ إضافة إلى', '✓ Add to')} ${destinationLabel(destination)}`;
     }
 
     async function checkOmdbStatus(force = false) {
@@ -126,10 +132,10 @@
             const result = await requestJson('/api/status');
             omdbStatusChecked = true;
             keyBox.hidden = result.omdbConfigured;
-            status.textContent = result.omdbConfigured ? 'OMDb — متصل' : 'OMDb — يحتاج مفتاحًا';
+            status.textContent = result.omdbConfigured ? t('OMDb — متصل', 'OMDb — connected') : t('OMDb — يحتاج مفتاحًا', 'OMDb — key required');
             status.classList.toggle('ready', result.omdbConfigured);
         } catch (error) {
-            status.textContent = 'OMDb — يتطلب المشغل المحلي';
+            status.textContent = t('OMDb — يتطلب المشغل المحلي', 'OMDb — local launcher required');
             status.classList.remove('ready');
             keyBox.hidden = true;
             $('#add-search-results').replaceChildren(el('p', 'add-error-text', error.message));
@@ -141,17 +147,17 @@
         const button = $('#omdb-key-save');
         const key = input.value.trim();
         if (!key) {
-            showToast('ألصق مفتاح OMDb أولًا.', 'error');
+            showToast(t('ألصق مفتاح OMDb أولًا.', 'Paste an OMDb key first.'), 'error');
             input.focus();
             return;
         }
-        setButtonBusy(button, true, 'جارٍ التحقق…');
+        setButtonBusy(button, true, t('جارٍ التحقق…', 'Checking…'));
         try {
             await requestJson('/api/omdb/key', {method:'POST', body:{key}});
             input.value = '';
             omdbStatusChecked = false;
             await checkOmdbStatus(true);
-            showToast('تم حفظ مفتاح OMDb وتفعيل الاتصال.');
+            showToast(t('تم حفظ مفتاح OMDb وتفعيل الاتصال.', 'The OMDb key was saved and the connection is active.'));
         } catch (error) {
             showToast(error.message, 'error');
         } finally {
@@ -163,7 +169,7 @@
         const root = $('#add-search-results');
         root.replaceChildren();
         if (!results.length) {
-            root.append(el('p', 'add-error-text', 'لم يظهر عمل مطابق. جرّب الاسم الأصلي أو احذف سنة الإصدار.'));
+            root.append(el('p', 'add-error-text', t('لم يظهر عمل مطابق. جرّب الاسم الأصلي أو احذف سنة الإصدار.', 'No matching title appeared. Try the original title or remove the release year.')));
             return;
         }
         results.forEach(item => {
@@ -172,8 +178,8 @@
             button.dataset.imdbId = item.imdbId;
             const icon = el('span', 'add-result-icon', item.type === 'series' ? '📺' : item.type === 'episode' ? '▶️' : '🎬');
             const copy = el('span', 'add-result-copy');
-            copy.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabels[item.type] || item.type || 'عمل'} · ${item.imdbId}`));
-            button.append(icon, copy, el('span', 'add-result-arrow', '←'));
+            copy.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabel(item.type)} · ${item.imdbId}`));
+            button.append(icon, copy, el('span', 'add-result-arrow', isEnglish() ? '→' : '←'));
             button.addEventListener('click', () => loadWorkDetails(item.imdbId, button));
             root.append(button);
         });
@@ -185,19 +191,19 @@
         const year = $('#add-search-year').value.trim();
         const button = $('.add-search-btn');
         if (title.length < 2) {
-            showToast('اكتب حرفين على الأقل من اسم العمل.', 'error');
+            showToast(t('اكتب حرفين على الأقل من اسم العمل.', 'Enter at least two characters of the title.'), 'error');
             $('#add-search-title').focus();
             return;
         }
-        setButtonBusy(button, true, 'جارٍ البحث…');
-        $('#add-search-results').replaceChildren(el('p', '', 'جارٍ البحث في OMDb…'));
+        setButtonBusy(button, true, t('جارٍ البحث…', 'Searching…'));
+        $('#add-search-results').replaceChildren(el('p', '', t('جارٍ البحث في OMDb…', 'Searching OMDb…')));
         try {
             const result = await requestJson('/api/omdb/search', {method:'POST', body:{title,year}});
             renderAddResults(result.results || []);
         } catch (error) {
             if (error.code === 'missing_key' || error.code === 'invalid_key') {
                 $('#omdb-key-box').hidden = false;
-                $('#omdb-status').textContent = 'OMDb — يحتاج مفتاحًا';
+                $('#omdb-status').textContent = t('OMDb — يحتاج مفتاحًا', 'OMDb — key required');
             }
             $('#add-search-results').replaceChildren(el('p', 'add-error-text', error.message));
             showToast(error.message, 'error');
@@ -223,7 +229,7 @@
             if (input) input.value = value || '';
         });
         $('#add-imdb-id').textContent = work.imdbId;
-        $('#add-preview-heading').textContent = work.title || 'عمل جديد';
+        $('#add-preview-heading').textContent = work.title || t('عمل جديد', 'New title');
         $('#add-empty-state').hidden = true;
         form.hidden = false;
         syncDestinationUI();
@@ -231,12 +237,12 @@
 
     async function loadWorkDetails(imdbId, sourceButton) {
         $$('.add-result-card').forEach(card => card.classList.toggle('active', card === sourceButton));
-        setDetailsMessage('⏳', 'جارٍ جلب البيانات', 'لحظات ونجهّز بطاقة العمل كاملة.');
+        setDetailsMessage('⏳', t('جارٍ جلب البيانات', 'Loading metadata'), t('لحظات ونجهّز بطاقة العمل كاملة.', 'One moment while the complete title card is prepared.'));
         try {
             const result = await requestJson('/api/omdb/details', {method:'POST', body:{imdbId}});
             fillDetailsForm(result.work);
         } catch (error) {
-            setDetailsMessage('⚠️', 'تعذر جلب البيانات', error.message);
+            setDetailsMessage('⚠️', t('تعذر جلب البيانات', 'Could not load metadata'), error.message);
             showToast(error.message, 'error');
         }
     }
@@ -254,7 +260,7 @@
         hydrate(result.data);
         showToast(result.message);
         $('#add-search-form').reset();
-        $('#add-search-results').replaceChildren(el('p', '', 'ابدأ بكتابة اسم عمل آخر، ثم اختر النتيجة الصحيحة.'));
+        $('#add-search-results').replaceChildren(el('p', '', t('ابدأ بكتابة اسم عمل آخر، ثم اختر النتيجة الصحيحة.', 'Enter another title, then choose the correct result.')));
         setDetailsMessage(icon, heading, result.message, true);
         syncDestinationUI();
     }
@@ -262,15 +268,15 @@
     function closeTransferPrompt(cancelled = false) {
         pendingTransfer = null;
         $('#transfer-modal').hidden = true;
-        if (cancelled) showToast('تم إلغاء العملية.');
+        if (cancelled) showToast(t('تم إلغاء العملية.', 'The operation was cancelled.'));
     }
 
     function openTransferPrompt(payload, details) {
         pendingTransfer = payload;
-        const source = details.existingDestinationLabel || 'القائمة الحالية';
-        const target = details.requestedDestinationLabel || destinationLabels[payload.destination];
-        $('#transfer-message').textContent = `العمل موجود مسبقًا داخل «${source}». هل تريد إلغاء العملية أم نقله إلى «${target}»؟`;
-        $('#transfer-confirm').textContent = `نقل إلى ${target}`;
+        const source = isEnglish() ? destinationLabel(details.existingDestination || '') : (details.existingDestinationLabel || 'القائمة الحالية');
+        const target = isEnglish() ? destinationLabel(details.requestedDestination || payload.destination) : (details.requestedDestinationLabel || destinationLabel(payload.destination));
+        $('#transfer-message').textContent = t(`العمل موجود مسبقًا داخل «${source}». هل تريد إلغاء العملية أم نقله إلى «${target}»؟`, `This title is already in “${source}”. Cancel or move it to “${target}”?`);
+        $('#transfer-confirm').textContent = t(`نقل إلى ${target}`, `Move to ${target}`);
         $('#transfer-modal').hidden = false;
         $('#transfer-confirm').focus();
     }
@@ -279,12 +285,12 @@
         if (!pendingTransfer) return;
         const payload = pendingTransfer;
         const button = $('#transfer-confirm');
-        setButtonBusy(button, true, 'جارٍ النقل…');
+        setButtonBusy(button, true, t('جارٍ النقل…', 'Moving…'));
         try {
             const result = await requestJson('/api/works/transfer', {method:'POST', body:payload});
             pendingTransfer = null;
             $('#transfer-modal').hidden = true;
-            resetAddFlow(result, '↔', 'تم نقل العمل');
+            resetAddFlow(result, '↔', t('تم نقل العمل', 'Title moved'));
         } catch (error) {
             showToast(error.message, 'error');
         } finally {
@@ -298,19 +304,19 @@
         const destination = selectedDestination();
         const rating = $('#add-rating').value;
         if (destination === 'liked' && !rating) {
-            showToast('اختر تقييمك قبل إضافة العمل إلى قائمة الإعجاب.', 'error');
+            showToast(t('اختر تقييمك قبل إضافة العمل إلى قائمة الإعجاب.', 'Choose your rating before adding the title to Liked.'), 'error');
             $('#add-rating').focus();
             return;
         }
         const button = $('#add-confirm-btn');
         const payload = {destination,rating,work:editableWorkFromForm()};
-        setButtonBusy(button, true, 'جارٍ الحفظ…');
+        setButtonBusy(button, true, t('جارٍ الحفظ…', 'Saving…'));
         try {
             const result = await requestJson('/api/works/add', {
                 method:'POST',
                 body:payload
             });
-            resetAddFlow(result, '✅', 'تمت إضافة العمل');
+            resetAddFlow(result, '✅', t('تمت إضافة العمل', 'Title added'));
         } catch (error) {
             const details = error.details || {};
             if (error.code === 'duplicate' && details.existingDestination && details.existingDestination !== destination) {
@@ -327,7 +333,7 @@
         const root = $('#discovery-results');
         root.replaceChildren();
         if (!results.length) {
-            root.append(el('p', '', 'لم تظهر نتائج مطابقة. جرّب الاسم الأصلي أو غيّر سنة الإصدار.'));
+            root.append(el('p', '', t('لم تظهر نتائج مطابقة. جرّب الاسم الأصلي أو غيّر سنة الإصدار.', 'No matching results appeared. Try the original title or change the release year.')));
             return;
         }
         results.forEach(item => {
@@ -344,8 +350,8 @@
                 button.append(el('span', 'poster-fallback', '🎬'));
             }
             const text = el('span');
-            text.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabels[item.type] || item.type || 'عمل'}`));
-            button.append(text, el('span', '', 'تحليل ←'));
+            text.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabel(item.type)}`));
+            button.append(text, el('span', '', t('تحليل ←', 'Analyse →')));
             button.addEventListener('click', () => analyzeDiscovery(item.imdbId, button));
             root.append(button);
         });
@@ -357,11 +363,11 @@
         const title = $('#discovery-search-title').value.trim();
         const year = $('#discovery-search-year').value.trim();
         if (title.length < 2) {
-            showToast('اكتب حرفين على الأقل من اسم العمل.', 'error');
+            showToast(t('اكتب حرفين على الأقل من اسم العمل.', 'Enter at least two characters of the title.'), 'error');
             return;
         }
-        setButtonBusy(button, true, 'جارٍ البحث…');
-        $('#discovery-results').replaceChildren(el('p', '', 'جارٍ البحث في OMDb…'));
+        setButtonBusy(button, true, t('جارٍ البحث…', 'Searching…'));
+        $('#discovery-results').replaceChildren(el('p', '', t('جارٍ البحث في OMDb…', 'Searching OMDb…')));
         try {
             const payload = await requestJson('/api/omdb/search', {method:'POST', body:{title, year}});
             renderDiscoveryResults(payload.results || []);
@@ -377,7 +383,7 @@
         const root = $(target);
         root.replaceChildren();
         if (!rows.length) {
-            root.append(el('div', 'analysis-reference empty', 'لا توجد مقارنة قريبة كفاية.'));
+            root.append(el('div', 'analysis-reference empty', t('لا توجد مقارنة قريبة كفاية.', 'No sufficiently close comparison is available.')));
             return;
         }
         rows.slice(0, 4).forEach(item => {
@@ -391,6 +397,7 @@
     }
 
     function renderDiscoveryAnalysis(work, analysis, demo = false) {
+        lastDiscoveryAnalysis = {work, analysis, demo};
         discoveryPromptAr = analysis.codexPromptAr || '';
         discoveryPromptEn = analysis.codexPromptEn || '';
         $('#discovery-empty').hidden = true;
@@ -399,22 +406,22 @@
         const genres = String(work.genres || work.Genres || '').split(',').map(item => item.trim()).filter(Boolean);
         const year = work.year || work.Year || '—';
         const runtime = work.runtime || work['Runtime (mins)'] || '—';
-        $('#analysis-meta').textContent = `${year} · ${genres.slice(0, 3).map(genreLabel).join('، ') || 'تصنيف غير متاح'} · ${runtime} دقيقة${demo ? ' · عينة محلية' : ''}`;
+        $('#analysis-meta').textContent = `${year} · ${genres.slice(0, 3).map(genreLabel).join(isEnglish() ? ', ' : '، ') || t('تصنيف غير متاح', 'Genre unavailable')} · ${runtime} ${t('دقيقة', 'min')}${demo ? t(' · عينة محلية', ' · local sample') : ''}`;
         $('#analysis-score').textContent = `${analysis.score}%`;
-        $('#analysis-verdict').textContent = analysis.verdictAr;
-        $('#analysis-confidence').textContent = `درجة الثقة ${analysis.confidence}%`;
-        $('#analysis-disclaimer').textContent = analysis.disclaimerAr;
+        $('#analysis-verdict').textContent = isEnglish() ? analysis.verdictEn : analysis.verdictAr;
+        $('#analysis-confidence').textContent = `${t('درجة الثقة', 'Confidence')} ${analysis.confidence}%`;
+        $('#analysis-disclaimer').textContent = isEnglish() ? analysis.disclaimerEn : analysis.disclaimerAr;
 
         const reasons = $('#analysis-reasons');
         reasons.replaceChildren();
-        (analysis.reasonsAr || []).forEach(reason => reasons.append(el('span', '', reason)));
+        (isEnglish() ? (analysis.reasonsEn || []) : (analysis.reasonsAr || [])).forEach(reason => reasons.append(el('span', '', reason)));
         renderAnalysisReferences('#analysis-liked', analysis.similarLiked || []);
         renderAnalysisReferences('#analysis-disliked', analysis.similarDisliked || []);
         $('#analysis-summary-en').textContent = `${analysis.verdictEn}. Initial reading ${analysis.score}/100 with ${analysis.confidence}/100 confidence. ${(analysis.reasonsEn || []).join(' ')} ${analysis.disclaimerEn}`;
     }
 
     async function analyzeDiscovery(imdbId, sourceButton) {
-        setButtonBusy(sourceButton, true, 'جارٍ التحليل…');
+        setButtonBusy(sourceButton, true, t('جارٍ التحليل…', 'Analysing…'));
         try {
             const payload = await requestJson('/api/taste/analyze', {method:'POST', body:{imdbId}});
             renderDiscoveryAnalysis(payload.work, payload.analysis, false);
@@ -427,16 +434,16 @@
 
     async function analyzeSelectedWork() {
         if (!selectedWork) {
-            showToast('اختر عملًا من نتائج OMDb أولًا.', 'error');
+            showToast(t('اختر عملًا من نتائج OMDb أولًا.', 'Choose a title from the OMDb results first.'), 'error');
             return;
         }
         const button = $('#predict-from-add-btn');
-        setButtonBusy(button, true, 'جارٍ القياس…');
+        setButtonBusy(button, true, t('جارٍ القياس…', 'Measuring…'));
         try {
             const payload = await requestJson('/api/taste/analyze', {method:'POST', body:{work:editableWorkFromForm()}});
             switchView('predict');
             renderDiscoveryAnalysis(payload.work, payload.analysis, false);
-            showToast('تم إرسال بيانات OMDb إلى صفحة مدى القابلية.');
+            showToast(t('تم إرسال بيانات OMDb إلى صفحة مدى القابلية.', 'OMDb metadata was sent to the Likelihood page.'));
         } catch (error) {
             showToast(error.message, 'error');
         } finally {
@@ -446,11 +453,11 @@
 
     async function loadDiscoveryDemo() {
         const button = $('#discovery-demo-button');
-        setButtonBusy(button, true, 'جارٍ التحليل…');
+        setButtonBusy(button, true, t('جارٍ التحليل…', 'Analysing…'));
         try {
             const payload = await requestJson('/api/taste/demo');
             renderDiscoveryAnalysis(payload.work, payload.analysis, true);
-            showToast('تم تحميل عينة محلية دون استخدام OMDb.');
+            showToast(t('تم تحميل عينة محلية دون استخدام OMDb.', 'A local sample was loaded without using OMDb.'));
         } catch (error) {
             showToast(error.message, 'error');
         } finally {
@@ -461,7 +468,7 @@
     async function copyDiscoveryPrompt(language) {
         const value = language === 'en' ? discoveryPromptEn : discoveryPromptAr;
         if (!value) {
-            showToast('حلّل عملًا أولًا لإنشاء الموجز.', 'error');
+            showToast(t('حلّل عملًا أولًا لإنشاء الموجز.', 'Analyse a title first to create the brief.'), 'error');
             return;
         }
         try {
@@ -480,6 +487,64 @@
         }
     }
 
+    const sessionEnglish = [
+        {
+            match:'الجلسة الرابعة',
+            title:'Session 4 — Visual identity and Add Work repair — 14 July 2026',
+            excerpt:'The interface adopted its dark navy and cinematic gold identity, and a display-layer bug in the OMDb Add Work flow was diagnosed and fixed.',
+            text:'This session records the approved dark navy and cinematic gold visual identity, the compact no-scroll layout review, and the repair of the Add Work loading overlay. It also documents a successful real OMDb add test and the rule that visual browser validation must accompany programmatic checks.'
+        },
+        {
+            match:'الجلسة الخامسة',
+            title:'Session 5 — Moving titles between lists and project cleanup — 14 July 2026',
+            excerpt:'Duplicate handling became a deliberate move flow between Liked, Disliked, and Watchlist while preserving CSV safety.',
+            text:'This session documents the safe transfer workflow. A title already in another list can be cancelled or moved explicitly; moving into Liked requires a personal rating. The server creates backups, prevents duplicates, and restores both files if a transfer fails.'
+        },
+        {
+            match:'الجلسة الثالثة',
+            title:'Session 3 — Cinema Taste portal development — 14 July 2026',
+            excerpt:'The local portal, data refresh flow, watchlist ranking, and OMDb-backed Add Work experience were consolidated.',
+            text:'This session documents the development of the local Cinema Taste portal, its data refresh workflow, watchlist scoring, taste-profile sections, OMDb connection, and the project rules that keep viewing records local.'
+        },
+        {
+            match:'Obsession',
+            title:'Session — Obsession and Get Out comparison — 2 July 2026',
+            excerpt:'A live viewing discussion tested the model against Obsession and its strong structural resemblance to Get Out.',
+            text:'This session records a live calibration example. Obsession was compared with Get Out through psychological tension, gradual escalation, social unease, and a high-concept premise. The final 9/10 rating strengthened that reference cluster in the personal model.'
+        },
+        {
+            match:'تحليل الذائقة السينمائية',
+            title:'Cinema Taste analysis session — 1 July 2026',
+            excerpt:'The first personal taste model identified positive genres, caution patterns, director signals, and the need for explainable recommendations.',
+            text:'This session establishes the first taste model from liked and disliked viewing history. Strong signals include thriller, action, mystery, crime, and high-concept science fiction. Caution signals include slow awards-led drama, conventional biography, and low direct tension. The model must explain every recommendation with personal evidence rather than popularity alone.'
+        }
+    ];
+
+    function sessionDisplay(session) {
+        if (!isEnglish()) return session;
+        return sessionEnglish.find(item => session.title.includes(item.match)) || {
+            title:'Session note',
+            excerpt:'This session note is preserved in its original Arabic source.',
+            text:'The original session note is preserved in Arabic in the local project data.'
+        };
+    }
+
+    function watchReason(reason) {
+        if (!isEnglish()) return reason;
+        return reason
+            .replace(/^تركيبة مناسبة: /, 'Compatible genre mix: ')
+            .replace(/^إشارة مخرج إيجابية: /, 'Positive director signal: ')
+            .replace(/^مدة مناسبة لإيقاعك$/, 'Runtime fits your pacing preference')
+            .replace(/^عامل مخاطرة: /, 'Risk signal: ')
+            .replace(/^توافق متوسط يحتاج معايرة بعد المشاهدة$/, 'Moderate fit; calibrate after watching')
+            .replaceAll('،', ',');
+    }
+
+    function watchVerdict(item) {
+        if (!isEnglish()) return item.verdict;
+        return {high:'Watch first', good:'Good candidate', medium:'Medium risk', low:'Postpone'}[item.band] || item.verdict;
+    }
+
     function renderSummary() {
         const summary = data.summary;
         $('#stat-liked').textContent = localNumber(summary.liked);
@@ -489,22 +554,22 @@
         $('#stat-high').textContent = localNumber(summary.highRated);
         $('#stat-genre').textContent = genreLabel(summary.topGenre);
         $('#stat-sessions').textContent = localNumber(summary.sessions);
-        $('#header-update').textContent = `آخر تحديث ${formatDate(data.meta.generatedAt)}`;
-        $('#session-count-pill').textContent = `${localNumber(summary.sessions)} جلسة`;
+        $('#header-update').textContent = `${t('آخر تحديث', 'Last update')} ${formatDate(data.meta.generatedAt)}`;
+        $('#session-count-pill').textContent = `${localNumber(summary.sessions)} ${t('جلسة', 'sessions')}`;
 
         const pick = data.watchlist[0];
-        if (pick) $('#home-top-pick').textContent = `${pick.title} — توافق ${pick.score}%`;
+        if (pick) $('#home-top-pick').textContent = `${pick.title} — ${isEnglish() ? `${pick.score}% fit` : `توافق ${pick.score}%`}`;
         const session = data.sessions[0];
-        if (session) $('#home-latest-session').textContent = `أحدث جلسة: ${session.title}`;
+        if (session) $('#home-latest-session').textContent = `${t('أحدث جلسة:', 'Latest session:')} ${sessionDisplay(session).title}`;
 
         const changes = data.meta.changes || {};
         const deltas = changes.deltas || {};
         const parts = [];
-        if (deltas.liked) parts.push(`${deltas.liked > 0 ? '+' : ''}${deltas.liked} إعجاب`);
-        if (deltas.disliked) parts.push(`${deltas.disliked > 0 ? '+' : ''}${deltas.disliked} عدم إعجاب`);
-        if (deltas.watchlist) parts.push(`${deltas.watchlist > 0 ? '+' : ''}${deltas.watchlist} قائمة مشاهدة`);
-        if (deltas.sessions) parts.push(`${deltas.sessions > 0 ? '+' : ''}${deltas.sessions} جلسة`);
-        $('#change-summary').textContent = parts.length ? `آخر تغيير: ${parts.join(' · ')}` : 'البيانات متزامنة مع الملفات المحلية';
+        if (deltas.liked) parts.push(`${deltas.liked > 0 ? '+' : ''}${deltas.liked} ${t('إعجاب', 'liked')}`);
+        if (deltas.disliked) parts.push(`${deltas.disliked > 0 ? '+' : ''}${deltas.disliked} ${t('عدم إعجاب', 'disliked')}`);
+        if (deltas.watchlist) parts.push(`${deltas.watchlist > 0 ? '+' : ''}${deltas.watchlist} ${t('قائمة مشاهدة', 'watchlist')}`);
+        if (deltas.sessions) parts.push(`${deltas.sessions > 0 ? '+' : ''}${deltas.sessions} ${t('جلسة', 'sessions')}`);
+        $('#change-summary').textContent = parts.length ? `${t('آخر تغيير:', 'Latest change:')} ${parts.join(' · ')}` : t('البيانات متزامنة مع الملفات المحلية', 'Data is synced with local files');
     }
 
     function renderBars(target, rows) {
@@ -524,8 +589,8 @@
     }
 
     function renderTaste() {
-        $('#taste-formula').textContent = data.taste.formula;
-        $('#taste-risk-formula').textContent = data.taste.riskFormula;
+        $('#taste-formula').textContent = isEnglish() ? 'Tight plot + clear danger + pressured character + earned escalation' : data.taste.formula;
+        $('#taste-risk-formula').textContent = isEnglish() ? 'Slow pacing + cold or awards-led treatment + weak direct tension' : data.taste.riskFormula;
         renderBars('#liked-genre-bars', data.taste.likedGenres || []);
         renderBars('#disliked-genre-bars', data.taste.dislikedGenres || []);
 
@@ -552,7 +617,7 @@
         });
         root.replaceChildren();
         if (!rows.length) {
-            root.append(el('div', 'empty-row', 'لا توجد أعمال مطابقة لهذا البحث.'));
+            root.append(el('div', 'empty-row', t('لا توجد أعمال مطابقة لهذا البحث.', 'No titles match this search.')));
             return;
         }
         rows.forEach(item => {
@@ -560,10 +625,10 @@
             const title = el('div', 'watch-title');
             title.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · IMDb ${item.imdb || '—'}`));
             const meta = el('div', 'watch-meta');
-            meta.append(el('span', '', item.genres.slice(0, 3).map(genreLabel).join('، ') || '—'), el('small', '', `${item.runtime || '—'} دقيقة`));
-            const reason = el('div', 'watch-reason', item.reasons.join(' · '));
+            meta.append(el('span', '', item.genres.slice(0, 3).map(genreLabel).join(isEnglish() ? ', ' : '، ') || '—'), el('small', '', `${item.runtime || '—'} ${t('دقيقة', 'min')}`));
+            const reason = el('div', 'watch-reason', item.reasons.map(watchReason).join(' · '));
             const score = el('div', 'watch-score');
-            score.append(el('span', `score-tag ${item.band}`, item.verdict), el('b', '', `${item.score}%`));
+            score.append(el('span', `score-tag ${item.band}`, watchVerdict(item)), el('b', '', `${item.score}%`));
             row.append(title, meta, reason, score);
             root.append(row);
         });
@@ -572,19 +637,21 @@
     function renderSession(index) {
         const session = data.sessions[index];
         if (!session) return;
+        const display = sessionDisplay(session);
         $$('.session-card').forEach((card, cardIndex) => card.classList.toggle('active', cardIndex === index));
         const reader = $('#session-reader');
         reader.replaceChildren();
-        reader.append(el('span', 'session-date', formatDate(session.date)), el('h2', '', session.title), el('div', 'session-text', session.text || session.excerpt));
+        reader.append(el('span', 'session-date', formatDate(session.date)), el('h2', '', display.title), el('div', 'session-text', display.text || display.excerpt));
     }
 
     function renderSessions() {
         const root = $('#session-list');
         root.replaceChildren();
         (data.sessions || []).forEach((session, index) => {
+            const display = sessionDisplay(session);
             const card = el('button', 'session-card');
             card.type = 'button';
-            card.append(el('b', '', session.title), el('p', '', session.excerpt), el('small', '', formatDate(session.date)));
+            card.append(el('b', '', display.title), el('p', '', display.excerpt), el('small', '', formatDate(session.date)));
             card.addEventListener('click', () => renderSession(index));
             root.append(card);
         });
@@ -620,6 +687,16 @@
             const name = location.hash.slice(1);
             if ($(`[data-page="${name}"]`)) switchView(name, false);
         });
+        window.addEventListener('cinema-languagechange', () => {
+            syncDestinationUI();
+            if (data) hydrate(data);
+            if (lastDiscoveryAnalysis) {
+                renderDiscoveryAnalysis(lastDiscoveryAnalysis.work, lastDiscoveryAnalysis.analysis, lastDiscoveryAnalysis.demo);
+            }
+            omdbStatusChecked = false;
+            const activePage = $('.view.active')?.dataset.page;
+            if (activePage === 'add' || activePage === 'predict') checkOmdbStatus(true);
+        });
     }
 
     bindEvents();
@@ -629,7 +706,7 @@
         const initialView = location.hash.slice(1);
         if (initialView && $(`[data-page="${initialView}"]`)) switchView(initialView, false);
     } else {
-        showToast('لم يتم العثور على ملف البيانات. شغّل أداة التحديث أولًا.', 'error');
-        $('#data-health span').textContent = 'البيانات غير جاهزة';
+        showToast(t('لم يتم العثور على ملف البيانات. شغّل أداة التحديث أولًا.', 'The data file was not found. Run the update tool first.'), 'error');
+        $('#data-health span').textContent = t('البيانات غير جاهزة', 'Data not ready');
     }
 })();

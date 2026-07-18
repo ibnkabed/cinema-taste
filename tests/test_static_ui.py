@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / "الذائقة السينمائية.html"
 STANDALONE = ROOT / "البحث والتنزيل.html"
 CSS = ROOT / "assets" / "cinema.css"
+JS = ROOT / "assets" / "cinema.js"
+I18N = ROOT / "assets" / "i18n.js"
 
 
 class IdCollector(HTMLParser):
@@ -54,6 +56,23 @@ class StaticUiTests(unittest.TestCase):
         self.assertIn('id="view-predict" data-page="predict"', html)
         self.assertIn('id="view-search" data-page="search"', html)
         self.assertIn('id="predict-from-add-btn"', html)
+
+    def test_complete_bilingual_interface_contract(self) -> None:
+        html = MAIN.read_text(encoding="utf-8")
+        standalone = STANDALONE.read_text(encoding="utf-8")
+        behavior = JS.read_text(encoding="utf-8")
+        translations = I18N.read_text(encoding="utf-8")
+        for page in (html, standalone):
+            self.assertIn('data-language-option="ar"', page)
+            self.assertIn('data-language-option="en"', page)
+            self.assertIn("assets/i18n.js", page)
+        self.assertIn("cinema-languagechange", behavior)
+        self.assertIn("analysis.verdictEn", behavior)
+        self.assertIn("analysis.reasonsEn", behavior)
+        self.assertIn("sessionEnglish", behavior)
+        self.assertIn("localStorage.getItem('cinema-language')", translations)
+        self.assertIn("document.documentElement.dir", translations)
+        self.assertIn("Discover New Titles", translations)
 
 
 if __name__ == "__main__":
