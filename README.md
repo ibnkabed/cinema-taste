@@ -4,6 +4,12 @@ Cinema Taste is a local-first app that turns a real viewing history into an expl
 
 The complete interface now switches between Arabic and English from the header. Every section, dynamic status, watchlist explanation, Likelihood result, and session summary follows the selected language with automatic RTL/LTR direction.
 
+## Live judge demo
+
+Open the public, installation-free demo: [cinema-taste.abdullashammary.chatgpt.site](https://cinema-taste.abdullashammary.chatgpt.site/)
+
+The live demo opens in English, includes the full bilingual interface, and supports the instant no-key Likelihood analysis. It is read-only so the public experience cannot modify the private local CSV records.
+
 ## Why it matters
 
 Streaming catalogs are large, generic recommendation feeds optimize for engagement, and a title's global rating rarely explains whether one specific person will enjoy it. Cinema Taste keeps the viewer's records local and shows the evidence behind every reading.
@@ -18,7 +24,7 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 - Open the dedicated **مدى القابلية** (Likelihood) page to see a percentage, confidence, reasons, and comparable liked/disliked works.
 - Send OMDb metadata directly from **إضافة عمل** (Add Work) to the Likelihood page without searching twice.
 - Copy an Arabic or English evidence brief for a nuanced GPT-5.6 discussion.
-- Run a no-key local demo so judges can test the core analysis immediately.
+- Run a no-key public or local demo so judges can test the core analysis immediately.
 - Switch the complete product between `العربية | English`; `?lang=en` opens the English experience directly.
 
 ## Quick start

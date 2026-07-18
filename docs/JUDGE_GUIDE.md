@@ -2,16 +2,18 @@
 
 ## Fastest evaluation path (no external key)
 
-1. Install Python 3.10 or newer.
-2. On Windows, run `تشغيل الذائقة السينمائية.cmd`. On macOS/Linux, run `sh run.sh`.
-3. Open `http://127.0.0.1:18765/?lang=en` if it does not open automatically, or select **English** in the header. The dedicated contest port avoids colliding with an existing local installation.
-4. Select **Likelihood**.
-5. Select **Instant no-key demo**.
-6. Review the initial reading, confidence, reasons, closest liked works, and caution references.
-7. Review the English explanation and expand **English judge summary** if desired.
-8. Select **Copy English brief** to inspect the structured GPT-5.6 discussion context.
+1. Open the public demo: `https://cinema-taste.abdullashammary.chatgpt.site/`.
+2. Select **Likelihood**.
+3. Select **Instant no-key demo**.
+4. Review the initial reading, confidence, reasons, closest liked works, and caution references.
+5. Review the English explanation and expand **English judge summary** if desired.
+6. Select **Copy English brief** to inspect the structured GPT-5.6 discussion context.
 
-This path is local and does not call OMDb or OpenAI.
+This public path requires no installation and does not call OMDb or OpenAI. It is read-only and cannot modify private CSV records.
+
+## Full local edition
+
+For OMDb search and local CSV updates, install Python 3.10 or newer, run `تشغيل الذائقة السينمائية.cmd` on Windows or `sh run.sh` on macOS/Linux, then open `http://127.0.0.1:18765/?lang=en`.
 
 ## Full search path (optional)
 
