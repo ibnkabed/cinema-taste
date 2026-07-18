@@ -487,46 +487,113 @@
         }
     }
 
+    const judgeCalibrationWatchlist = [
+        {
+            title:'Obsession', originalTitle:'Obsession', year:2026, imdb:8.0, runtime:108,
+            genres:['Horror', 'Romance', 'Thriller'], directors:['Curry Barker'],
+            score:97, band:'high', verdict:'شاهد أولًا', showcase:true,
+            reasonsAr:['مثال معايرة: تطابق قوي مع التوتر النفسي والتصاعد التدريجي', 'التقييم الشخصي النهائي 9/10 أثبت دقة التوقع'],
+            reasonsEn:['Calibration example: strong match with psychological tension and earned escalation', 'The final personal 9/10 rating validated the prediction']
+        },
+        {
+            title:'Incendies', originalTitle:'Incendies', year:2010, imdb:8.3, runtime:131,
+            genres:['Drama', 'Mystery', 'War'], directors:['Denis Villeneuve'],
+            score:95, band:'high', verdict:'شاهد أولًا', showcase:true,
+            reasonsAr:['مثال معايرة: غموض وضغط إنساني وتصاعد عالي الأثر', 'إشارة إيجابية للمخرج Denis Villeneuve'],
+            reasonsEn:['Calibration example: mystery, human pressure, and high-impact escalation', 'Positive director signal: Denis Villeneuve']
+        },
+        {
+            title:'Backrooms', originalTitle:'Backrooms', year:'TBA', imdb:null, runtime:null,
+            genres:['Horror', 'Mystery', 'Thriller'], directors:[],
+            score:93, band:'high', verdict:'شاهد أولًا', showcase:true,
+            reasonsAr:['مثال معايرة: رعب مفاهيمي وغموض وتوتر مباشر', 'توافق قوي مع الأنواع والإيقاع المفضّلين'],
+            reasonsEn:['Calibration example: high-concept horror, mystery, and direct tension', 'Strong match with preferred genres and pacing']
+        }
+    ];
+
+    function displayedWatchlist() {
+        const showcaseTitles = new Set(judgeCalibrationWatchlist.map(item => item.title.toLowerCase()));
+        const liveRows = (data.watchlist || []).filter(item => !showcaseTitles.has((item.title || '').toLowerCase()));
+        return [...judgeCalibrationWatchlist, ...liveRows];
+    }
+
     const sessionEnglish = [
         {
             match:'الجلسة الرابعة',
             title:'Session 4 — Visual identity and Add Work repair — 14 July 2026',
             excerpt:'The interface adopted its dark navy and cinematic gold identity, and a display-layer bug in the OMDb Add Work flow was diagnosed and fixed.',
-            text:'This session records the approved dark navy and cinematic gold visual identity, the compact no-scroll layout review, and the repair of the Add Work loading overlay. It also documents a successful real OMDb add test and the rule that visual browser validation must accompany programmatic checks.'
+            text:'• Approved the compact dark-navy and cinematic-gold identity.\n• Repaired the Add Work loading layer and verified the no-scroll layout.\n• Completed a real OMDb add test with visual browser validation.'
         },
         {
             match:'الجلسة الخامسة',
             title:'Session 5 — Moving titles between lists and project cleanup — 14 July 2026',
             excerpt:'Duplicate handling became a deliberate move flow between Liked, Disliked, and Watchlist while preserving CSV safety.',
-            text:'This session documents the safe transfer workflow. A title already in another list can be cancelled or moved explicitly; moving into Liked requires a personal rating. The server creates backups, prevents duplicates, and restores both files if a transfer fails.'
+            text:'• Added an explicit move flow between Liked, Disliked, and Watchlist.\n• Required a personal rating before moving a title into Liked.\n• Added backups, duplicate prevention, and safe rollback.'
         },
         {
             match:'الجلسة الثالثة',
             title:'Session 3 — Cinema Taste portal development — 14 July 2026',
             excerpt:'The local portal, data refresh flow, watchlist ranking, and OMDb-backed Add Work experience were consolidated.',
-            text:'This session documents the development of the local Cinema Taste portal, its data refresh workflow, watchlist scoring, taste-profile sections, OMDb connection, and the project rules that keep viewing records local.'
+            text:'• Consolidated the local Cinema Taste portal and data refresh flow.\n• Added explainable Watchlist ranking and Taste Profile signals.\n• Connected OMDb while keeping personal viewing records local.'
         },
         {
             match:'Obsession',
             title:'Session — Obsession and Get Out comparison — 2 July 2026',
             excerpt:'A live viewing discussion tested the model against Obsession and its strong structural resemblance to Get Out.',
-            text:'This session records a live calibration example. Obsession was compared with Get Out through psychological tension, gradual escalation, social unease, and a high-concept premise. The final 9/10 rating strengthened that reference cluster in the personal model.'
+            text:'• Compared Obsession with Get Out before and during viewing.\n• Matched psychological tension, social unease, and gradual escalation.\n• The final 9/10 rating validated the prediction and strengthened the model.'
         },
         {
             match:'تحليل الذائقة السينمائية',
             title:'Cinema Taste analysis session — 1 July 2026',
             excerpt:'The first personal taste model identified positive genres, caution patterns, director signals, and the need for explainable recommendations.',
-            text:'This session establishes the first taste model from liked and disliked viewing history. Strong signals include thriller, action, mystery, crime, and high-concept science fiction. Caution signals include slow awards-led drama, conventional biography, and low direct tension. The model must explain every recommendation with personal evidence rather than popularity alone.'
+            text:'• Identified thriller, action, mystery, crime, and high-concept sci-fi as strong signals.\n• Flagged slow awards-led drama and weak direct tension as caution signals.\n• Required every recommendation to cite personal evidence, not popularity alone.'
+        }
+    ];
+
+    const sessionArabic = [
+        {
+            match:'الجلسة الرابعة',
+            title:'الجلسة الرابعة — الهوية البصرية وإصلاح إضافة عمل — 14 يوليو 2026',
+            excerpt:'اعتماد الهوية الكحلية والذهبية وإصلاح طبقة العرض في مسار إضافة الأعمال عبر OMDb.',
+            text:'• اعتماد الهوية الكحلية والذهبية المدمجة.\n• إصلاح طبقة انتظار إضافة الأعمال والتحقق من عدم التمرير.\n• نجاح اختبار إضافة حقيقي عبر OMDb مع تحقق بصري.'
+        },
+        {
+            match:'الجلسة الخامسة',
+            title:'الجلسة الخامسة — نقل الأعمال وتنظيف المشروع — 14 يوليو 2026',
+            excerpt:'تحويل معالجة التكرار إلى مسار نقل واضح وآمن بين القوائم.',
+            text:'• إضافة نقل صريح بين الإعجاب وعدم الإعجاب وقائمة المشاهدة.\n• اشتراط تقييم شخصي قبل النقل إلى قائمة الإعجاب.\n• توفير نسخ احتياطية ومنع التكرار والاسترجاع الآمن.'
+        },
+        {
+            match:'الجلسة الثالثة',
+            title:'الجلسة الثالثة — تطوير بوابة الذائقة السينمائية — 14 يوليو 2026',
+            excerpt:'توحيد البوابة المحلية وتحديث البيانات وترتيب قائمة المشاهدة والربط مع OMDb.',
+            text:'• توحيد البوابة المحلية ومسار تحديث البيانات.\n• إضافة ترتيب مفسّر لقائمة المشاهدة وإشارات بصمة الذائقة.\n• ربط OMDb مع إبقاء سجل المشاهدة الشخصي محليًا.'
+        },
+        {
+            match:'Obsession',
+            title:'جلسة — مقارنة Obsession وGet Out — 2 يوليو 2026',
+            excerpt:'اختبار حي للنموذج عبر التشابه البنيوي بين Obsession وGet Out.',
+            text:'• مقارنة Obsession مع Get Out قبل المشاهدة وأثناءها.\n• تطابق التوتر النفسي والقلق الاجتماعي والتصاعد التدريجي.\n• التقييم النهائي 9/10 أثبت دقة التوقع وعزّز النموذج.'
+        },
+        {
+            match:'تحليل الذائقة السينمائية',
+            title:'جلسة تحليل الذائقة السينمائية — 1 يوليو 2026',
+            excerpt:'تحديد إشارات الإعجاب والحذر والمخرجين والحاجة إلى توصيات قابلة للتفسير.',
+            text:'• تحديد الإثارة والحركة والغموض والجريمة والخيال المفاهيمي كإشارات قوية.\n• اعتبار الدراما البطيئة وضعف التوتر المباشر إشارات حذر.\n• إلزام كل توصية بدليل شخصي واضح لا بالشعبية وحدها.'
         }
     ];
 
     function sessionDisplay(session) {
-        if (!isEnglish()) return session;
-        return sessionEnglish.find(item => session.title.includes(item.match)) || {
+        const summaries = isEnglish() ? sessionEnglish : sessionArabic;
+        return summaries.find(item => session.title.includes(item.match)) || (isEnglish() ? {
             title:'Session note',
-            excerpt:'This session note is preserved in its original Arabic source.',
-            text:'The original session note is preserved in Arabic in the local project data.'
-        };
+            excerpt:'A concise project-session summary.',
+            text:'• The full session remains preserved in the local source.\n• This public view shows a concise summary.\n• Personal project records remain local.'
+        } : {
+            title:session.title,
+            excerpt:'موجز مختصر لجلسة محفوظة ضمن سجل المشروع.',
+            text:'• الجلسة الكاملة محفوظة في المصدر المحلي.\n• تعرض النسخة العامة رؤوس أقلام مختصرة.\n• تبقى سجلات المشروع الشخصية محلية.'
+        });
     }
 
     function watchReason(reason) {
@@ -557,7 +624,7 @@
         $('#header-update').textContent = `${t('آخر تحديث', 'Last update')} ${formatDate(data.meta.generatedAt)}`;
         $('#session-count-pill').textContent = `${localNumber(summary.sessions)} ${t('جلسة', 'sessions')}`;
 
-        const pick = data.watchlist[0];
+        const pick = displayedWatchlist()[0];
         if (pick) $('#home-top-pick').textContent = `${pick.title} — ${isEnglish() ? `${pick.score}% fit` : `توافق ${pick.score}%`}`;
         const session = data.sessions[0];
         if (session) $('#home-latest-session').textContent = `${t('أحدث جلسة:', 'Latest session:')} ${sessionDisplay(session).title}`;
@@ -575,8 +642,8 @@
     function renderBars(target, rows) {
         const root = $(target);
         root.replaceChildren();
-        const max = Math.max(...rows.slice(0, 7).map(item => item.count), 1);
-        rows.slice(0, 7).forEach(item => {
+        const max = Math.max(...rows.slice(0, 6).map(item => item.count), 1);
+        rows.slice(0, 6).forEach(item => {
             const row = el('div', 'bar-row');
             row.append(el('span', '', genreLabel(item.name)));
             const track = el('div', 'bar-track');
@@ -610,9 +677,9 @@
         const root = $('#watchlist-rows');
         const query = $('#watch-search').value.trim().toLowerCase();
         const band = $('#watch-filter').value;
-        const rows = (data.watchlist || []).filter(item => {
+        const rows = displayedWatchlist().filter(item => {
             const matchesBand = band === 'all' || item.band === band;
-            const haystack = `${item.title} ${item.originalTitle} ${item.directors.join(' ')} ${item.genres.join(' ')}`.toLowerCase();
+            const haystack = `${item.title} ${item.originalTitle || ''} ${(item.directors || []).join(' ')} ${(item.genres || []).join(' ')}`.toLowerCase();
             return matchesBand && (!query || haystack.includes(query));
         });
         root.replaceChildren();
@@ -623,10 +690,14 @@
         rows.forEach(item => {
             const row = el('article', 'watch-row');
             const title = el('div', 'watch-title');
-            title.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · IMDb ${item.imdb || '—'}`));
+            const titleLine = el('div', 'watch-title-line');
+            titleLine.append(el('b', '', item.title));
+            if (item.showcase) titleLine.append(el('span', 'calibration-badge', t('مثال معايرة', 'Calibration example')));
+            title.append(titleLine, el('small', '', `${item.year || '—'} · IMDb ${item.imdb || '—'}`));
             const meta = el('div', 'watch-meta');
-            meta.append(el('span', '', item.genres.slice(0, 3).map(genreLabel).join(isEnglish() ? ', ' : '، ') || '—'), el('small', '', `${item.runtime || '—'} ${t('دقيقة', 'min')}`));
-            const reason = el('div', 'watch-reason', item.reasons.map(watchReason).join(' · '));
+            meta.append(el('span', '', (item.genres || []).slice(0, 3).map(genreLabel).join(isEnglish() ? ', ' : '، ') || '—'), el('small', '', `${item.runtime || '—'} ${t('دقيقة', 'min')}`));
+            const reasons = item.showcase ? (isEnglish() ? item.reasonsEn : item.reasonsAr) : (item.reasons || []).map(watchReason);
+            const reason = el('div', 'watch-reason', reasons.join(' · '));
             const score = el('div', 'watch-score');
             score.append(el('span', `score-tag ${item.band}`, watchVerdict(item)), el('b', '', `${item.score}%`));
             row.append(title, meta, reason, score);
