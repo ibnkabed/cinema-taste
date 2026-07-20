@@ -71,7 +71,7 @@ The Python test suite covers scoring behavior, uncertainty, GPT-5.6 brief genera
 
 ## Build Week scope
 
-The repository begins with a commit containing the pre-hackathon project baseline. Every contest change follows it in normal Git history. The new Build Week work includes:
+The public repository preserves the imported pre-hackathon baseline at commit [`8aa5211`](https://github.com/ibnkabed/cinema-taste/commit/8aa5211b64fa74b3ea92dde87ca6965111b77b01) on the public `agent/add-bilingual-interface` branch. The default `main` branch contains the later squash-merged submission history, so the baseline commit and [dated change boundary](docs/BUILD_WEEK_CHANGELOG.md) are the clearest old-versus-new evidence. The new Build Week work includes:
 
 - an isolated contest copy with its own Git history and submission-safe files;
 - removal of torrent/download shortcuts and the VPN prompt;
@@ -84,6 +84,14 @@ The repository begins with a commit containing the pre-hackathon project baselin
 - a no-key judge demo, portable launchers, automated tests, and English documentation.
 
 See [docs/BUILD_WEEK_CHANGELOG.md](docs/BUILD_WEEK_CHANGELOG.md) for the old-versus-new boundary and [docs/JUDGE_GUIDE.md](docs/JUDGE_GUIDE.md) for a short evaluation path.
+
+## Key decisions and Codex collaboration
+
+- The owner chose to keep the original daily-use project protected and build the submission in a separate contest copy.
+- The product decision was to show an explainable percentage, confidence, positive evidence, and caution evidence rather than produce an opaque recommendation.
+- Score and confidence remain separate so a plausible match is not presented with more certainty than the available viewing history supports.
+- The public judge path is read-only and needs no key; OMDb search remains optional, and private CSV records stay local.
+- Codex with GPT-5.6 accelerated the repository isolation, engine and API implementation, bilingual interface, automated tests, and real browser verification. The owner retained the key product, privacy, and submission-scope decisions above.
 
 ## Project structure
 

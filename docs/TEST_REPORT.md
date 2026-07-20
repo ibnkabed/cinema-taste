@@ -1,8 +1,8 @@
-# Verification report — 18 July 2026
+# Verification report — rechecked 20 July 2026
 
 ## Automated checks
 
-- `python -m unittest discover -s tests -v`: 10 tests passed.
+- `python -m unittest discover -s tests -v`: 13 tests passed on 20 July 2026.
 - `python -m py_compile tools/cinema_server.py tools/taste_engine.py`: passed.
 - `node --check assets/cinema.js`: passed.
 - `git diff --check`: passed before the feature commit.

@@ -4,11 +4,11 @@
 
 Before the submission period, Cinema Taste already provided an Arabic local interface, CSV-backed liked/disliked/watchlist records, OMDb lookup, safe add/transfer operations, a static taste profile, watchlist scoring, and session notes.
 
-Git commit `8aa5211` preserves that imported baseline without rewriting its history.
+Git commit [`8aa5211`](https://github.com/ibnkabed/cinema-taste/commit/8aa5211b64fa74b3ea92dde87ca6965111b77b01) preserves that imported baseline without rewriting its history. It remains publicly reachable on the `agent/add-bilingual-interface` branch; the default `main` branch contains the later squash-merged submission history.
 
 ## Work added during the submission period
 
-All commits after the baseline are Build Week work. The contest extension adds:
+The dated commits following the baseline on that public branch, together with the squash-merged submission commits on `main`, document the Build Week work. The contest extension adds:
 
 1. A separate contest copy with its own Git history, documentation, tests, and submission-safe surface.
 2. A contest-safe discovery surface with torrent shortcuts and the VPN prompt removed.
@@ -27,5 +27,5 @@ After the owner approved the concept, the same dedicated Likelihood workflow was
 
 - Dated Git commits after the baseline.
 - Automated tests in `tests/`.
-- The primary Codex `/feedback` Session ID will be recorded in the Devpost submission.
-- The demo video will show the local analysis and the GPT-5.6 evidence brief.
+- The primary Codex `/feedback` Session ID is recorded in the Devpost submission.
+- The public demo video shows the local analysis and explains the Codex and GPT-5.6 contribution.
