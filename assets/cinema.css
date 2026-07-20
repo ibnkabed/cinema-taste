@@ -59,7 +59,7 @@ button{color:inherit}
 .section-title-row{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
 .section-title-row h2{font-size:18px;font-weight:700;margin:0}
 .section-title-row span{font-size:10.5px;color:var(--muted)}
-.action-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;border-top:1px solid var(--line);padding-top:12px}
+.action-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;border-top:1px solid var(--line);padding-top:12px}
 .action-card{min-width:0;padding:12px 12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.035)),var(--panel);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px;text-align:right;cursor:pointer;transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease;overflow:hidden;position:relative;text-decoration:none;color:inherit;box-shadow:none}
 .action-card::before{content:"";display:block;position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-soft),transparent 56%);opacity:0;transition:opacity .25s ease}
 .action-card::after{content:"";display:block;position:absolute;width:92px;height:92px;border-radius:50%;border:1px solid rgba(232,180,90,.13);inset-inline-end:-36px;bottom:-42px}

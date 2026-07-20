@@ -102,6 +102,8 @@
         'إشارات المخرجين':'Director signals',
         'مستخرجة من سجلك':'Derived from your history',
         'مدى القابلية':'Likelihood',
+        'نسبة توقعية لاحتمال إعجابك بالعمل قبل مشاهدته.':'An early estimate of how likely you are to enjoy a title before watching.',
+        'احسب النسبة ←':'Calculate likelihood →',
         '🎯 مدى القابلية':'🎯 Likelihood',
         'نسبة توقعية أولية لاحتمال أن يعجبك العمل، مبنية على ذائقتك الفعلية.':'An initial estimate of how likely a title is to fit your real viewing taste.',
         'نسبة · ثقة · تفسير':'Score · confidence · explanation',
