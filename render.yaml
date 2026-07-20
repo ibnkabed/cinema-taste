@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: cinema-taste
+    runtime: python
+    plan: free
+    buildCommand: echo "no build step required"
+    startCommand: python tools/cinema_server.py --no-open --host 0.0.0.0 --port $PORT
