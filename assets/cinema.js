@@ -520,9 +520,9 @@
     const sessionEnglish = [
         {
             match:'الجلسة الرابعة',
-            title:'Session 4 — Visual identity and Add Work repair — 14 July 2026',
-            excerpt:'The interface adopted its dark navy and cinematic gold identity, and a display-layer bug in the OMDb Add Work flow was diagnosed and fixed.',
-            text:'• Approved the compact dark-navy and cinematic-gold identity.\n• Repaired the Add Work loading layer and verified the no-scroll layout.\n• Completed a real OMDb add test with visual browser validation.'
+            title:'Session 4 — Visual identity and Add Title repair — 14 July 2026',
+            excerpt:'The interface adopted its dark navy and cinematic gold identity, and a display-layer bug in the OMDb Add Title flow was diagnosed and fixed.',
+            text:'• Approved the compact dark-navy and cinematic-gold identity.\n• Repaired the Add Title loading layer and verified the no-scroll layout.\n• Completed a real OMDb add test with visual browser validation.'
         },
         {
             match:'الجلسة الخامسة',
@@ -533,7 +533,7 @@
         {
             match:'الجلسة الثالثة',
             title:'Session 3 — Cinema Taste portal development — 14 July 2026',
-            excerpt:'The local portal, data refresh flow, watchlist ranking, and OMDb-backed Add Work experience were consolidated.',
+            excerpt:'The local portal, data refresh flow, watchlist ranking, and OMDb-backed Add Title experience were consolidated.',
             text:'• Consolidated the local Cinema Taste portal and data refresh flow.\n• Added explainable Watchlist ranking and Taste Profile signals.\n• Connected OMDb while keeping personal viewing records local.'
         },
         {

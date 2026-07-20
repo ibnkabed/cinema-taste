@@ -22,7 +22,7 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 - Explore genre, director, rating, and high-rated-reference patterns.
 - Read an explainable watchlist ranking.
 - Open the dedicated **مدى القابلية** (Likelihood) page to see a percentage, confidence, reasons, and comparable liked/disliked works.
-- Send OMDb metadata directly from **إضافة عمل** (Add Work) to the Likelihood page without searching twice.
+- Send OMDb metadata directly from **إضافة عمل** (Add Title) to the Likelihood page without searching twice.
 - Copy an Arabic or English evidence brief for a nuanced GPT-5.6 discussion.
 - Run a no-key public or local demo so judges can test the core analysis immediately.
 - Switch the complete product between `العربية | English`; `?lang=en` opens the English experience directly.
@@ -49,7 +49,7 @@ To test without an OMDb key, open **مدى القابلية** (Likelihood) and s
 
 ## Optional OMDb setup
 
-OMDb is used only to search public movie metadata. Add a key from the **إضافة عمل** (Add Work) page or set `OMDB_API_KEY` in the environment. The key is stored outside this repository in the user's local application settings.
+OMDb is used only to search public movie metadata. Add a key from the **إضافة عمل** (Add Title) page or set `OMDB_API_KEY` in the environment. The key is stored outside this repository in the user's local application settings.
 
 ## Tests
 
@@ -78,7 +78,7 @@ The public repository preserves the imported pre-hackathon baseline at commit [`
 - an explainable taste-analysis engine derived from the viewer's actual records;
 - similar-liked and similar-disliked evidence;
 - uncertainty and confidence reporting instead of a deterministic verdict;
-- a dedicated Likelihood page plus a direct Add Work → Likelihood metadata handoff;
+- a dedicated Likelihood page plus a direct Add Title → Likelihood metadata handoff;
 - Arabic and English GPT-5.6 discussion briefs;
 - a complete Arabic–English interface switch with dynamic content and RTL/LTR direction;
 - a no-key judge demo, portable launchers, automated tests, and English documentation.

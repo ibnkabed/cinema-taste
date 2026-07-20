@@ -17,9 +17,9 @@ For OMDb search and local CSV updates, install Python 3.10 or newer, run `تشغ
 
 ## Full search path (optional)
 
-1. Add an OMDb key on the **Add Work** page, or set `OMDB_API_KEY`.
-2. Search on the dedicated **Likelihood** page, or fetch a title on **Add Work**.
-3. If using Add Work, select **Measure Likelihood** after OMDb fills the title details.
+1. Add an OMDb key on the **Add Title** page, or set `OMDB_API_KEY`.
+2. Search on the dedicated **Likelihood** page, or fetch a title on **Add Title**.
+3. If using Add Title, select **Measure Likelihood** after OMDb fills the title details.
 4. The app sends the fetched metadata to Likelihood, then compares it locally with the liked and disliked records.
 
 ## What to evaluate
