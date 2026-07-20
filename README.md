@@ -21,7 +21,7 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 - Move an existing title safely between lists without duplicates.
 - Explore genre, director, rating, and high-rated-reference patterns.
 - Read an explainable watchlist ranking.
-- Open the dedicated **مدى القابلية** (Likelihood) page to see a percentage, confidence, reasons, and comparable liked/disliked works.
+- Open the dedicated **مدى القابلية** (Likelihood) page to see a percentage, confidence, reasons, and comparable liked/disliked titles.
 - Send OMDb metadata directly from **إضافة عمل** (Add Title) to the Likelihood page without searching twice.
 - Copy an Arabic or English evidence brief for a nuanced GPT-5.6 discussion.
 - Run a no-key public or local demo so judges can test the core analysis immediately.

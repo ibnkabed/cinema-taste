@@ -5,7 +5,7 @@
 1. Open the public demo: `https://cinema-taste.onrender.com/?lang=en`. It is hosted on a free tier, so the first load after idle may take up to a minute.
 2. Select **Likelihood**.
 3. Select **Instant no-key demo**.
-4. Review the initial reading, confidence, reasons, closest liked works, and caution references.
+4. Review the initial reading, confidence, reasons, closest liked titles, and caution references.
 5. Review the English explanation and expand **English judge summary** if desired.
 6. Select **Copy English brief** to inspect the structured GPT-5.6 discussion context.
 
