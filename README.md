@@ -103,3 +103,7 @@ tools/cinema_server.py  Local HTTP server, OMDb bridge, CSV safety
 tools/taste_engine.py   Explainable taste-analysis engine
 *.csv                   Portable viewing records
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
