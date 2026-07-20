@@ -6,9 +6,9 @@ The complete interface now switches between Arabic and English from the header. 
 
 ## Live judge demo
 
-Open the public, installation-free demo: [cinema-taste.abdullashammary.chatgpt.site](https://cinema-taste.abdullashammary.chatgpt.site/)
+Open the public, installation-free demo: [cinema-taste.onrender.com](https://cinema-taste.onrender.com/?lang=en)
 
-The live demo opens in English, includes the full bilingual interface, and supports the instant no-key Likelihood analysis. It is read-only so the public experience cannot modify the private local CSV records.
+The live demo opens in English, includes the full bilingual interface, and supports the instant no-key Likelihood analysis. It runs on ephemeral sample data, so the owner's private local CSV records are never exposed or modified. The demo is hosted on a free tier: the first load after idle may take up to a minute, and later loads are instant.
 
 ## Why it matters
 
@@ -90,7 +90,7 @@ See [docs/BUILD_WEEK_CHANGELOG.md](docs/BUILD_WEEK_CHANGELOG.md) for the old-ver
 - The owner chose to keep the original daily-use project protected and build the submission in a separate contest copy.
 - The product decision was to show an explainable percentage, confidence, positive evidence, and caution evidence rather than produce an opaque recommendation.
 - Score and confidence remain separate so a plausible match is not presented with more certainty than the available viewing history supports.
-- The public judge path is read-only and needs no key; OMDb search remains optional, and private CSV records stay local.
+- The public judge path needs no key and runs on ephemeral sample data; OMDb search remains optional, and the owner's private CSV records stay local.
 - Codex with GPT-5.6 accelerated the repository isolation, engine and API implementation, bilingual interface, automated tests, and real browser verification. The owner retained the key product, privacy, and submission-scope decisions above.
 
 ## Project structure
