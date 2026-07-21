@@ -8,7 +8,7 @@ The complete interface now switches between Arabic and English from the header. 
 
 Open the public, installation-free demo: [cinema-taste.abdullashammary.chatgpt.site](https://cinema-taste.abdullashammary.chatgpt.site/?lang=en)
 
-The live demo opens in English, includes the full bilingual interface, and supports the instant no-key Likelihood analysis with its transparent signal breakdown. It runs on ephemeral sample data, so the owner's private local CSV records are never exposed or modified.
+The live demo opens in English, includes the full bilingual interface, and provides two instant no-key judge paths: **Add Title** populates complete sample metadata for *A Time to Kill*, while **Likelihood** analyses *The Lincoln Lawyer* with a transparent signal breakdown. Both demos run without exposing or modifying the owner's private local CSV records.
 
 ## Why it matters
 
@@ -50,7 +50,7 @@ sh run.sh
 
 Then open [http://127.0.0.1:18765/?lang=en](http://127.0.0.1:18765/?lang=en) for English, or use the language control in the header. The contest copy uses its own port so it can run alongside the original private app on port `8765` without a conflict.
 
-To test without an OMDb key, open **مدى القابلية** (Likelihood) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
+To test without an OMDb key, open **إضافة عمل** (Add Title) and select **تجربة إضافة بلا مفتاح** (Instant no-key Add Title demo), or open **مدى القابلية** (Likelihood) and select **تجربة فورية بلا مفتاح** (Instant no-key demo).
 
 ## Optional OMDb setup
 

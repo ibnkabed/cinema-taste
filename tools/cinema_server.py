@@ -801,7 +801,10 @@ class CinemaHandler(SimpleHTTPRequestHandler):
             if not watchlist:
                 self.send_json({"ok": False, "error": "لا توجد عينة في قائمة المشاهدة.", "code": "demo_unavailable"}, 404)
                 return
-            work = watchlist[0]
+            work = next(
+                (row for row in watchlist if row_imdb_id(row) == "tt1189340"),
+                watchlist[0],
+            )
             analysis = analyze_candidate(work, read_csv(LIKED_FILE), read_csv(DISLIKED_FILE))
             self.send_json({"ok": True, "work": work, "analysis": analysis, "demo": True})
             return
