@@ -137,6 +137,10 @@
                                 <label>تاريخ الإصدار<input name="releaseDate"></label>
                                 <label class="wide-field">التصنيفات<input name="genres"></label>
                                 <label class="wide-field">المخرجون<input name="directors"></label>
+                                <label class="wide-field">الممثلون<input name="actors"></label>
+                                <label class="wide-field">الكتّاب<input name="writers"></label>
+                                <label class="wide-field">اللغة<input name="language"></label>
+                                <label class="wide-field">الحبكة<input name="plot"></label>
                                 <label class="wide-field">رابط IMDb<input name="url"></label>
                             </div>
                             <div class="add-details-actions">
@@ -209,8 +213,14 @@
                                 <article><h3>أقرب أعمال أعجبتك</h3><div class="analysis-reference-list" id="analysis-liked"></div></article>
                                 <article><h3>إشارات الحذر</h3><div class="analysis-reference-list" id="analysis-disliked"></div></article>
                             </div>
+                            <section class="analysis-breakdown" id="analysis-breakdown-wrap">
+                                <h3>على ماذا استندت النسبة؟</h3>
+                                <div id="analysis-breakdown"></div>
+                                <small class="breakdown-footnote" id="analysis-breakdown-total">—</small>
+                            </section>
                             <details class="analysis-english"><summary>English judge summary</summary><p id="analysis-summary-en">—</p></details>
                             <div class="analysis-actions">
+                                <button type="button" class="primary-btn" id="analysis-add-watchlist">🍿 إضافة إلى قائمة المشاهدة</button>
                                 <button type="button" id="copy-prompt-ar">نسخ موجز GPT‑5.6 بالعربية</button>
                                 <button type="button" id="copy-prompt-en">Copy English brief</button>
                             </div>

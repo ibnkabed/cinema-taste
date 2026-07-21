@@ -25,6 +25,7 @@
     let pendingTransfer = null;
     let omdbStatusChecked = false;
     let discoveryPromptAr = '';
+    let lastAnalyzedWork = null;
     let discoveryPromptEn = '';
     let lastDiscoveryAnalysis = null;
 
@@ -250,7 +251,7 @@
     function editableWorkFromForm() {
         const form = $('#add-details-form');
         const work = {imdbId:selectedWork?.imdbId || ''};
-        ['title','originalTitle','titleType','year','imdbRating','numVotes','runtime','releaseDate','genres','directors','url'].forEach(name => {
+        ['title','originalTitle','titleType','year','imdbRating','numVotes','runtime','releaseDate','genres','directors','actors','writers','language','plot','url'].forEach(name => {
             work[name] = form.elements.namedItem(name).value.trim();
         });
         return work;
@@ -397,6 +398,9 @@
     }
 
     function renderDiscoveryAnalysis(work, analysis, demo = false) {
+        lastAnalyzedWork = demo ? null : work;
+        const addBtn = $('#analysis-add-watchlist');
+        if (addBtn) addBtn.hidden = demo;
         lastDiscoveryAnalysis = {work, analysis, demo};
         discoveryPromptAr = analysis.codexPromptAr || '';
         discoveryPromptEn = analysis.codexPromptEn || '';
@@ -417,7 +421,40 @@
         (isEnglish() ? (analysis.reasonsEn || []) : (analysis.reasonsAr || [])).forEach(reason => reasons.append(el('span', '', reason)));
         renderAnalysisReferences('#analysis-liked', analysis.similarLiked || []);
         renderAnalysisReferences('#analysis-disliked', analysis.similarDisliked || []);
+        renderSignalBreakdown(analysis);
         $('#analysis-summary-en').textContent = `${analysis.verdictEn}. Initial reading ${analysis.score}/100 with ${analysis.confidence}/100 confidence. ${(analysis.reasonsEn || []).join(' ')} ${analysis.disclaimerEn}`;
+    }
+
+    function renderSignalBreakdown(analysis) {
+        const wrap = $('#analysis-breakdown-wrap');
+        const root = $('#analysis-breakdown');
+        if (!wrap || !root) return;
+        const rows = analysis.signalBreakdown || [];
+        wrap.hidden = !rows.length;
+        root.replaceChildren();
+        rows.forEach(item => {
+            const off = !item.available;
+            const row = el('div', `breakdown-row${off ? ' is-off' : ''}`);
+            const head = el('div', 'breakdown-head');
+            const num = item.contribution > 0 ? `+${item.contribution.toFixed(2)}` : item.contribution.toFixed(2);
+            const english = isEnglish();
+            head.append(
+                el('b', '', english ? item.labelEn : item.labelAr),
+                el('span', 'breakdown-num', off ? '—' : `${num} (${english ? 'weight' : 'وزن'} ${item.weight})`)
+            );
+            const bar = el('div', 'breakdown-bar');
+            const fill = el('i', item.contribution >= 0 ? 'pos' : 'neg');
+            fill.style.width = off ? '0%' : `${Math.min(100, Math.abs(item.contribution) / 2.5 * 100)}%`;
+            bar.append(fill);
+            row.append(head, bar, el('small', '', english ? item.detailEn : item.detailAr));
+            root.append(row);
+        });
+        const total = $('#analysis-breakdown-total');
+        if (total) total.textContent = typeof analysis.zTotal === 'number'
+            ? (isEnglish()
+                ? `Signal total z = ${analysis.zTotal} → mapped to the score by a logistic curve calibrated on your record (cap 97).`
+                : `محصلة الإشارات z = ${analysis.zTotal} ← تُحوَّل إلى النسبة عبر منحنى لوجستي معايَر على سجلك (السقف 97).`)
+            : '';
     }
 
     async function analyzeDiscovery(imdbId, sourceButton) {
@@ -458,6 +495,46 @@
             const payload = await requestJson('/api/taste/demo');
             renderDiscoveryAnalysis(payload.work, payload.analysis, true);
             showToast(t('تم تحميل عينة محلية دون استخدام OMDb.', 'A local sample was loaded without using OMDb.'));
+        } catch (error) {
+            showToast(error.message, 'error');
+        } finally {
+            setButtonBusy(button, false);
+        }
+    }
+
+    async function addAnalyzedToWatchlist() {
+        if (!lastAnalyzedWork) {
+            showToast(t('احسب مدى القابلية لعمل حقيقي أولًا.', 'Score a real title first.'), 'error');
+            return;
+        }
+        const w = lastAnalyzedWork;
+        const work = {
+            imdbId: w.imdbId || w.Const || '',
+            title: w.title || w.Title || '',
+            originalTitle: w.originalTitle || w['Original Title'] || '',
+            titleType: w.titleType || w['Title Type'] || '',
+            year: w.year || w.Year || '',
+            imdbRating: w.imdbRating || w['IMDb Rating'] || '',
+            numVotes: w.numVotes || w['Num Votes'] || '',
+            runtime: w.runtime || w['Runtime (mins)'] || '',
+            releaseDate: w.releaseDate || w['Release Date'] || '',
+            genres: w.genres || w.Genres || '',
+            directors: w.directors || w.Directors || '',
+            actors: w.actors || '',
+            writers: w.writers || '',
+            language: w.language || '',
+            plot: w.plot || '',
+            url: w.url || w.URL || '',
+        };
+        const button = $('#analysis-add-watchlist');
+        setButtonBusy(button, true, t('جارٍ الإضافة…', 'Adding…'));
+        try {
+            const result = await requestJson('/api/works/add', {
+                method: 'POST',
+                body: {destination: 'watchlist', rating: '', work},
+            });
+            hydrate(result.data);
+            showToast(result.message);
         } catch (error) {
             showToast(error.message, 'error');
         } finally {
@@ -747,6 +824,7 @@
         $('#discovery-search-form').addEventListener('submit', searchDiscovery);
         $('#discovery-demo-button').addEventListener('click', loadDiscoveryDemo);
         $('#predict-from-add-btn').addEventListener('click', analyzeSelectedWork);
+        $('#analysis-add-watchlist').addEventListener('click', addAnalyzedToWatchlist);
         $('#copy-prompt-ar').addEventListener('click', () => copyDiscoveryPrompt('ar'));
         $('#copy-prompt-en').addEventListener('click', () => copyDiscoveryPrompt('en'));
         $('#add-details-form').addEventListener('submit', addSelectedWork);

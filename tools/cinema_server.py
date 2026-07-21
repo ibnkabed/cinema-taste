@@ -21,7 +21,7 @@ from urllib.parse import unquote, urlencode, urlparse
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree as ET
 
-from taste_engine import analyze_candidate
+from taste_engine import analyze_candidate, build_affinity_stats
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -196,7 +196,7 @@ def omdb_details(imdb_id: object) -> dict[str, str]:
     identifier = clean(imdb_id)
     if not re.fullmatch(r"tt\d{7,10}", identifier):
         raise ApiError(400, "رقم IMDb غير صالح.", "invalid_imdb_id")
-    payload = omdb_request({"i": identifier, "plot": "short"})
+    payload = omdb_request({"i": identifier, "plot": "full"})
     if clean(payload.get("Response")).lower() == "false":
         status, message, code = omdb_error_status(payload)
         raise ApiError(status, message, code)
@@ -224,6 +224,10 @@ def omdb_details(imdb_id: object) -> dict[str, str]:
         "numVotes": re.sub(r"\D", "", omdb_value("imdbVotes")),
         "releaseDate": parse_omdb_date(payload.get("Released")),
         "directors": omdb_value("Director"),
+        "actors": omdb_value("Actors"),
+        "writers": omdb_value("Writer"),
+        "language": omdb_value("Language"),
+        "plot": omdb_value("Plot"),
         "poster": omdb_value("Poster"),
     }
 
@@ -272,6 +276,7 @@ def normalize_editable_work(value: object) -> dict[str, str]:
         "title": 300, "originalTitle": 300, "url": 500, "titleType": 80,
         "imdbRating": 12, "runtime": 12, "year": 12, "genres": 500,
         "numVotes": 30, "releaseDate": 40, "directors": 500,
+        "actors": 500, "writers": 500, "language": 200, "plot": 4000,
     }
     work = {name: clean(value.get(name))[:limit] for name, limit in limits.items()}
     work["imdbId"] = clean(value.get("imdbId"))
@@ -346,6 +351,34 @@ def build_destination_row(
     return headers, row
 
 
+ENRICHMENT_PATH = DATA_DIR / "library-enrichment.json"
+
+
+def save_enrichment_entry(work: dict[str, str]) -> None:
+    """Persist actors/writers/language for a newly added work into the local
+    enrichment cache, so future similarity dimensions cover it too."""
+    fields = {
+        "Title": clean(work.get("title")),
+        "Actors": clean(work.get("actors")),
+        "Writer": clean(work.get("writers")),
+        "Language": clean(work.get("language")),
+        "imdbRating": clean(work.get("imdbRating")),
+        "Plot": clean(work.get("plot")),
+    }
+    if not (fields["Actors"] or fields["Writer"] or fields["Plot"]):
+        return
+    try:
+        cache = json.loads(ENRICHMENT_PATH.read_text(encoding="utf-8")) if ENRICHMENT_PATH.exists() else {}
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+    cache[clean(work.get("imdbId"))] = {name: value for name, value in fields.items() if value}
+    try:
+        ENRICHMENT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        ENRICHMENT_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+    except OSError:
+        pass  # enrichment is best-effort; adding the work must not fail
+
+
 def add_work(payload: object) -> tuple[dict[str, object], dict[str, object], str]:
     if not isinstance(payload, dict):
         raise ApiError(400, "طلب الإضافة غير مكتمل.", "invalid_request")
@@ -379,6 +412,7 @@ def add_work(payload: object) -> tuple[dict[str, object], dict[str, object], str
             os.fsync(handle.fileno())
     except OSError as exc:
         raise ApiError(500, "تعذر الكتابة في ملف القائمة. أغلق الملف في Excel ثم أعد المحاولة.", "csv_locked") from exc
+    save_enrichment_entry(work)
     data, changes = build_data()
     return data, changes, destination_label
 
@@ -536,44 +570,27 @@ def director_signals(liked: list[dict[str, str]], disliked: list[dict[str, str]]
 
 
 def score_watchlist(
-    rows: list[dict[str, str]], signals: dict[str, int]
+    rows: list[dict[str, str]],
+    liked: list[dict[str, str]],
+    disliked: list[dict[str, str]],
 ) -> list[dict[str, object]]:
+    """Rank the watchlist with the SAME engine as مدى القابلية, so the two
+    sections can never disagree and scores refresh automatically."""
     scored: list[dict[str, object]] = []
+    shared_stats = build_affinity_stats(liked, disliked)
     for row in rows:
         genres = genres_of(row)
         directors = directors_of(row)
-        weights = [POSITIVE_GENRES.get(genre, 0) + RISK_GENRES.get(genre, 0) for genre in genres]
-        score = 53 + (sum(weights) / max(1, len(weights)))
-        director_bonus = max([signals.get(name, 0) for name in directors] or [0])
-        score += director_bonus
         runtime = number(row.get("Runtime (mins)"))
-        if 85 <= runtime <= 135:
-            score += 4
-        elif runtime >= 165:
-            score -= 6
         imdb = number(row.get("IMDb Rating"))
-        if 5.8 <= imdb <= 7.8:
-            score += 2
-        score = int(round(max(25, min(93, score))))
+        analysis = analyze_candidate(row, liked, disliked, stats=shared_stats)
+        score = int(analysis["score"])
+        reasons = list(analysis["reasonsAr"])[:3]
 
-        positives = [genre for genre in genres if POSITIVE_GENRES.get(genre, 0) >= 7]
-        risks = [genre for genre in genres if RISK_GENRES.get(genre, 0) <= -5]
-        reasons: list[str] = []
-        if positives:
-            reasons.append("تركيبة مناسبة: " + "، ".join(positives[:3]))
-        if director_bonus >= 4 and directors:
-            reasons.append("إشارة مخرج إيجابية: " + directors[0])
-        if 85 <= runtime <= 135:
-            reasons.append("مدة مناسبة لإيقاعك")
-        if risks:
-            reasons.append("عامل مخاطرة: " + "، ".join(risks[:2]))
-        if not reasons:
-            reasons.append("توافق متوسط يحتاج معايرة بعد المشاهدة")
-
-        if score >= 75:
+        if score >= 88:
             verdict = "شاهد أولًا"
             band = "high"
-        elif score >= 63:
+        elif score >= 72:
             verdict = "مرشح جيد"
             band = "good"
         elif score >= 50:
@@ -684,7 +701,7 @@ def build_data() -> tuple[dict[str, object], dict[str, object]]:
         ({"name": name, "signal": signal} for name, signal in signals.items() if signal >= 4),
         key=lambda item: (-item["signal"], item["name"]),
     )[:15]
-    scored_watchlist = score_watchlist(watchlist, signals)
+    scored_watchlist = score_watchlist(watchlist, liked, disliked)
 
     old = load_old()
     changed = changed_files(old, source_files)
