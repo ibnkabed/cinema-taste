@@ -32,6 +32,8 @@ Streaming catalogs are large, generic recommendation feeds optimize for engageme
 
 The engine compares a title's genres, directors, cast, writers, runtime, and release year against the viewer's liked and disliked history, using rating-weighted affinities and a nearest-neighbour reference match (closest liked and disliked titles, plus a single best-match "anchor"). Evidence is weighted by how strongly the viewer rated it, the two libraries are balanced so a shared genre reads as neutral rather than negative, and a conflict index lowers confidence and reports "split taste" when the history is divided. Cast, writers, language, and plot are retrieved from OMDb to enrich the profile; the score is a bounded, explainable estimate — never a flat 0 or 100, and never a deterministic yes/no.
 
+Cinema Taste is designed to become more reliable as the viewer's history grows. As more representative movies and series are added to both the Liked and Disliked libraries, the Likelihood engine gains stronger positive and negative evidence, allowing it to distinguish lasting taste patterns from isolated reactions. This makes future estimates better calibrated and generally more accurate for that specific viewer.
+
 ## Quick start
 
 Requirements: Python 3.10 or newer. The application uses only the Python standard library and needs no package installation.
