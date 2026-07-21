@@ -8,6 +8,8 @@ The complete interface now switches between Arabic and English from the header. 
 
 Open the public, installation-free demo: [cinema-taste.onrender.com](https://cinema-taste.onrender.com/?lang=en)
 
+Demo video (YouTube): [youtu.be/7dQNdmQRgY0](https://youtu.be/7dQNdmQRgY0)
+
 The live demo opens in English, includes the full bilingual interface, and supports the instant no-key Likelihood analysis. It runs on ephemeral sample data, so the owner's private local CSV records are never exposed or modified. The demo is hosted on a free tier: the first load after idle may take up to a minute, and later loads are instant.
 
 ## Why it matters
