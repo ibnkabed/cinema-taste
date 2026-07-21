@@ -1,7 +1,7 @@
 window.CINEMA_DATA = {
   "meta": {
     "projectName": "الذائقة السينمائية",
-    "generatedAt": "2026-07-20T11:04:54+03:00",
+    "generatedAt": "2026-07-21T15:06:33+03:00",
     "version": 1,
     "sourceFiles": [
       {
@@ -288,163 +288,62 @@ window.CINEMA_DATA = {
       "runtime": 97,
       "imdb": 7.6,
       "url": "https://www.imdb.com/title/tt0088680/",
-      "score": 76,
+      "score": 97,
       "verdict": "شاهد أولًا",
       "band": "high",
       "reasons": [
-        "تركيبة مناسبة: Crime، Thriller",
-        "إشارة مخرج إيجابية: Martin Scorsese",
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Cape Fear"
       ]
     },
     {
-      "const": "tt0119177",
-      "title": "Gattaca",
-      "originalTitle": "Gattaca",
-      "year": 1997,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Sci-Fi",
-        "Thriller"
-      ],
-      "directors": [
-        "Andrew Niccol"
-      ],
-      "runtime": 106,
-      "imdb": 7.7,
-      "url": "https://www.imdb.com/title/tt0119177/",
-      "score": 71,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Sci-Fi، Thriller",
-        "إشارة مخرج إيجابية: Andrew Niccol",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0164181",
-      "title": "Stir of Echoes",
-      "originalTitle": "Stir of Echoes",
-      "year": 1999,
-      "type": "Movie",
-      "genres": [
-        "Horror",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "David Koepp"
-      ],
-      "runtime": 99,
-      "imdb": 6.9,
-      "url": "https://www.imdb.com/title/tt0164181/",
-      "score": 71,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Horror، Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0094226",
-      "title": "The Untouchables",
-      "originalTitle": "The Untouchables",
-      "year": 1987,
+      "const": "tt0154506",
+      "title": "Following",
+      "originalTitle": "Following",
+      "year": 1998,
       "type": "Movie",
       "genres": [
         "Crime",
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [
-        "Brian De Palma"
-      ],
-      "runtime": 119,
-      "imdb": 7.8,
-      "url": "https://www.imdb.com/title/tt0094226/",
-      "score": 71,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Thriller",
-        "إشارة مخرج إيجابية: Brian De Palma",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0091474",
-      "title": "Manhunter",
-      "originalTitle": "Manhunter",
-      "year": 1986,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "Michael Mann"
-      ],
-      "runtime": 120,
-      "imdb": 7.2,
-      "url": "https://www.imdb.com/title/tt0091474/",
-      "score": 69,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0077745",
-      "title": "Invasion of the Body Snatchers",
-      "originalTitle": "Invasion of the Body Snatchers",
-      "year": 1978,
-      "type": "Movie",
-      "genres": [
-        "Horror",
-        "Sci-Fi"
-      ],
-      "directors": [
-        "Philip Kaufman"
-      ],
-      "runtime": 115,
-      "imdb": 7.4,
-      "url": "https://www.imdb.com/title/tt0077745/",
-      "score": 68,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Horror، Sci-Fi",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0209144",
-      "title": "Memento",
-      "originalTitle": "Memento",
-      "year": 2000,
-      "type": "Movie",
-      "genres": [
         "Mystery",
         "Thriller"
       ],
       "directors": [
         "Christopher Nolan"
       ],
-      "runtime": 113,
-      "imdb": 8.4,
-      "url": "https://www.imdb.com/title/tt0209144/",
-      "score": 68,
-      "verdict": "مرشح جيد",
-      "band": "good",
+      "runtime": 69,
+      "imdb": 7.4,
+      "url": "https://www.imdb.com/title/tt0154506/",
+      "score": 97,
+      "verdict": "شاهد أولًا",
+      "band": "high",
       "reasons": [
-        "تركيبة مناسبة: Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أقرب عمل أعجبك: Memento",
+        "أقرب إشارة معاكسة: Dunkirk"
+      ]
+    },
+    {
+      "const": "tt37543147",
+      "title": "Life, Larry and the Pursuit of Unhappiness: an Almost History of America",
+      "originalTitle": "Life, Larry and the Pursuit of Unhappiness: An Almost History of America",
+      "year": 2026,
+      "type": "TV Series",
+      "genres": [
+        "Comedy",
+        "History"
+      ],
+      "directors": [],
+      "runtime": 30,
+      "imdb": 7.0,
+      "url": "https://www.imdb.com/title/tt37543147/",
+      "score": 97,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع تحمل إشارات حذر: History",
+        "أقرب عمل أعجبك: Curb Your Enthusiasm",
+        "أقرب إشارة معاكسة: Shakespeare in Love"
       ]
     },
     {
@@ -466,189 +365,39 @@ window.CINEMA_DATA = {
       "runtime": 122,
       "imdb": 7.1,
       "url": "https://www.imdb.com/title/tt5052474/",
-      "score": 68,
-      "verdict": "مرشح جيد",
-      "band": "good",
+      "score": 97,
+      "verdict": "شاهد أولًا",
+      "band": "high",
       "reasons": [
-        "تركيبة مناسبة: Action، Crime، Mystery",
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Action، Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Sicario"
       ]
     },
     {
-      "const": "tt0898367",
-      "title": "The Road",
-      "originalTitle": "The Road",
-      "year": 2009,
+      "const": "tt0164181",
+      "title": "Stir of Echoes",
+      "originalTitle": "Stir of Echoes",
+      "year": 1999,
       "type": "Movie",
       "genres": [
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [
-        "John Hillcoat"
-      ],
-      "runtime": 111,
-      "imdb": 7.2,
-      "url": "https://www.imdb.com/title/tt0898367/",
-      "score": 68,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0090756",
-      "title": "Blue Velvet",
-      "originalTitle": "Blue Velvet",
-      "year": 1986,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama",
+        "Horror",
         "Mystery",
         "Thriller"
       ],
       "directors": [
-        "David Lynch"
+        "David Koepp"
       ],
-      "runtime": 120,
-      "imdb": 7.7,
-      "url": "https://www.imdb.com/title/tt0090756/",
-      "score": 67,
-      "verdict": "مرشح جيد",
-      "band": "good",
+      "runtime": 99,
+      "imdb": 6.9,
+      "url": "https://www.imdb.com/title/tt0164181/",
+      "score": 97,
+      "verdict": "شاهد أولًا",
+      "band": "high",
       "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0278504",
-      "title": "Insomnia",
-      "originalTitle": "Insomnia",
-      "year": 2002,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "Christopher Nolan"
-      ],
-      "runtime": 118,
-      "imdb": 7.2,
-      "url": "https://www.imdb.com/title/tt0278504/",
-      "score": 67,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt1872194",
-      "title": "The Judge",
-      "originalTitle": "The Judge",
-      "year": 2014,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "David Dobkin"
-      ],
-      "runtime": 141,
-      "imdb": 7.4,
-      "url": "https://www.imdb.com/title/tt1872194/",
-      "score": 67,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller",
-        "إشارة مخرج إيجابية: David Dobkin"
-      ]
-    },
-    {
-      "const": "tt1189340",
-      "title": "The Lincoln Lawyer",
-      "originalTitle": "The Lincoln Lawyer",
-      "year": 2011,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "Brad Furman"
-      ],
-      "runtime": 118,
-      "imdb": 7.3,
-      "url": "https://www.imdb.com/title/tt1189340/",
-      "score": 67,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt4550098",
-      "title": "Nocturnal Animals",
-      "originalTitle": "Nocturnal Animals",
-      "year": 2016,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [
-        "Tom Ford"
-      ],
-      "runtime": 116,
-      "imdb": 7.4,
-      "url": "https://www.imdb.com/title/tt4550098/",
-      "score": 66,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Thriller",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0081398",
-      "title": "Raging Bull",
-      "originalTitle": "Raging Bull",
-      "year": 1980,
-      "type": "Movie",
-      "genres": [
-        "Biography",
-        "Drama",
-        "Sport"
-      ],
-      "directors": [
-        "Martin Scorsese"
-      ],
-      "runtime": 129,
-      "imdb": 8.1,
-      "url": "https://www.imdb.com/title/tt0081398/",
-      "score": 66,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "إشارة مخرج إيجابية: Martin Scorsese",
-        "مدة مناسبة لإيقاعك",
-        "عامل مخاطرة: Biography"
+        "أنواع متوافقة مع السجل: Horror، Thriller، Mystery",
+        "أقرب عمل أعجبك: Gothika",
+        "أقرب إشارة معاكسة: Mystic River"
       ]
     },
     {
@@ -668,12 +417,142 @@ window.CINEMA_DATA = {
       "runtime": 109,
       "imdb": 8.2,
       "url": "https://www.imdb.com/title/tt0084787/",
-      "score": 66,
-      "verdict": "مرشح جيد",
-      "band": "good",
+      "score": 97,
+      "verdict": "شاهد أولًا",
+      "band": "high",
       "reasons": [
-        "تركيبة مناسبة: Horror، Mystery، Sci-Fi",
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Horror، Mystery، Sci-Fi",
+        "أقرب عمل أعجبك: Bird Box",
+        "أقرب إشارة معاكسة: Donnie Darko"
+      ]
+    },
+    {
+      "const": "tt0472043",
+      "title": "Apocalypto",
+      "originalTitle": "Apocalypto",
+      "year": 2006,
+      "type": "Movie",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Thriller"
+      ],
+      "directors": [
+        "Mel Gibson"
+      ],
+      "runtime": 139,
+      "imdb": 7.9,
+      "url": "https://www.imdb.com/title/tt0472043/",
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Action، Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: xXx"
+      ]
+    },
+    {
+      "const": "tt0119177",
+      "title": "Gattaca",
+      "originalTitle": "Gattaca",
+      "year": 1997,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "directors": [
+        "Andrew Niccol"
+      ],
+      "runtime": 106,
+      "imdb": 7.7,
+      "url": "https://www.imdb.com/title/tt0119177/",
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Sci-Fi",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: S1m0ne"
+      ]
+    },
+    {
+      "const": "tt0077745",
+      "title": "Invasion of the Body Snatchers",
+      "originalTitle": "Invasion of the Body Snatchers",
+      "year": 1978,
+      "type": "Movie",
+      "genres": [
+        "Horror",
+        "Sci-Fi"
+      ],
+      "directors": [
+        "Philip Kaufman"
+      ],
+      "runtime": 115,
+      "imdb": 7.4,
+      "url": "https://www.imdb.com/title/tt0077745/",
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Horror، Sci-Fi",
+        "أقرب عمل أعجبك: Alien",
+        "أقرب إشارة معاكسة: Jurassic Park"
+      ]
+    },
+    {
+      "const": "tt0390384",
+      "title": "Primer",
+      "originalTitle": "Primer",
+      "year": 2004,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "directors": [
+        "Shane Carruth"
+      ],
+      "runtime": 77,
+      "imdb": 6.7,
+      "url": "https://www.imdb.com/title/tt0390384/",
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Sci-Fi",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Children of Men"
+      ]
+    },
+    {
+      "const": "tt0071562",
+      "title": "The Godfather Part II",
+      "originalTitle": "The Godfather Part II",
+      "year": 1974,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "directors": [
+        "Francis Ford Coppola"
+      ],
+      "runtime": 202,
+      "imdb": 9.0,
+      "url": "https://www.imdb.com/title/tt0071562/",
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Godfather",
+        "أقرب إشارة معاكسة: Pulp Fiction"
       ]
     },
     {
@@ -695,12 +574,321 @@ window.CINEMA_DATA = {
       "runtime": 107,
       "imdb": 7.7,
       "url": "https://www.imdb.com/title/tt5362988/",
-      "score": 66,
+      "score": 96,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Hell or High Water"
+      ]
+    },
+    {
+      "const": "tt0209144",
+      "title": "Memento",
+      "originalTitle": "Memento",
+      "year": 2000,
+      "type": "Movie",
+      "genres": [
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "Christopher Nolan"
+      ],
+      "runtime": 113,
+      "imdb": 8.4,
+      "url": "https://www.imdb.com/title/tt0209144/",
+      "score": 95,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أقرب عمل أعجبك: The Prestige",
+        "أقرب إشارة معاكسة: Dunkirk"
+      ]
+    },
+    {
+      "const": "tt0047478",
+      "title": "Seven Samurai",
+      "originalTitle": "Shichinin no samurai",
+      "year": 1954,
+      "type": "Movie",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "directors": [
+        "Akira Kurosawa"
+      ],
+      "runtime": 207,
+      "imdb": 8.6,
+      "url": "https://www.imdb.com/title/tt0047478/",
+      "score": 95,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Action",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Last Samurai"
+      ]
+    },
+    {
+      "const": "tt0091474",
+      "title": "Manhunter",
+      "originalTitle": "Manhunter",
+      "year": 1986,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "Michael Mann"
+      ],
+      "runtime": 120,
+      "imdb": 7.2,
+      "url": "https://www.imdb.com/title/tt0091474/",
+      "score": 94,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أقرب عمل أعجبك: Taking Lives",
+        "أقرب إشارة معاكسة: Mystic River"
+      ]
+    },
+    {
+      "const": "tt0094226",
+      "title": "The Untouchables",
+      "originalTitle": "The Untouchables",
+      "year": 1987,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "directors": [
+        "Brian De Palma"
+      ],
+      "runtime": 119,
+      "imdb": 7.8,
+      "url": "https://www.imdb.com/title/tt0094226/",
+      "score": 94,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Cape Fear"
+      ]
+    },
+    {
+      "const": "tt0278504",
+      "title": "Insomnia",
+      "originalTitle": "Insomnia",
+      "year": 2002,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "Christopher Nolan"
+      ],
+      "runtime": 118,
+      "imdb": 7.2,
+      "url": "https://www.imdb.com/title/tt0278504/",
+      "score": 93,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Prestige"
+      ]
+    },
+    {
+      "const": "tt34866681",
+      "title": "Lucky",
+      "originalTitle": "Lucky",
+      "year": 2026,
+      "type": "TV Series",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "directors": [],
+      "runtime": null,
+      "imdb": null,
+      "url": "https://www.imdb.com/title/tt34866681/",
+      "score": 93,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Task"
+      ]
+    },
+    {
+      "const": "tt0038650",
+      "title": "It's a Wonderful Life",
+      "originalTitle": "It's a Wonderful Life",
+      "year": 1946,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Family",
+        "Fantasy",
+        "Romance"
+      ],
+      "directors": [
+        "Frank Capra"
+      ],
+      "runtime": 130,
+      "imdb": 8.6,
+      "url": "https://www.imdb.com/title/tt0038650/",
+      "score": 92,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع تحمل إشارات حذر: Romance، Drama",
+        "أقرب عمل أعجبك: The Age of Adaline",
+        "أقرب إشارة معاكسة: Forrest Gump"
+      ]
+    },
+    {
+      "const": "tt0090756",
+      "title": "Blue Velvet",
+      "originalTitle": "Blue Velvet",
+      "year": 1986,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "David Lynch"
+      ],
+      "runtime": 120,
+      "imdb": 7.7,
+      "url": "https://www.imdb.com/title/tt0090756/",
+      "score": 91,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Seven"
+      ]
+    },
+    {
+      "const": "tt10272386",
+      "title": "The Father",
+      "originalTitle": "The Father",
+      "year": 2020,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "directors": [
+        "Florian Zeller"
+      ],
+      "runtime": 97,
+      "imdb": 8.2,
+      "url": "https://www.imdb.com/title/tt10272386/",
+      "score": 91,
+      "verdict": "شاهد أولًا",
+      "band": "high",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Searching"
+      ]
+    },
+    {
+      "const": "tt1189340",
+      "title": "The Lincoln Lawyer",
+      "originalTitle": "The Lincoln Lawyer",
+      "year": 2011,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "Brad Furman"
+      ],
+      "runtime": 118,
+      "imdb": 7.3,
+      "url": "https://www.imdb.com/title/tt1189340/",
+      "score": 87,
       "verdict": "مرشح جيد",
       "band": "good",
       "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller",
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Body"
+      ]
+    },
+    {
+      "const": "tt1360860",
+      "title": "About Elly",
+      "originalTitle": "Darbareye Elly",
+      "year": 2009,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "directors": [
+        "Asghar Farhadi"
+      ],
+      "runtime": 119,
+      "imdb": 7.9,
+      "url": "https://www.imdb.com/title/tt1360860/",
+      "score": 86,
+      "verdict": "مرشح جيد",
+      "band": "good",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Skin I Live In"
+      ]
+    },
+    {
+      "const": "tt0056058",
+      "title": "Harakiri",
+      "originalTitle": "Seppuku",
+      "year": 1962,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Mystery"
+      ],
+      "directors": [
+        "Masaki Kobayashi"
+      ],
+      "runtime": 133,
+      "imdb": 8.6,
+      "url": "https://www.imdb.com/title/tt0056058/",
+      "score": 86,
+      "verdict": "مرشح جيد",
+      "band": "good",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Rear Window"
       ]
     },
     {
@@ -720,323 +908,13 @@ window.CINEMA_DATA = {
       "runtime": 149,
       "imdb": 7.5,
       "url": "https://www.imdb.com/title/tt0117913/",
-      "score": 65,
+      "score": 85,
       "verdict": "مرشح جيد",
       "band": "good",
       "reasons": [
-        "تركيبة مناسبة: Crime، Thriller"
-      ]
-    },
-    {
-      "const": "tt0154506",
-      "title": "Following",
-      "originalTitle": "Following",
-      "year": 1998,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Mystery",
-        "Thriller"
-      ],
-      "directors": [
-        "Christopher Nolan"
-      ],
-      "runtime": 69,
-      "imdb": 7.4,
-      "url": "https://www.imdb.com/title/tt0154506/",
-      "score": 65,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller"
-      ]
-    },
-    {
-      "const": "tt0106489",
-      "title": "A Bronx Tale",
-      "originalTitle": "A Bronx Tale",
-      "year": 1993,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "directors": [
-        "Robert De Niro"
-      ],
-      "runtime": 121,
-      "imdb": 7.8,
-      "url": "https://www.imdb.com/title/tt0106489/",
-      "score": 64,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt2713180",
-      "title": "Fury",
-      "originalTitle": "Fury",
-      "year": 2014,
-      "type": "Movie",
-      "genres": [
-        "Action",
-        "Drama",
-        "War"
-      ],
-      "directors": [
-        "David Ayer"
-      ],
-      "runtime": 134,
-      "imdb": 7.6,
-      "url": "https://www.imdb.com/title/tt2713180/",
-      "score": 64,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Action",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0490215",
-      "title": "Silence",
-      "originalTitle": "Silence",
-      "year": 2016,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "History"
-      ],
-      "directors": [
-        "Martin Scorsese"
-      ],
-      "runtime": 161,
-      "imdb": 7.2,
-      "url": "https://www.imdb.com/title/tt0490215/",
-      "score": 64,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "إشارة مخرج إيجابية: Martin Scorsese",
-        "عامل مخاطرة: History"
-      ]
-    },
-    {
-      "const": "tt1360860",
-      "title": "About Elly",
-      "originalTitle": "Darbareye Elly",
-      "year": 2009,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Mystery"
-      ],
-      "directors": [
-        "Asghar Farhadi"
-      ],
-      "runtime": 119,
-      "imdb": 7.9,
-      "url": "https://www.imdb.com/title/tt1360860/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Mystery",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0056058",
-      "title": "Harakiri",
-      "originalTitle": "Seppuku",
-      "year": 1962,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Mystery"
-      ],
-      "directors": [
-        "Masaki Kobayashi"
-      ],
-      "runtime": 133,
-      "imdb": 8.6,
-      "url": "https://www.imdb.com/title/tt0056058/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Mystery",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0074958",
-      "title": "Network",
-      "originalTitle": "Network",
-      "year": 1976,
-      "type": "Movie",
-      "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Sidney Lumet"
-      ],
-      "runtime": 121,
-      "imdb": 8.1,
-      "url": "https://www.imdb.com/title/tt0074958/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "إشارة مخرج إيجابية: Sidney Lumet",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0390384",
-      "title": "Primer",
-      "originalTitle": "Primer",
-      "year": 2004,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Sci-Fi",
-        "Thriller"
-      ],
-      "directors": [
-        "Shane Carruth"
-      ],
-      "runtime": 77,
-      "imdb": 6.7,
-      "url": "https://www.imdb.com/title/tt0390384/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Sci-Fi، Thriller"
-      ]
-    },
-    {
-      "const": "tt10272386",
-      "title": "The Father",
-      "originalTitle": "The Father",
-      "year": 2020,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Mystery"
-      ],
-      "directors": [
-        "Florian Zeller"
-      ],
-      "runtime": 97,
-      "imdb": 8.2,
-      "url": "https://www.imdb.com/title/tt10272386/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Mystery",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt1817273",
-      "title": "The Place Beyond the Pines",
-      "originalTitle": "The Place Beyond the Pines",
-      "year": 2012,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [
-        "Derek Cianfrance"
-      ],
-      "runtime": 140,
-      "imdb": 7.3,
-      "url": "https://www.imdb.com/title/tt1817273/",
-      "score": 63,
-      "verdict": "مرشح جيد",
-      "band": "good",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Thriller"
-      ]
-    },
-    {
-      "const": "tt1235166",
-      "title": "A Prophet",
-      "originalTitle": "Un prophète",
-      "year": 2009,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "directors": [
-        "Jacques Audiard"
-      ],
-      "runtime": 155,
-      "imdb": 7.8,
-      "url": "https://www.imdb.com/title/tt1235166/",
-      "score": 62,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Crime"
-      ]
-    },
-    {
-      "const": "tt0120586",
-      "title": "American History X",
-      "originalTitle": "American History X",
-      "year": 1998,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "directors": [
-        "Tony Kaye"
-      ],
-      "runtime": 119,
-      "imdb": 8.5,
-      "url": "https://www.imdb.com/title/tt0120586/",
-      "score": 62,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Crime",
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0472043",
-      "title": "Apocalypto",
-      "originalTitle": "Apocalypto",
-      "year": 2006,
-      "type": "Movie",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [
-        "Mel Gibson"
-      ],
-      "runtime": 139,
-      "imdb": 7.9,
-      "url": "https://www.imdb.com/title/tt0472043/",
-      "score": 62,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Action، Thriller"
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Jackie Brown"
       ]
     },
     {
@@ -1058,11 +936,63 @@ window.CINEMA_DATA = {
       "runtime": 145,
       "imdb": 6.7,
       "url": "https://www.imdb.com/title/tt15047880/",
-      "score": 62,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 80,
+      "verdict": "مرشح جيد",
+      "band": "good",
       "reasons": [
-        "تركيبة مناسبة: Action، Mystery، Sci-Fi"
+        "أنواع متوافقة مع السجل: Action، Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Minority Report"
+      ]
+    },
+    {
+      "const": "tt0898367",
+      "title": "The Road",
+      "originalTitle": "The Road",
+      "year": 2009,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Thriller"
+      ],
+      "directors": [
+        "John Hillcoat"
+      ],
+      "runtime": 111,
+      "imdb": 7.2,
+      "url": "https://www.imdb.com/title/tt0898367/",
+      "score": 78,
+      "verdict": "مرشح جيد",
+      "band": "good",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Experiment"
+      ]
+    },
+    {
+      "const": "tt4550098",
+      "title": "Nocturnal Animals",
+      "originalTitle": "Nocturnal Animals",
+      "year": 2016,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Thriller"
+      ],
+      "directors": [
+        "Tom Ford"
+      ],
+      "runtime": 116,
+      "imdb": 7.4,
+      "url": "https://www.imdb.com/title/tt4550098/",
+      "score": 77,
+      "verdict": "مرشح جيد",
+      "band": "good",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Parasite"
       ]
     },
     {
@@ -1083,213 +1013,39 @@ window.CINEMA_DATA = {
       "runtime": 143,
       "imdb": 8.4,
       "url": "https://www.imdb.com/title/tt0057565/",
-      "score": 61,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 76,
+      "verdict": "مرشح جيد",
+      "band": "good",
       "reasons": [
-        "تركيبة مناسبة: Crime، Mystery، Thriller"
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Drishyam 2"
       ]
     },
     {
-      "const": "tt34866681",
-      "title": "Lucky",
-      "originalTitle": "Lucky",
-      "year": 2026,
-      "type": "TV Series",
-      "genres": [
-        "Crime",
-        "Drama",
-        "Thriller"
-      ],
-      "directors": [],
-      "runtime": null,
-      "imdb": null,
-      "url": "https://www.imdb.com/title/tt34866681/",
-      "score": 61,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Crime، Thriller"
-      ]
-    },
-    {
-      "const": "tt0081283",
-      "title": "Ordinary People",
-      "originalTitle": "Ordinary People",
-      "year": 1980,
-      "type": "Movie",
-      "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Robert Redford"
-      ],
-      "runtime": 124,
-      "imdb": 7.7,
-      "url": "https://www.imdb.com/title/tt0081283/",
-      "score": 61,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0058461",
-      "title": "A Fistful of Dollars",
-      "originalTitle": "Per un pugno di dollari",
-      "year": 1964,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Western"
-      ],
-      "directors": [
-        "Sergio Leone"
-      ],
-      "runtime": 99,
-      "imdb": 7.9,
-      "url": "https://www.imdb.com/title/tt0058461/",
-      "score": 60,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0059578",
-      "title": "For a Few Dollars More",
-      "originalTitle": "Per qualche dollaro in più",
-      "year": 1965,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Western"
-      ],
-      "directors": [
-        "Sergio Leone"
-      ],
-      "runtime": 132,
-      "imdb": 8.2,
-      "url": "https://www.imdb.com/title/tt0059578/",
-      "score": 60,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt1832382",
-      "title": "A Separation",
-      "originalTitle": "Jodaeiye Nader az Simin",
-      "year": 2011,
-      "type": "Movie",
-      "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Asghar Farhadi"
-      ],
-      "runtime": 123,
-      "imdb": 8.3,
-      "url": "https://www.imdb.com/title/tt1832382/",
-      "score": 59,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt1602620",
-      "title": "Amour",
-      "originalTitle": "Amour",
+      "const": "tt1817273",
+      "title": "The Place Beyond the Pines",
+      "originalTitle": "The Place Beyond the Pines",
       "year": 2012,
       "type": "Movie",
       "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Michael Haneke"
-      ],
-      "runtime": 127,
-      "imdb": 7.9,
-      "url": "https://www.imdb.com/title/tt1602620/",
-      "score": 59,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt8267604",
-      "title": "Capernaum",
-      "originalTitle": "Capharnaüm",
-      "year": 2018,
-      "type": "Movie",
-      "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Nadine Labaki"
-      ],
-      "runtime": 126,
-      "imdb": 8.4,
-      "url": "https://www.imdb.com/title/tt8267604/",
-      "score": 59,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0180093",
-      "title": "Requiem for a Dream",
-      "originalTitle": "Requiem for a Dream",
-      "year": 2000,
-      "type": "Movie",
-      "genres": [
-        "Drama"
-      ],
-      "directors": [
-        "Darren Aronofsky"
-      ],
-      "runtime": 102,
-      "imdb": 8.3,
-      "url": "https://www.imdb.com/title/tt0180093/",
-      "score": 59,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0117665",
-      "title": "Sleepers",
-      "originalTitle": "Sleepers",
-      "year": 1996,
-      "type": "Movie",
-      "genres": [
         "Crime",
         "Drama",
         "Thriller"
       ],
       "directors": [
-        "Barry Levinson"
+        "Derek Cianfrance"
       ],
-      "runtime": 147,
-      "imdb": 7.5,
-      "url": "https://www.imdb.com/title/tt0117665/",
-      "score": 59,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "runtime": 140,
+      "imdb": 7.3,
+      "url": "https://www.imdb.com/title/tt1817273/",
+      "score": 76,
+      "verdict": "مرشح جيد",
+      "band": "good",
       "reasons": [
-        "تركيبة مناسبة: Crime، Thriller"
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Town"
       ]
     },
     {
@@ -1308,35 +1064,165 @@ window.CINEMA_DATA = {
       "runtime": 130,
       "imdb": 8.2,
       "url": "https://www.imdb.com/title/tt5323662/",
-      "score": 58,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 74,
+      "verdict": "مرشح جيد",
+      "band": "good",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "أنواع متوافقة مع السجل: Animation",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Manchester by the Sea"
       ]
     },
     {
-      "const": "tt0091251",
-      "title": "Come and See",
-      "originalTitle": "Idi i smotri",
-      "year": 1985,
+      "const": "tt0081398",
+      "title": "Raging Bull",
+      "originalTitle": "Raging Bull",
+      "year": 1980,
       "type": "Movie",
       "genres": [
+        "Biography",
         "Drama",
-        "Thriller",
-        "War"
+        "Sport"
       ],
       "directors": [
-        "Elem Klimov"
+        "Martin Scorsese"
       ],
-      "runtime": 142,
-      "imdb": 8.3,
-      "url": "https://www.imdb.com/title/tt0091251/",
-      "score": 57,
+      "runtime": 129,
+      "imdb": 8.1,
+      "url": "https://www.imdb.com/title/tt0081398/",
+      "score": 66,
       "verdict": "مخاطرة متوسطة",
       "band": "medium",
       "reasons": [
-        "تركيبة مناسبة: Thriller"
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Biography، Sport، Drama",
+        "أقرب عمل أعجبك: GoodFellas"
+      ]
+    },
+    {
+      "const": "tt0490215",
+      "title": "Silence",
+      "originalTitle": "Silence",
+      "year": 2016,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "History"
+      ],
+      "directors": [
+        "Martin Scorsese"
+      ],
+      "runtime": 161,
+      "imdb": 7.2,
+      "url": "https://www.imdb.com/title/tt0490215/",
+      "score": 65,
+      "verdict": "مخاطرة متوسطة",
+      "band": "medium",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: History، Drama",
+        "أقرب عمل أعجبك: Gangs of New York"
+      ]
+    },
+    {
+      "const": "tt1872194",
+      "title": "The Judge",
+      "originalTitle": "The Judge",
+      "year": 2014,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Mystery",
+        "Thriller"
+      ],
+      "directors": [
+        "David Dobkin"
+      ],
+      "runtime": 141,
+      "imdb": 7.4,
+      "url": "https://www.imdb.com/title/tt1872194/",
+      "score": 64,
+      "verdict": "مخاطرة متوسطة",
+      "band": "medium",
+      "reasons": [
+        "أنواع متوافقة مع السجل: Thriller، Mystery",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Prisoners"
+      ]
+    },
+    {
+      "const": "tt0180093",
+      "title": "Requiem for a Dream",
+      "originalTitle": "Requiem for a Dream",
+      "year": 2000,
+      "type": "Movie",
+      "genres": [
+        "Drama"
+      ],
+      "directors": [
+        "Darren Aronofsky"
+      ],
+      "runtime": 102,
+      "imdb": 8.3,
+      "url": "https://www.imdb.com/title/tt0180093/",
+      "score": 62,
+      "verdict": "مخاطرة متوسطة",
+      "band": "medium",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Whale"
+      ]
+    },
+    {
+      "const": "tt2713180",
+      "title": "Fury",
+      "originalTitle": "Fury",
+      "year": 2014,
+      "type": "Movie",
+      "genres": [
+        "Action",
+        "Drama",
+        "War"
+      ],
+      "directors": [
+        "David Ayer"
+      ],
+      "runtime": 134,
+      "imdb": 7.6,
+      "url": "https://www.imdb.com/title/tt2713180/",
+      "score": 61,
+      "verdict": "مخاطرة متوسطة",
+      "band": "medium",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Action",
+        "أنواع تحمل إشارات حذر: War، Drama"
+      ]
+    },
+    {
+      "const": "tt0074958",
+      "title": "Network",
+      "originalTitle": "Network",
+      "year": 1976,
+      "type": "Movie",
+      "genres": [
+        "Drama"
+      ],
+      "directors": [
+        "Sidney Lumet"
+      ],
+      "runtime": 121,
+      "imdb": 8.1,
+      "url": "https://www.imdb.com/title/tt0074958/",
+      "score": 59,
+      "verdict": "مخاطرة متوسطة",
+      "band": "medium",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: One Flew Over the Cuckoo's Nest"
       ]
     },
     {
@@ -1356,60 +1242,184 @@ window.CINEMA_DATA = {
       "runtime": 88,
       "imdb": 8.5,
       "url": "https://www.imdb.com/title/tt0095327/",
-      "score": 57,
+      "score": 58,
       "verdict": "مخاطرة متوسطة",
       "band": "medium",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Animation",
+        "أنواع تحمل إشارات حذر: War، Drama"
       ]
     },
     {
-      "const": "tt0038650",
-      "title": "It's a Wonderful Life",
-      "originalTitle": "It's a Wonderful Life",
-      "year": 1946,
+      "const": "tt8267604",
+      "title": "Capernaum",
+      "originalTitle": "Capharnaüm",
+      "year": 2018,
       "type": "Movie",
       "genres": [
-        "Drama",
-        "Family",
-        "Fantasy",
-        "Romance"
+        "Drama"
       ],
       "directors": [
-        "Frank Capra"
+        "Nadine Labaki"
       ],
-      "runtime": 130,
-      "imdb": 8.6,
-      "url": "https://www.imdb.com/title/tt0038650/",
-      "score": 57,
+      "runtime": 126,
+      "imdb": 8.4,
+      "url": "https://www.imdb.com/title/tt8267604/",
+      "score": 53,
       "verdict": "مخاطرة متوسطة",
       "band": "medium",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Joker"
       ]
     },
     {
-      "const": "tt0034583",
-      "title": "Casablanca",
-      "originalTitle": "Casablanca",
-      "year": 1942,
+      "const": "tt1832382",
+      "title": "A Separation",
+      "originalTitle": "Jodaeiye Nader az Simin",
+      "year": 2011,
+      "type": "Movie",
+      "genres": [
+        "Drama"
+      ],
+      "directors": [
+        "Asghar Farhadi"
+      ],
+      "runtime": 123,
+      "imdb": 8.3,
+      "url": "https://www.imdb.com/title/tt1832382/",
+      "score": 49,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Hunt"
+      ]
+    },
+    {
+      "const": "tt1602620",
+      "title": "Amour",
+      "originalTitle": "Amour",
+      "year": 2012,
+      "type": "Movie",
+      "genres": [
+        "Drama"
+      ],
+      "directors": [
+        "Michael Haneke"
+      ],
+      "runtime": 127,
+      "imdb": 7.9,
+      "url": "https://www.imdb.com/title/tt1602620/",
+      "score": 49,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Master"
+      ]
+    },
+    {
+      "const": "tt0058946",
+      "title": "The Battle of Algiers",
+      "originalTitle": "La battaglia di Algeri",
+      "year": 1966,
       "type": "Movie",
       "genres": [
         "Drama",
-        "Romance",
         "War"
       ],
       "directors": [
-        "Michael Curtiz"
+        "Gillo Pontecorvo"
       ],
-      "runtime": 102,
-      "imdb": 8.5,
-      "url": "https://www.imdb.com/title/tt0034583/",
-      "score": 56,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "runtime": 121,
+      "imdb": 8.1,
+      "url": "https://www.imdb.com/title/tt0058946/",
+      "score": 47,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "سجلك منقسم على هذا النمط (10 من إعجابك مقابل 2 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: War، Drama",
+        "أقرب عمل أعجبك: Platoon"
+      ]
+    },
+    {
+      "const": "tt0106489",
+      "title": "A Bronx Tale",
+      "originalTitle": "A Bronx Tale",
+      "year": 1993,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "directors": [
+        "Robert De Niro"
+      ],
+      "runtime": 121,
+      "imdb": 7.8,
+      "url": "https://www.imdb.com/title/tt0106489/",
+      "score": 46,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Casino"
+      ]
+    },
+    {
+      "const": "tt0081283",
+      "title": "Ordinary People",
+      "originalTitle": "Ordinary People",
+      "year": 1980,
+      "type": "Movie",
+      "genres": [
+        "Drama"
+      ],
+      "directors": [
+        "Robert Redford"
+      ],
+      "runtime": 124,
+      "imdb": 7.7,
+      "url": "https://www.imdb.com/title/tt0081283/",
+      "score": 46,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: One Flew Over the Cuckoo's Nest"
+      ]
+    },
+    {
+      "const": "tt0058461",
+      "title": "A Fistful of Dollars",
+      "originalTitle": "Per un pugno di dollari",
+      "year": 1964,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Western"
+      ],
+      "directors": [
+        "Sergio Leone"
+      ],
+      "runtime": 99,
+      "imdb": 7.9,
+      "url": "https://www.imdb.com/title/tt0058461/",
+      "score": 45,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Sisters Brothers"
       ]
     },
     {
@@ -1430,203 +1440,13 @@ window.CINEMA_DATA = {
       "runtime": 116,
       "imdb": 8.6,
       "url": "https://www.imdb.com/title/tt0118799/",
-      "score": 56,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 45,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0064116",
-      "title": "Once Upon a Time in the West",
-      "originalTitle": "C'era una volta il West",
-      "year": 1968,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Western"
-      ],
-      "directors": [
-        "Sergio Leone"
-      ],
-      "runtime": 145,
-      "imdb": 8.5,
-      "url": "https://www.imdb.com/title/tt0064116/",
-      "score": 56,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "توافق متوسط يحتاج معايرة بعد المشاهدة"
-      ]
-    },
-    {
-      "const": "tt0058946",
-      "title": "The Battle of Algiers",
-      "originalTitle": "La battaglia di Algeri",
-      "year": 1966,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "War"
-      ],
-      "directors": [
-        "Gillo Pontecorvo"
-      ],
-      "runtime": 121,
-      "imdb": 8.1,
-      "url": "https://www.imdb.com/title/tt0058946/",
-      "score": 56,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
-      ]
-    },
-    {
-      "const": "tt0071562",
-      "title": "The Godfather Part II",
-      "originalTitle": "The Godfather Part II",
-      "year": 1974,
-      "type": "Movie",
-      "genres": [
-        "Crime",
-        "Drama"
-      ],
-      "directors": [
-        "Francis Ford Coppola"
-      ],
-      "runtime": 202,
-      "imdb": 9.0,
-      "url": "https://www.imdb.com/title/tt0071562/",
-      "score": 56,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Crime",
-        "إشارة مخرج إيجابية: Francis Ford Coppola"
-      ]
-    },
-    {
-      "const": "tt0408306",
-      "title": "Munich",
-      "originalTitle": "Munich",
-      "year": 2005,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "History",
-        "Thriller"
-      ],
-      "directors": [
-        "Steven Spielberg"
-      ],
-      "runtime": 164,
-      "imdb": 7.5,
-      "url": "https://www.imdb.com/title/tt0408306/",
-      "score": 55,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Thriller",
-        "عامل مخاطرة: History"
-      ]
-    },
-    {
-      "const": "tt0140352",
-      "title": "The Insider",
-      "originalTitle": "The Insider",
-      "year": 1999,
-      "type": "Movie",
-      "genres": [
-        "Biography",
-        "Drama",
-        "History",
-        "Thriller"
-      ],
-      "directors": [
-        "Michael Mann"
-      ],
-      "runtime": 157,
-      "imdb": 7.8,
-      "url": "https://www.imdb.com/title/tt0140352/",
-      "score": 54,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Thriller",
-        "عامل مخاطرة: Biography، History"
-      ]
-    },
-    {
-      "const": "tt0047478",
-      "title": "Seven Samurai",
-      "originalTitle": "Shichinin no samurai",
-      "year": 1954,
-      "type": "Movie",
-      "genres": [
-        "Action",
-        "Drama"
-      ],
-      "directors": [
-        "Akira Kurosawa"
-      ],
-      "runtime": 207,
-      "imdb": 8.6,
-      "url": "https://www.imdb.com/title/tt0047478/",
-      "score": 53,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "تركيبة مناسبة: Action"
-      ]
-    },
-    {
-      "const": "tt0080678",
-      "title": "The Elephant Man",
-      "originalTitle": "The Elephant Man",
-      "year": 1980,
-      "type": "Movie",
-      "genres": [
-        "Biography",
-        "Drama"
-      ],
-      "directors": [
-        "David Lynch"
-      ],
-      "runtime": 124,
-      "imdb": 8.2,
-      "url": "https://www.imdb.com/title/tt0080678/",
-      "score": 53,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك",
-        "عامل مخاطرة: Biography"
-      ]
-    },
-    {
-      "const": "tt2582802",
-      "title": "Whiplash",
-      "originalTitle": "Whiplash",
-      "year": 2014,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Music"
-      ],
-      "directors": [
-        "Damien Chazelle"
-      ],
-      "runtime": 106,
-      "imdb": 8.5,
-      "url": "https://www.imdb.com/title/tt2582802/",
-      "score": 52,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك",
-        "عامل مخاطرة: Music"
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: War، Romance، Drama",
+        "أقرب عمل أعجبك: As Good as It Gets"
       ]
     },
     {
@@ -1646,11 +1466,63 @@ window.CINEMA_DATA = {
       "runtime": 160,
       "imdb": 8.4,
       "url": "https://www.imdb.com/title/tt0086879/",
-      "score": 51,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 41,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "عامل مخاطرة: Biography، Music"
+        "سجلك منقسم على هذا النمط (7 من إعجابك مقابل 5 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Biography، Music، Drama",
+        "أقرب عمل أعجبك: Ray"
+      ]
+    },
+    {
+      "const": "tt0080678",
+      "title": "The Elephant Man",
+      "originalTitle": "The Elephant Man",
+      "year": 1980,
+      "type": "Movie",
+      "genres": [
+        "Biography",
+        "Drama"
+      ],
+      "directors": [
+        "David Lynch"
+      ],
+      "runtime": 124,
+      "imdb": 8.2,
+      "url": "https://www.imdb.com/title/tt0080678/",
+      "score": 39,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (6 من إعجابك مقابل 6 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Biography، Drama",
+        "أقرب عمل أعجبك: Awakenings"
+      ]
+    },
+    {
+      "const": "tt0120586",
+      "title": "American History X",
+      "originalTitle": "American History X",
+      "year": 1998,
+      "type": "Movie",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "directors": [
+        "Tony Kaye"
+      ],
+      "runtime": 119,
+      "imdb": 8.5,
+      "url": "https://www.imdb.com/title/tt0120586/",
+      "score": 38,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: City of God"
       ]
     },
     {
@@ -1670,12 +1542,65 @@ window.CINEMA_DATA = {
       "runtime": 189,
       "imdb": 8.0,
       "url": "https://www.imdb.com/title/tt0102138/",
-      "score": 51,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 38,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "تركيبة مناسبة: Thriller",
-        "عامل مخاطرة: History"
+        "سجلك منقسم على هذا النمط (6 من إعجابك مقابل 6 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: History، Drama"
+      ]
+    },
+    {
+      "const": "tt0108052",
+      "title": "Schindler's List",
+      "originalTitle": "Schindler's List",
+      "year": 1993,
+      "type": "Movie",
+      "genres": [
+        "Biography",
+        "Drama",
+        "History"
+      ],
+      "directors": [
+        "Steven Spielberg"
+      ],
+      "runtime": 195,
+      "imdb": 9.0,
+      "url": "https://www.imdb.com/title/tt0108052/",
+      "score": 38,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (6 من إعجابك مقابل 6 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: History، Biography، Drama",
+        "أقرب عمل أعجبك: 12 Years a Slave"
+      ]
+    },
+    {
+      "const": "tt0034583",
+      "title": "Casablanca",
+      "originalTitle": "Casablanca",
+      "year": 1942,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Romance",
+        "War"
+      ],
+      "directors": [
+        "Michael Curtiz"
+      ],
+      "runtime": 102,
+      "imdb": 8.5,
+      "url": "https://www.imdb.com/title/tt0034583/",
+      "score": 37,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (7 من إعجابك مقابل 5 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: War، Romance، Drama",
+        "أقرب عمل أعجبك: The Messenger"
       ]
     },
     {
@@ -1697,34 +1622,141 @@ window.CINEMA_DATA = {
       "runtime": 135,
       "imdb": 7.1,
       "url": "https://www.imdb.com/title/tt0418689/",
-      "score": 50,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 35,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "تركيبة مناسبة: Action",
-        "مدة مناسبة لإيقاعك",
-        "عامل مخاطرة: History"
+        "سجلك منقسم على هذا النمط (6 من إعجابك مقابل 6 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Action",
+        "أنواع تحمل إشارات حذر: History، War، Drama"
       ]
     },
     {
-      "const": "tt37543147",
-      "title": "Life, Larry and the Pursuit of Unhappiness: an Almost History of America",
-      "originalTitle": "Life, Larry and the Pursuit of Unhappiness: An Almost History of America",
-      "year": 2026,
-      "type": "TV Series",
+      "const": "tt1235166",
+      "title": "A Prophet",
+      "originalTitle": "Un prophète",
+      "year": 2009,
+      "type": "Movie",
       "genres": [
-        "Comedy",
-        "History"
+        "Crime",
+        "Drama"
       ],
-      "directors": [],
-      "runtime": 30,
-      "imdb": 7.0,
-      "url": "https://www.imdb.com/title/tt37543147/",
-      "score": 50,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "directors": [
+        "Jacques Audiard"
+      ],
+      "runtime": 155,
+      "imdb": 7.8,
+      "url": "https://www.imdb.com/title/tt1235166/",
+      "score": 34,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "عامل مخاطرة: History"
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Gangs of New York"
+      ]
+    },
+    {
+      "const": "tt0091251",
+      "title": "Come and See",
+      "originalTitle": "Idi i smotri",
+      "year": 1985,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Thriller",
+        "War"
+      ],
+      "directors": [
+        "Elem Klimov"
+      ],
+      "runtime": 142,
+      "imdb": 8.3,
+      "url": "https://www.imdb.com/title/tt0091251/",
+      "score": 34,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (7 من إعجابك مقابل 5 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: War، Drama"
+      ]
+    },
+    {
+      "const": "tt0059578",
+      "title": "For a Few Dollars More",
+      "originalTitle": "Per qualche dollaro in più",
+      "year": 1965,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Western"
+      ],
+      "directors": [
+        "Sergio Leone"
+      ],
+      "runtime": 132,
+      "imdb": 8.2,
+      "url": "https://www.imdb.com/title/tt0059578/",
+      "score": 34,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Sisters Brothers"
+      ]
+    },
+    {
+      "const": "tt0140352",
+      "title": "The Insider",
+      "originalTitle": "The Insider",
+      "year": 1999,
+      "type": "Movie",
+      "genres": [
+        "Biography",
+        "Drama",
+        "History",
+        "Thriller"
+      ],
+      "directors": [
+        "Michael Mann"
+      ],
+      "runtime": 157,
+      "imdb": 7.8,
+      "url": "https://www.imdb.com/title/tt0140352/",
+      "score": 34,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (7 من إعجابك مقابل 5 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: History، Biography، Drama"
+      ]
+    },
+    {
+      "const": "tt0064116",
+      "title": "Once Upon a Time in the West",
+      "originalTitle": "C'era una volta il West",
+      "year": 1968,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Western"
+      ],
+      "directors": [
+        "Sergio Leone"
+      ],
+      "runtime": 145,
+      "imdb": 8.5,
+      "url": "https://www.imdb.com/title/tt0064116/",
+      "score": 33,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Sisters Brothers",
+        "أقرب إشارة معاكسة: Django Unchained"
       ]
     },
     {
@@ -1744,34 +1776,13 @@ window.CINEMA_DATA = {
       "runtime": 178,
       "imdb": 8.8,
       "url": "https://www.imdb.com/title/tt0060196/",
-      "score": 50,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
+      "score": 33,
+      "verdict": "أجّله",
+      "band": "low",
       "reasons": [
-        "توافق متوسط يحتاج معايرة بعد المشاهدة"
-      ]
-    },
-    {
-      "const": "tt0105695",
-      "title": "Unforgiven",
-      "originalTitle": "Unforgiven",
-      "year": 1992,
-      "type": "Movie",
-      "genres": [
-        "Drama",
-        "Western"
-      ],
-      "directors": [
-        "Clint Eastwood"
-      ],
-      "runtime": 130,
-      "imdb": 8.2,
-      "url": "https://www.imdb.com/title/tt0105695/",
-      "score": 50,
-      "verdict": "مخاطرة متوسطة",
-      "band": "medium",
-      "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Goat Life",
+        "أقرب إشارة معاكسة: Django Unchained"
       ]
     },
     {
@@ -1793,12 +1804,39 @@ window.CINEMA_DATA = {
       "runtime": 141,
       "imdb": 7.8,
       "url": "https://www.imdb.com/title/tt0498380/",
-      "score": 46,
+      "score": 32,
       "verdict": "أجّله",
       "band": "low",
       "reasons": [
-        "تركيبة مناسبة: Action",
-        "عامل مخاطرة: History"
+        "سجلك منقسم على هذا النمط (5 من إعجابك مقابل 7 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Action",
+        "أنواع تحمل إشارات حذر: History، War، Drama"
+      ]
+    },
+    {
+      "const": "tt0408306",
+      "title": "Munich",
+      "originalTitle": "Munich",
+      "year": 2005,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "History",
+        "Thriller"
+      ],
+      "directors": [
+        "Steven Spielberg"
+      ],
+      "runtime": 164,
+      "imdb": 7.5,
+      "url": "https://www.imdb.com/title/tt0408306/",
+      "score": 32,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (7 من إعجابك مقابل 5 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: History، Drama"
       ]
     },
     {
@@ -1817,11 +1855,38 @@ window.CINEMA_DATA = {
       "runtime": 88,
       "imdb": 8.4,
       "url": "https://www.imdb.com/title/tt0050825/",
-      "score": 46,
+      "score": 31,
       "verdict": "أجّله",
       "band": "low",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "سجلك منقسم على هذا النمط (8 من إعجابك مقابل 4 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: War، Drama",
+        "أقرب عمل أعجبك: Platoon"
+      ]
+    },
+    {
+      "const": "tt2582802",
+      "title": "Whiplash",
+      "originalTitle": "Whiplash",
+      "year": 2014,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Music"
+      ],
+      "directors": [
+        "Damien Chazelle"
+      ],
+      "runtime": 106,
+      "imdb": 8.5,
+      "url": "https://www.imdb.com/title/tt2582802/",
+      "score": 30,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Music، Drama",
+        "أقرب عمل أعجبك: Sound of Metal"
       ]
     },
     {
@@ -1840,35 +1905,64 @@ window.CINEMA_DATA = {
       "runtime": 95,
       "imdb": 8.3,
       "url": "https://www.imdb.com/title/tt0057012/",
-      "score": 44,
+      "score": 28,
       "verdict": "أجّله",
       "band": "low",
       "reasons": [
-        "مدة مناسبة لإيقاعك"
+        "سجلك منقسم على هذا النمط (9 من إعجابك مقابل 3 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: War",
+        "أقرب عمل أعجبك: Tropic Thunder"
       ]
     },
     {
-      "const": "tt0108052",
-      "title": "Schindler's List",
-      "originalTitle": "Schindler's List",
-      "year": 1993,
+      "const": "tt0117665",
+      "title": "Sleepers",
+      "originalTitle": "Sleepers",
+      "year": 1996,
       "type": "Movie",
       "genres": [
-        "Biography",
+        "Crime",
         "Drama",
-        "History"
+        "Thriller"
       ],
       "directors": [
-        "Steven Spielberg"
+        "Barry Levinson"
       ],
-      "runtime": 195,
-      "imdb": 9.0,
-      "url": "https://www.imdb.com/title/tt0108052/",
-      "score": 40,
+      "runtime": 147,
+      "imdb": 7.5,
+      "url": "https://www.imdb.com/title/tt0117665/",
+      "score": 26,
       "verdict": "أجّله",
       "band": "low",
       "reasons": [
-        "عامل مخاطرة: Biography، History"
+        "أنواع متوافقة مع السجل: Thriller",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: Cape Fear"
+      ]
+    },
+    {
+      "const": "tt0105695",
+      "title": "Unforgiven",
+      "originalTitle": "Unforgiven",
+      "year": 1992,
+      "type": "Movie",
+      "genres": [
+        "Drama",
+        "Western"
+      ],
+      "directors": [
+        "Clint Eastwood"
+      ],
+      "runtime": 130,
+      "imdb": 8.2,
+      "url": "https://www.imdb.com/title/tt0105695/",
+      "score": 26,
+      "verdict": "أجّله",
+      "band": "low",
+      "reasons": [
+        "سجلك منقسم على هذا النمط (4 من إعجابك مقابل 8 من نفورك بين الأقرب) — النسبة تعكس عدم الحسم لا حكمًا سلبيًا",
+        "أنواع تحمل إشارات حذر: Drama",
+        "أقرب عمل أعجبك: The Sisters Brothers"
       ]
     }
   ],
