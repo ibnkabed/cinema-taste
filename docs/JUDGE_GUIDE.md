@@ -2,7 +2,7 @@
 
 ## Fastest evaluation path (no external key)
 
-1. Open the public demo: `https://cinema-taste.onrender.com/?lang=en`. It is hosted on a free tier, so the first load after idle may take up to a minute.
+1. Open the public demo: `https://cinema-taste.abdullashammary.chatgpt.site/?lang=en`.
 2. Select **Likelihood**.
 3. Select **Instant no-key demo**.
 4. Review the initial reading, confidence, reasons, closest liked titles, and caution references.
