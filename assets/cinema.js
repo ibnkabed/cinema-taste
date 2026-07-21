@@ -29,6 +29,16 @@
     let discoveryPromptEn = '';
     let lastDiscoveryAnalysis = null;
 
+    const addTitleDemoWork = {
+        imdbId:'tt0117913', title:'A Time to Kill', originalTitle:'A Time to Kill', titleType:'Movie', type:'movie',
+        year:'1996', imdbRating:'7.5', numVotes:'208792', runtime:'149', releaseDate:'7/24/1996',
+        genres:'Crime, Drama, Thriller', directors:'Joel Schumacher',
+        actors:'Matthew McConaughey, Sandra Bullock, Samuel L. Jackson',
+        writers:'John Grisham, Akiva Goldsman', language:'English',
+        plot:"When Tonya Hailey, an innocent little African-American girl is raped and beaten by two men, her father Carl Lee Hailey takes justice into his own hands. Defense lawyer Jake Brigance must fight to prove that Carl Lee can receive a fair trial in Mississippi.",
+        url:'https://www.imdb.com/title/tt0117913/', demoMode:true
+    };
+
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
     const el = (tag, className, text) => {
@@ -181,9 +191,26 @@
             const copy = el('span', 'add-result-copy');
             copy.append(el('b', '', item.title), el('small', '', `${item.year || '—'} · ${typeLabel(item.type)} · ${item.imdbId}`));
             button.append(icon, copy, el('span', 'add-result-arrow', isEnglish() ? '→' : '←'));
-            button.addEventListener('click', () => loadWorkDetails(item.imdbId, button));
+            button.addEventListener('click', () => item.demoMode ? loadDemoWorkDetails(button) : loadWorkDetails(item.imdbId, button));
             root.append(button);
         });
+    }
+
+    function loadAddTitleDemo() {
+        $('#add-search-title').value = addTitleDemoWork.title;
+        $('#add-search-year').value = addTitleDemoWork.year;
+        renderAddResults([addTitleDemoWork]);
+        setDetailsMessage('🎬', t('اختر نتيجة الديمو', 'Choose the demo result'), t('اضغط النتيجة لتشاهد جلب بيانات الحبكة والكتّاب والممثلين وبقية بيانات OMDb.', 'Select the result to see the plot, writers, actors, and the rest of the OMDb metadata populate instantly.'));
+        showToast(t('ظهرت نتيجة تجريبية كاملة بلا مفتاح. اخترها لمتابعة الإضافة.', 'A complete no-key demo result is ready. Select it to continue.'));
+    }
+
+    function loadDemoWorkDetails(sourceButton) {
+        $$('.add-result-card').forEach(card => card.classList.toggle('active', card === sourceButton));
+        setDetailsMessage('⏳', t('جارٍ جلب البيانات', 'Loading metadata'), t('لحظات ونجهّز بطاقة العمل كاملة.', 'One moment while the complete title card is prepared.'));
+        window.setTimeout(() => {
+            fillDetailsForm({...addTitleDemoWork});
+            showToast(t('اكتملت بيانات الديمو دون اتصال خارجي أو تغيير ملفاتك.', 'Demo metadata is complete, with no external request or changes to your files.'));
+        }, 220);
     }
 
     async function searchOmdb(event) {
@@ -302,6 +329,13 @@
     async function addSelectedWork(event) {
         event.preventDefault();
         if (!selectedWork) return;
+        if (selectedWork.demoMode) {
+            $('#add-search-form').reset();
+            $('#add-search-results').replaceChildren(el('p', '', t('ابدأ بكتابة اسم عمل آخر، أو شغّل الديمو مجددًا.', 'Enter another title, or run the demo again.')));
+            setDetailsMessage('✅', t('اكتملت تجربة الإضافة', 'Add Title demo complete'), t('تمت محاكاة الإضافة بنجاح دون حفظ أو تغيير أي ملف خاص.', 'The add flow was simulated successfully without saving or changing any private file.'), true);
+            showToast(t('اكتمل الديمو بأمان؛ لم تُحفظ أي بيانات.', 'Demo complete; no data was saved.'));
+            return;
+        }
         const destination = selectedDestination();
         const rating = $('#add-rating').value;
         if (destination === 'liked' && !rating) {
@@ -564,34 +598,8 @@
         }
     }
 
-    const judgeCalibrationWatchlist = [
-        {
-            title:'Obsession', originalTitle:'Obsession', year:2026, imdb:8.0, runtime:108,
-            genres:['Horror', 'Romance', 'Thriller'], directors:['Curry Barker'],
-            score:97, band:'high', verdict:'شاهد أولًا', showcase:true,
-            reasonsAr:['مثال معايرة: تطابق قوي مع التوتر النفسي والتصاعد التدريجي', 'التقييم الشخصي النهائي 9/10 أثبت دقة التوقع'],
-            reasonsEn:['Calibration example: strong match with psychological tension and earned escalation', 'The final personal 9/10 rating validated the prediction']
-        },
-        {
-            title:'Incendies', originalTitle:'Incendies', year:2010, imdb:8.3, runtime:131,
-            genres:['Drama', 'Mystery', 'War'], directors:['Denis Villeneuve'],
-            score:95, band:'high', verdict:'شاهد أولًا', showcase:true,
-            reasonsAr:['مثال معايرة: غموض وضغط إنساني وتصاعد عالي الأثر', 'إشارة إيجابية للمخرج Denis Villeneuve'],
-            reasonsEn:['Calibration example: mystery, human pressure, and high-impact escalation', 'Positive director signal: Denis Villeneuve']
-        },
-        {
-            title:'Backrooms', originalTitle:'Backrooms', year:'TBA', imdb:null, runtime:null,
-            genres:['Horror', 'Mystery', 'Thriller'], directors:[],
-            score:93, band:'high', verdict:'شاهد أولًا', showcase:true,
-            reasonsAr:['مثال معايرة: رعب مفاهيمي وغموض وتوتر مباشر', 'توافق قوي مع الأنواع والإيقاع المفضّلين'],
-            reasonsEn:['Calibration example: high-concept horror, mystery, and direct tension', 'Strong match with preferred genres and pacing']
-        }
-    ];
-
     function displayedWatchlist() {
-        const showcaseTitles = new Set(judgeCalibrationWatchlist.map(item => item.title.toLowerCase()));
-        const liveRows = (data.watchlist || []).filter(item => !showcaseTitles.has((item.title || '').toLowerCase()));
-        return [...judgeCalibrationWatchlist, ...liveRows];
+        return data.watchlist || [];
     }
 
     const sessionEnglish = [
@@ -769,7 +777,6 @@
             const title = el('div', 'watch-title');
             const titleLine = el('div', 'watch-title-line');
             titleLine.append(el('b', '', item.title));
-            if (item.showcase) titleLine.append(el('span', 'calibration-badge', t('مثال معايرة', 'Calibration example')));
             title.append(titleLine, el('small', '', `${item.year || '—'} · IMDb ${item.imdb || '—'}`));
             const meta = el('div', 'watch-meta');
             meta.append(el('span', '', (item.genres || []).slice(0, 3).map(genreLabel).join(isEnglish() ? ', ' : '، ') || '—'), el('small', '', `${item.runtime || '—'} ${t('دقيقة', 'min')}`));
@@ -821,6 +828,7 @@
         $('#watch-search').addEventListener('input', renderWatchlist);
         $('#watch-filter').addEventListener('change', renderWatchlist);
         $('#add-search-form').addEventListener('submit', searchOmdb);
+        $('#add-demo-button').addEventListener('click', loadAddTitleDemo);
         $('#discovery-search-form').addEventListener('submit', searchDiscovery);
         $('#discovery-demo-button').addEventListener('click', loadDiscoveryDemo);
         $('#predict-from-add-btn').addEventListener('click', analyzeSelectedWork);

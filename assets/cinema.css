@@ -117,7 +117,7 @@ legend{padding:0 5px;color:var(--muted);font-size:10.5px;font-weight:700}
 .destination-options span{display:flex;align-items:center;justify-content:center;min-height:31px;padding:4px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.035);color:var(--muted);font-size:10.5px;font-weight:700;text-align:center}
 .destination-options input:checked+span{border-color:var(--gold);background:var(--gold-soft);color:var(--gold-2)}
 #add-rating-field{grid-column:1/-1}
-.add-search-btn{grid-column:1/-1;margin:0;min-height:33px}
+.add-search-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:6px}.add-search-btn{grid-column:auto;margin:0;min-height:33px}.add-demo-button{min-height:33px;border:1px solid rgba(112,184,147,.45);border-radius:9px;background:rgba(112,184,147,.10);color:#9ce0bd;font:800 10.5px Cairo;cursor:pointer}.add-demo-button:hover{border-color:#70b893;background:rgba(112,184,147,.16)}
 .omdb-key-box{flex:0 0 auto;padding:8px;border:1px solid rgba(232,180,90,.34);border-radius:10px;background:rgba(232,180,90,.07)}
 .omdb-key-box[hidden]{display:none}.omdb-key-box b{display:block;font-size:11.5px;color:var(--gold-2)}.omdb-key-box p{margin:2px 0 6px;color:var(--muted);font-size:9.5px}.omdb-key-box>div{display:flex;gap:6px}.omdb-key-box button{flex:0 0 auto;border:0;border-radius:8px;background:var(--gold-2);color:#241703;padding:0 10px;font-size:10.5px;font-weight:800;cursor:pointer}.omdb-key-box a{display:inline-block;margin-top:5px;color:var(--gold-2);font-size:9.5px;text-decoration:none}
 .method-pill.ready{border-color:rgba(112,184,147,.38);background:rgba(112,184,147,.10);color:#a9dfc4}

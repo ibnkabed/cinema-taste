@@ -32,6 +32,7 @@ class StaticUiTests(unittest.TestCase):
         for required in (
             "discovery-search-form",
             "discovery-demo-button",
+            "add-demo-button",
             "discovery-results",
             "discovery-analysis",
             "copy-prompt-ar",
@@ -74,15 +75,14 @@ class StaticUiTests(unittest.TestCase):
         self.assertIn("document.documentElement.dir", translations)
         self.assertIn("Discover New Titles", translations)
 
-    def test_judge_calibration_examples_and_compact_sessions_are_present(self) -> None:
+    def test_real_watchlist_and_compact_sessions_are_present(self) -> None:
         behavior = JS.read_text(encoding="utf-8")
-        self.assertIn("judgeCalibrationWatchlist", behavior)
-        for title, score in (("Obsession", 97), ("Incendies", 95), ("Backrooms", 93)):
-            self.assertIn(f"title:'{title}'", behavior)
-            self.assertIn(f"score:{score}", behavior)
+        self.assertNotIn("judgeCalibrationWatchlist", behavior)
+        self.assertNotIn("Calibration example", behavior)
+        self.assertIn("addTitleDemoWork", behavior)
+        self.assertIn("title:'A Time to Kill'", behavior)
         self.assertIn("sessionArabic", behavior)
         self.assertIn("rows.slice(0, 6)", behavior)
-        self.assertIn("Calibration example", behavior)
 
 
 if __name__ == "__main__":

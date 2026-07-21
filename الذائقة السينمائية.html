@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#050b18">
     <title>الذائقة السينمائية</title>
-    <link rel="stylesheet" href="assets/cinema.css?v=20260720-1">
+    <link rel="stylesheet" href="assets/cinema.css?v=20260722-1">
 </head>
 <body>
 <div class="cinema-app">
@@ -117,7 +117,10 @@
                                 </div>
                             </fieldset>
                             <label id="add-rating-field">تقييمي الشخصي<select id="add-rating"><option value="">اختر التقييم</option><option>10</option><option>9</option><option>8</option><option>7</option><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></label>
-                            <button class="primary-btn add-search-btn" type="submit">🔎 ابحث في OMDb</button>
+                            <div class="add-search-actions">
+                                <button class="primary-btn add-search-btn" type="submit">🔎 ابحث في OMDb</button>
+                                <button class="add-demo-button" id="add-demo-button" type="button">⚡ تجربة إضافة بلا مفتاح</button>
+                            </div>
                         </form>
                         <div class="add-results" id="add-search-results"><p>ابدأ بكتابة اسم العمل، ثم اختر النتيجة الصحيحة.</p></div>
                     </aside>
@@ -273,7 +276,7 @@
     </section>
 </div>
 <script src="data/project-data.js"></script>
-<script src="assets/i18n.js?v=20260718-1"></script>
-<script src="assets/cinema.js?v=20260718-4"></script>
+<script src="assets/i18n.js?v=20260722-1"></script>
+<script src="assets/cinema.js?v=20260722-1"></script>
 </body>
 </html>

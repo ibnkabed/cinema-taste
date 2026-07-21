@@ -50,7 +50,10 @@ class ServerApiTests(unittest.TestCase):
         payload = self.get_json("/api/taste/demo")
         self.assertTrue(payload["ok"])
         self.assertTrue(payload["demo"])
+        self.assertEqual(payload["work"]["Title"], "The Lincoln Lawyer")
         analysis = payload["analysis"]
+        self.assertGreaterEqual(analysis["score"], 80)
+        self.assertLess(analysis["score"], 90)
         self.assertIn("score", analysis)
         self.assertIn("confidence", analysis)
         self.assertIn("GPT-5.6", analysis["codexPromptEn"])
