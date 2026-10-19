@@ -34,6 +34,12 @@ The engine compares a title's genres, directors, cast, writers, runtime, and rel
 
 Cinema Taste is designed to become more reliable as the viewer's history grows. As more representative movies and series are added to both the Liked and Disliked libraries, the Likelihood engine gains stronger positive and negative evidence, allowing it to distinguish lasting taste patterns from isolated reactions. This makes future estimates better calibrated and generally more accurate for that specific viewer.
 
+## Owner taste rules
+
+Some records reflect a blanket preference rather than a reaction to a title's content. These rules are kept in [`data/الذاكرة السينمائية.docx`](data/الذاكرة%20السينمائية.docx) and should be applied whenever the history is analysed:
+
+- **Indian titles (19 October 2026):** every Indian title is marked **لا يهمني** ("Not interested") in the owner's taste-tracking app because the owner does not enjoy Indian cinema in general. The mark is about the country of origin only. It says nothing about the title's story, genre, director, cast, or writers, so it must not count as negative evidence against any of them. New Indian titles are excluded on origin alone.
+
 ## Quick start
 
 Requirements: Python 3.10 or newer. The application uses only the Python standard library and needs no package installation.
